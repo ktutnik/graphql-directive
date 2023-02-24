@@ -9,7 +9,9 @@ it("Should execute validator on field argument", async () => {
         input User {
             name: String!
             email: String! @validate(method: EMAIL)
+            spouse: User
         }
+        
         type Mutation { 
             addUser(user:User):String!
         }
@@ -24,6 +26,7 @@ it("Should execute validator on field argument", async () => {
             }
         } 
     }))
-    const result = await graphql({ schema, source: `mutation { addUser({ name: "John", email: "mail@mail.com" }) }`})
+    const result = await graphql({ schema, source: `mutation { addUser(user: { name: "John", email: "mail@mail.com" }) }`})
+    expect(result.errors).toBeUndefined()
     expect(result.data).toBe(10)
 })
