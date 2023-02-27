@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should execute validator on field argument 1`] = `
+{
+  "error": [
+    {
+      "message": [
+        "Must a valid email address",
+      ],
+      "path": "user.email",
+    },
+  ],
+}
+`;

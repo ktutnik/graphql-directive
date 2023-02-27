@@ -14,7 +14,7 @@
                 "${fileBasenameNoExtension}",
                 "--runInBand",
                 "--config",
-                "jest.config.ts",
+                "jest.config.debug.ts",
                 "--testTimeout",
                 "1000000"
             ],

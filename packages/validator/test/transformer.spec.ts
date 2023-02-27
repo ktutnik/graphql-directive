@@ -13,7 +13,7 @@ it("Should execute validator on field argument", async () => {
         }
         
         type Mutation { 
-            addUser(user:User):String!
+            addUser(user:User!):String!
         }
     `
     const schema = val.transform(makeExecutableSchema({
@@ -21,12 +21,12 @@ it("Should execute validator on field argument", async () => {
         resolvers: {
             Mutation: {
                 addUser: (_, args) => {
-                    return args.user
+                    return "Success"
                 }
             }
         } 
     }))
-    const result = await graphql({ schema, source: `mutation { addUser(user: { name: "John", email: "mail@mail.com" }) }`})
-    expect(result.errors).toBeUndefined()
+    const result = await graphql({ schema, source: `mutation { addUser(user: { name: "John", email: "mail" }) }`})
+    expect(result.errors![0].extensions).toMatchSnapshot()
     expect(result.data).toBe(10)
 })
