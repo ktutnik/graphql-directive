@@ -1,9 +1,9 @@
 import val from "validator"
-import { ValidationMethod, Validator } from "./core"
+import { ValidationMethod, NativeValidator } from "./core"
 
 type Validators = {
     [key: string]:
-    (config: any) => Validator
+    (config: any) => NativeValidator
 
 }
 

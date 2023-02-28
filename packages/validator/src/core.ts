@@ -8,7 +8,7 @@ export interface TypeConfig {
 export interface FieldConfig {
     kind: "Field",
     name: string
-    validator: ObjectValidator
+    validator: Validator
 }
 
 export enum ValidationMethod {
@@ -73,9 +73,9 @@ export interface DirectiveArgs {
 
 export interface ErrorMessage {
     path: string,
-    message: string[]
+    message: string
 }
 
-export type Validator = (val: any) => string[] | true
+export type NativeValidator = (val: any) => string | true
 
-export type ObjectValidator = (val: any) => ErrorMessage[] | true
+export type Validator = (val: any) => ErrorMessage[] | true

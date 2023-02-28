@@ -1,11 +1,10 @@
 import { getDirective, MapperKind, mapSchema } from "@graphql-tools/utils"
-import { defaultFieldResolver, GraphQLError, GraphQLFieldConfig, GraphQLInputFieldConfig, GraphQLSchema } from "graphql"
+import { defaultFieldResolver, GraphQLError, GraphQLFieldConfig, GraphQLInputFieldConfig, GraphQLInputType, GraphQLSchema } from "graphql"
 import { Path } from "graphql/jsutils/Path"
 
-import { DirectiveArgs, ErrorMessage, FieldConfig, ObjectValidator, TypeConfig, Validator } from "./core"
+import { DirectiveArgs, ErrorMessage, FieldConfig, Validator, TypeConfig, NativeValidator } from "./core"
 import nativeValidators from "./validator"
 
-const configurations: { [key: string]: TypeConfig } = {}
 
 const typeDefs = /* GraphQL */ `
     enum ValidationMethod {
@@ -19,41 +18,29 @@ const typeDefs = /* GraphQL */ `
 `
 
 const transform = (schema: GraphQLSchema): GraphQLSchema => {
+    const configurations: { [key: string]: TypeConfig } = {}
+
     const getValidateDirectives = (config: GraphQLInputFieldConfig | GraphQLFieldConfig<any, any>) => getDirective(schema, config, "validate") as DirectiveArgs[] ?? []
 
-    const fixPath = (root: string, messages: ErrorMessage[]) => root === "" ? messages :
-        messages.map<ErrorMessage>((e) => ({ path: `${root}.${e.path}`, message: e.message }))
+    const fixPath = (root: string, messages: ErrorMessage[]) =>
+        messages.map<ErrorMessage>((e) => ({ path: [root, e.path].filter(x => x !== "").join("."), message: e.message }))
 
-    const createFieldValidator = (path: string, directives: DirectiveArgs[]): ObjectValidator => {
-        const fieldValidator = directives.map<Validator>(({ method, ...config }) => nativeValidators[method](config))
-        const validator: ObjectValidator = (val) => {
-            if (val === null || val === undefined) return true
-            // validate field
-            const fieldError = fieldValidator.map(v => v(val))
-                .filter((x): x is string[] => x !== true)
-                .flat()
-            return fieldError.length > 0 ? [{ path, message: fieldError }] : true
+    const createValidator = ({ method, ...config }: DirectiveArgs): Validator => {
+        const val: NativeValidator = nativeValidators[method](config)
+        return (value: any) => {
+            const message = val(value)
+            return message === true ? true : [{ message, path: "" }]
         }
-        return validator
     }
 
-    const createObjectValidator = (path: string, fields: FieldConfig[]): ObjectValidator => {
-        const validator: ObjectValidator = (val) => {
-            if (val === null || val === undefined) return true
-            const messages = fields.map(v => v.validator(val[v.name]))
-                .filter((x): x is ErrorMessage[] => x !== true)
-                .flat()
-            return messages.length > 0 ? fixPath(path, messages) : true
-        }
-        return validator
-    }
-
-    const composeValidator = (...validators: ObjectValidator[]): ObjectValidator => {
+    const composeValidator = (path: string, ...validators: Validator[]): Validator => {
         return (val: any) => {
-            const messages = validators.map(v => v(val))
-                .filter((x): x is ErrorMessage[] => x !== true)
-                .flat();
-            return messages.length > 0 ? messages : true
+            const messages: ErrorMessage[] = []
+            for (const validator of validators) {
+                const result = validator(path === "" ? val : val[path])
+                if (result !== true) messages.push(...result)
+            }
+            return messages.length > 0 ? fixPath(path, messages) : true
         }
     }
 
@@ -67,9 +54,9 @@ const transform = (schema: GraphQLSchema): GraphQLSchema => {
             if (directives.length > 0 || !!dataTypeConfig) {
                 const parent = getParentConfig(type)
                 const fields = (dataTypeConfig && dataTypeConfig.fields) ?? []
-                const validator = composeValidator(
-                    createFieldValidator(name, directives),
-                    createObjectValidator(name, fields))
+                const validator = composeValidator(name,
+                    ...directives.map(x => createValidator(x)),
+                    ...fields.map(x => x.validator))
                 parent.fields = [...parent.fields, { kind: "Field", name, validator }]
                 return config
             }
@@ -85,14 +72,14 @@ const transform = (schema: GraphQLSchema): GraphQLSchema => {
                 const dataTypeConfig = configurations[dataType]
                 if (directives.length > 0 || !!dataTypeConfig) {
                     const fields = (dataTypeConfig && dataTypeConfig.fields) ?? []
-                    const validator = composeValidator(
-                        createFieldValidator(name, directives),
-                        createObjectValidator(name, fields))
+                    const validator = composeValidator(name,
+                        ...directives.map(x => createValidator(x)),
+                        ...fields.map(x => x.validator))
                     validators.push({ kind: "Field", name, validator })
                 }
             }
             if (validators.length > 0) {
-                const validator = createObjectValidator("", validators)
+                const validator = composeValidator("", ...validators.map(x => x.validator))
                 const { resolve = defaultFieldResolver } = config
                 return {
                     ...config,

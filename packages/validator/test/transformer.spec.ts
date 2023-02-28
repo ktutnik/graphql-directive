@@ -47,10 +47,92 @@ describe("Mutation Validation", () => {
                 }
             }
         }))
-        const err = await graphql({ schema, source: `mutation { addUser(user: { name: "John", email: "mail" }) }` })
+        const source = (email:string) => `
+        mutation { 
+            addUser(user: { 
+                name: "John", email: "${email}" 
+            }) 
+        }
+        `
+        const err = await graphql({ schema, source: source("mail") })
         expect(err.errors![0].extensions).toMatchSnapshot()
 
-        const success = await graphql({ schema, source: `mutation { addUser(user: { name: "John", email: "mail@mail.com" }) }` })
+        const success = await graphql({ schema, source: source("mail@mail.com") })
+        expect(success.data).toMatchSnapshot()
+    })
+
+    it("Should validate argument inside nested custom type property", async () => {
+        const typeDefs = /* GraphQL */ `
+        type Query { name:String! }
+        input User {
+            name: String!
+            email: String! @validate(method: EMAIL)
+            suppose: User
+        }
+        
+        type Mutation { 
+            addUser(user:User!):Boolean!
+        }
+    `
+        const schema = val.transform(makeExecutableSchema({
+            typeDefs: [val.typeDefs, typeDefs],
+            resolvers: {
+                Mutation: {
+                    addUser: (_, args) => true
+                }
+            }
+        }))
+        const source = (mail:string) => `
+        mutation { 
+            addUser(user: { 
+                name: "John", 
+                email: "mail@mail.com", 
+                suppose: { 
+                    name: "Jane", 
+                    email: "${mail}" 
+                } 
+            }) 
+        }`
+        const err = await graphql({ schema, source: source("mail")  })
+        expect(err.errors![0].extensions).toMatchSnapshot()
+
+        const success = await graphql({ schema, source: source("mail@mail.com") })
+        expect(success.data).toMatchSnapshot()
+    })
+
+    it.skip("Should validate argument inside array of custom type property", async () => {
+        const typeDefs = /* GraphQL */ `
+        type Query { name:String! }
+        input User {
+            name: String!
+            email: String! @validate(method: EMAIL)
+        }
+        
+        type Mutation { 
+            addUser(user:[User]!):Boolean!
+        }
+    `
+        const schema = val.transform(makeExecutableSchema({
+            typeDefs: [val.typeDefs, typeDefs],
+            resolvers: {
+                Mutation: {
+                    addUser: (_, args) => true
+                }
+            }
+        }))
+        const source = (email:string) => `
+        mutation { 
+            addUser(user: [{
+                name: "Jane", email: "jane@mail.com"
+            }, { 
+                name: "John", email: "${email}" 
+            }]) 
+        }
+        `
+        const err = await graphql({ schema, source: source("mail") })
+        expect(err.errors![0].extensions).toMatchSnapshot()
+
+        const success = await graphql({ schema, source: source("mail@mail.com") })
         expect(success.data).toMatchSnapshot()
     })
 })

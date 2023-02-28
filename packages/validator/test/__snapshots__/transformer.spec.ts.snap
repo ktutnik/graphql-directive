@@ -4,9 +4,7 @@ exports[`Custom Type Validation Should validate argument with primitive type on 
 {
   "error": [
     {
-      "message": [
-        "Must be a valid email address",
-      ],
+      "message": "Must be a valid email address",
       "path": "email.checkEmail.email",
     },
   ],
@@ -25,9 +23,7 @@ exports[`Mutation Validation Should validate argument inside custom type propert
 {
   "error": [
     {
-      "message": [
-        "Must be a valid email address",
-      ],
+      "message": "Must be a valid email address",
       "path": "addUser.user.email",
     },
   ],
@@ -40,13 +36,28 @@ exports[`Mutation Validation Should validate argument inside custom type propert
 }
 `;
 
+exports[`Mutation Validation Should validate argument inside nested custom type property 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid email address",
+      "path": "addUser.user.suppose.email",
+    },
+  ],
+}
+`;
+
+exports[`Mutation Validation Should validate argument inside nested custom type property 2`] = `
+{
+  "addUser": true,
+}
+`;
+
 exports[`Mutation Validation Should validate argument with primitive type properly 1`] = `
 {
   "error": [
     {
-      "message": [
-        "Must be a valid email address",
-      ],
+      "message": "Must be a valid email address",
       "path": "checkEmail.email",
     },
   ],
