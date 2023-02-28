@@ -1,14 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should execute validator on field argument 1`] = `
+exports[`Custom Type Validation Should validate argument with primitive type on Custom Type 1`] = `
 {
   "error": [
     {
       "message": [
-        "Must a valid email address",
+        "Must be a valid email address",
       ],
-      "path": "user.email",
+      "path": "email.checkEmail.email",
     },
   ],
+}
+`;
+
+exports[`Custom Type Validation Should validate argument with primitive type on Custom Type 2`] = `
+{
+  "email": {
+    "checkEmail": true,
+  },
+}
+`;
+
+exports[`Mutation Validation Should validate argument inside custom type property 1`] = `
+{
+  "error": [
+    {
+      "message": [
+        "Must be a valid email address",
+      ],
+      "path": "addUser.user.email",
+    },
+  ],
+}
+`;
+
+exports[`Mutation Validation Should validate argument inside custom type property 2`] = `
+{
+  "addUser": true,
+}
+`;
+
+exports[`Mutation Validation Should validate argument with primitive type properly 1`] = `
+{
+  "error": [
+    {
+      "message": [
+        "Must be a valid email address",
+      ],
+      "path": "checkEmail.email",
+    },
+  ],
+}
+`;
+
+exports[`Mutation Validation Should validate argument with primitive type properly 2`] = `
+{
+  "checkEmail": true,
 }
 `;

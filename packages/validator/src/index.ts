@@ -1,5 +1,6 @@
 import { getDirective, MapperKind, mapSchema } from "@graphql-tools/utils"
-import { defaultFieldResolver, GraphQLError, GraphQLFieldConfig, GraphQLFieldConfigArgumentMap, GraphQLFieldResolver, GraphQLInputFieldConfig, GraphQLInputObjectType, GraphQLInputType, GraphQLSchema, Kind, ListTypeNode, NamedTypeNode, NonNullTypeNode, TypeNode } from "graphql"
+import { defaultFieldResolver, GraphQLError, GraphQLFieldConfig, GraphQLInputFieldConfig, GraphQLSchema } from "graphql"
+import { Path } from "graphql/jsutils/Path"
 
 import { DirectiveArgs, ErrorMessage, FieldConfig, ObjectValidator, TypeConfig, Validator } from "./core"
 import nativeValidators from "./validator"
@@ -20,6 +21,8 @@ const typeDefs = /* GraphQL */ `
 const transform = (schema: GraphQLSchema): GraphQLSchema => {
     const getValidateDirectives = (config: GraphQLInputFieldConfig | GraphQLFieldConfig<any, any>) => getDirective(schema, config, "validate") as DirectiveArgs[] ?? []
 
+    const fixPath = (root: string, messages: ErrorMessage[]) => root === "" ? messages :
+        messages.map<ErrorMessage>((e) => ({ path: `${root}.${e.path}`, message: e.message }))
 
     const createFieldValidator = (path: string, directives: DirectiveArgs[]): ObjectValidator => {
         const fieldValidator = directives.map<Validator>(({ method, ...config }) => nativeValidators[method](config))
@@ -40,11 +43,7 @@ const transform = (schema: GraphQLSchema): GraphQLSchema => {
             const messages = fields.map(v => v.validator(val[v.name]))
                 .filter((x): x is ErrorMessage[] => x !== true)
                 .flat()
-                .map<ErrorMessage>(e => ({
-                    message: e.message,
-                    path: [path, e.path].filter(x => x !== "").join(".")
-                }))
-            return messages.length > 0 ? messages : true
+            return messages.length > 0 ? fixPath(path, messages) : true
         }
         return validator
     }
@@ -76,6 +75,7 @@ const transform = (schema: GraphQLSchema): GraphQLSchema => {
             }
         },
         [MapperKind.OBJECT_FIELD]: (config, fieldName, type, sch) => {
+            const getPath = (path: Path | undefined): string => !!path ? `${getPath(path.prev)}.${path.key}` : ""
             const validators: FieldConfig[] = []
             for (const key in config.args) {
                 const argConfig = config.args[key]
@@ -97,8 +97,11 @@ const transform = (schema: GraphQLSchema): GraphQLSchema => {
                 return {
                     ...config,
                     resolve: (source, args, context, info) => {
-                        const error = validator(args)
-                        if (error !== true) throw new GraphQLError("USER_INPUT_ERROR", { extensions: { error } })
+                        const valid = validator(args)
+                        if (valid !== true) {
+                            const path = getPath(info.path).substring(1)
+                            throw new GraphQLError("USER_INPUT_ERROR", { extensions: { error: fixPath(path, valid) } })
+                        }
                         return resolve(source, args, context, info)
                     }
                 }
