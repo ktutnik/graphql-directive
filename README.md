@@ -24,9 +24,9 @@ import { startStandaloneServer } from "@apollo/server/standalone"
 
 const typeDefs = `
     input UserInput {
-        name:         String! @validate(method: RANGE, max: 150)
-        email:        String! @validate(method: EMAIL)
-        dateOfBirth:  Date!   @validate(method: BEFORE, date: "2000-1-1", message: "Must be old enough to register")
+        name: String! @validate(method: RANGE, max: 150)
+        email: String! @validate(method: EMAIL)
+        dateOfBirth: Date! @validate(method: BEFORE, date: "2000-1-1")
     }
     type Mutation { 
         addUser(user:UserInput!): Boolean!
@@ -35,13 +35,10 @@ const typeDefs = `
 
 const schema = val.transform(makeExecutableSchema({
     typeDefs: [val.typeDefs, typeDefs],
-    resolvers: {
-        Mutation: {
-            addUser: (_, args) => {}
-        } 
-    }
+    resolvers: { /* resolvers */ }
 }))
 
-const { url } = await startStandaloneServer(new ApolloServer({ schema }))
+const server = new ApolloServer({ schema })
+const { url } = await startStandaloneServer(server)
 console.log(`Server running at ${url}`)
 ```
