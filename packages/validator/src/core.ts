@@ -48,7 +48,7 @@ export enum ValidationMethod {
     JWT = "JWT",
     LAT_LONG = "LAT_LONG",
     LENGTH = "LENGTH",
-    LOWER_CASE = "LOWER_CASE",
+    LOWERCASE = "LOWERCASE",
     MAC_ADDRESS = "MAC_ADDRESS",
     MIME_TYPE = "MIME_TYPE",
     MONGO_ID = "MONGO_ID",
@@ -56,13 +56,13 @@ export enum ValidationMethod {
     NUMBER = "NUMBER",
     PORT = "PORT",
     POSTAL_CODE = "POSTAL_CODE",
+    REGEX = "REGEX",
+    SURROGATE_PAIR = "SURROGATE_PAIR",
+    UPPERCASE = "UPPERCASE",
     URL = "URL",
     UUID = "UUID",
     VARIABLE_WIDTH = "VARIABLE_WIDTH",
     WHITELISTED = "WHITELISTED",
-    SURROGATE_PAIR = "SURROGATE_PAIR",
-    LOWERCASE = "LOWERCASE",
-    UPPERCASE = "UPPERCASE",
 }
 
 export interface DirectiveArgs {

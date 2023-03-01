@@ -148,7 +148,7 @@ export default {
         (options) => (str) => val.isLength(str, options)
             || 'Must have a length within the specified range',
 
-    [ValidationMethod.LOWER_CASE]:
+    [ValidationMethod.LOWERCASE]:
         () => (str) => val.isLowercase(str)
             || 'Must be all lowercase',
 
@@ -199,10 +199,6 @@ export default {
     [ValidationMethod.SURROGATE_PAIR]:
         () => (str) => val.isSurrogatePair(str)
             || 'Must contain any surrogate pairs characters',
-
-    [ValidationMethod.LOWERCASE]:
-        () => (str) => val.isLowercase(str)
-            || 'Must only contain lowercase characters',
 
     [ValidationMethod.UPPERCASE]:
         () => (str) => val.isUppercase(str)
