@@ -15,7 +15,7 @@ export enum ValidationMethod {
     AFTER = "AFTER",
     ALPHA = "ALPHA",
     ALPHANUMERIC = "ALPHANUMERIC",
-    ARRAY = "ARRAY",
+    RANGE = "RANGE",
     ASCII = "ASCII",
     BASE64 = "BASE64",
     BEFORE = "BEFORE",

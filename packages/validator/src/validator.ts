@@ -204,7 +204,7 @@ export default {
         () => (str) => val.isUppercase(str)
             || 'Must only contain uppercase characters',
 
-    [ValidationMethod.ARRAY]:
+    [ValidationMethod.RANGE]:
         ({ min, max }: { min?: number, max?: number }) => (arr: any[]) => {
 
             if (!arr) return true
