@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "test": "npm run test --workspaces"
+    "test": "yarn workspaces run test"
   },
   "private": true,
   "devDependencies": {
