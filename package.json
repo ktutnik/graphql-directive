@@ -2,7 +2,9 @@
   "name": "graphql-directive",
   "version": "1.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "test": "yarn workspaces run test"
+  },
   "private": true,
   "devDependencies": {
     "@nrwl/nx-cloud": "latest",
