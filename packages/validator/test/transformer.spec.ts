@@ -100,7 +100,7 @@ describe("Mutation Validation", () => {
         expect(success.data).toMatchSnapshot()
     })
 
-    it.only("Should validate argument inside array of custom type property", async () => {
+    it("Should validate argument inside array of custom type property", async () => {
         const typeDefs = /* GraphQL */ `
         type Query { name:String! }
         input User {
@@ -130,7 +130,7 @@ describe("Mutation Validation", () => {
         }
         `
         const err = await graphql({ schema, source: source("mail") })
-        expect(err.errors![0]).toMatchSnapshot()
+        expect(err.errors![0].extensions).toMatchSnapshot()
 
         const success = await graphql({ schema, source: source("mail@mail.com") })
         expect(success.data).toMatchSnapshot()
