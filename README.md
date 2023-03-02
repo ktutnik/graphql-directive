@@ -1,5 +1,6 @@
 # Comprehensive List Of GraphQL Directives
 [![Node.js CI](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml/badge.svg)](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/ktutnik/graphql-directive/badge.svg)](https://coveralls.io/github/ktutnik/graphql-directive)
 
 Offers a collection of GraphQL directives for easy validation, authorization, and sanitation, simplifying the implementation of complex functionality in GraphQL APIs. It ensures secure and efficient GraphQL APIs with pre-built solutions.
 
@@ -26,7 +27,7 @@ import { startStandaloneServer } from "@apollo/server/standalone"
 
 const typeDefs = `
     input UserInput {
-        name: String! @validate(method: RANGE, max: 150)
+        name: String! @validate(method: LENGTH, max: 150)
         email: String! @validate(method: EMAIL)
         dateOfBirth: Date! @validate(method: BEFORE, date: "2000-1-1")
     }
