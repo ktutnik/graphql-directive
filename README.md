@@ -26,7 +26,7 @@ import { startStandaloneServer } from "@apollo/server/standalone"
 
 const typeDefs = `
     input UserInput {
-        name: String! @validate(method: RANGE, max: 150)
+        name: String! @validate(method: LENGTH, max: 150)
         email: String! @validate(method: EMAIL)
         dateOfBirth: Date! @validate(method: BEFORE, date: "2000-1-1")
     }

@@ -10,14 +10,14 @@ type Validators = {
 export default {
     [ValidationMethod.AFTER]:
         (options: { date: string }) => (str) => val.isAfter(str, options.date)
-            || `Must be a date after ${options.date}`,
+            || `Must be a date after ${new Date(options.date).toLocaleDateString()}`,
 
     [ValidationMethod.ALPHA]:
         (options: { locale: val.AlphaLocale }) => (str) => val.isAlpha(str, options.locale)
             || 'Must only contain letters',
 
     [ValidationMethod.ALPHANUMERIC]:
-        (locale) => (str) => val.isAlphanumeric(str, locale)
+        (options: { locale: val.AlphanumericLocale }) => (str) => val.isAlphanumeric(str, options.locale)
             || 'Must only contain letters and numbers',
 
     [ValidationMethod.ASCII]:
@@ -30,15 +30,11 @@ export default {
 
     [ValidationMethod.BEFORE]:
         (options: { date: string }) => (str) => val.isBefore(str, options.date)
-            || `Must be a date before ${options.date}`,
+            || `Must be a date before ${new Date(options.date).toLocaleDateString()}`,
 
     [ValidationMethod.BOOLEAN]:
         () => (str) => val.isBoolean(str)
             || 'Must be a boolean',
-
-    [ValidationMethod.BYTE_LENGTH]:
-        (options: { min?: number, max?: number }) => (str) => val.isByteLength(str, options)
-            || 'Must have a length (in bytes) within the specified range',
 
     [ValidationMethod.CREDIT_CARD]:
         () => (str) => val.isCreditCard(str)
@@ -57,8 +53,8 @@ export default {
             || 'Must be a decimal number',
 
     [ValidationMethod.DIVISIBLE_BY]:
-        (number) => (str) => val.isDivisibleBy(str, number)
-            || `Must be a number that's divisible by ${number}`,
+        (options: { number: number }) => (str) => val.isDivisibleBy(str, options.number)
+            || `Must be a number that's divisible by ${options.number}`,
 
     [ValidationMethod.EMAIL]:
         (options) => (str) => val.isEmail(str, options)
@@ -92,21 +88,21 @@ export default {
         () => (str) => val.isHexColor(str)
             || 'Must be a valid hex color code',
 
-    [ValidationMethod.HEX_DECIMAL]:
+    [ValidationMethod.HEXADECIMAL]:
         () => (str) => val.isHexadecimal(str)
             || 'Must be a valid hexadecimal number',
 
     [ValidationMethod.IP]:
-        (version) => (str) => val.isIP(str, version)
-            || `Must be a valid ${version} IP address`,
+        (options: { version: val.IPVersion }) => (str) => val.isIP(str, options.version)
+            || `Must be a valid ${options.version} IP address`,
 
     [ValidationMethod.IP_RANGE]:
         () => (str) => val.isIPRange(str)
             || 'Must be a valid IP range',
 
     [ValidationMethod.ISBN]:
-        (version) => (str) => val.isISBN(str, version)
-            || `Must be a valid ISBN ${version}`,
+        (options: { version: val.ISBNVersion }) => (str) => val.isISBN(str, options.version)
+            || `Must be a valid ISBN ${options.version}`,
 
     [ValidationMethod.ISIN]:
         () => (str) => val.isISIN(str)
@@ -177,7 +173,7 @@ export default {
             || 'Must be a valid port number',
 
     [ValidationMethod.POSTAL_CODE]:
-        (locale) => (str) => val.isPostalCode(str, locale)
+        (options: { locale: val.PostalCodeLocale }) => (str) => val.isPostalCode(str, options.locale)
             || 'Must be a valid postal code',
 
     [ValidationMethod.URL]:
@@ -185,7 +181,7 @@ export default {
             || 'Must be a valid URL',
 
     [ValidationMethod.UUID]:
-        (version) => (str) => val.isUUID(str, version)
+        (options: { version: val.UUIDVersion }) => (str) => val.isUUID(str, options.version)
             || 'Must be a valid UUID',
 
     [ValidationMethod.VARIABLE_WIDTH]:
@@ -193,8 +189,8 @@ export default {
             || 'Must contain a mixture of full and half-width characters',
 
     [ValidationMethod.WHITELISTED]:
-        (chars) => (str) => val.isWhitelisted(str, chars)
-            || `Must only contain characters from the whitelist: ${chars}`,
+        (options: { chars: string | string[] }) => (str) => val.isWhitelisted(str, options.chars)
+            || `Must only contain characters from the whitelist: ${options.chars}`,
 
     [ValidationMethod.SURROGATE_PAIR]:
         () => (str) => val.isSurrogatePair(str)
@@ -204,12 +200,4 @@ export default {
         () => (str) => val.isUppercase(str)
             || 'Must only contain uppercase characters',
 
-    [ValidationMethod.RANGE]:
-        ({ min, max }: { min?: number, max?: number }) => (arr: any[]) => {
-
-            if (!arr) return true
-            if (min && arr.length < min) return `Must have at least ${min} items`
-            if (max && arr.length > max) return `Must have less than ${max} items`
-            return true
-        }
 } as Validators
