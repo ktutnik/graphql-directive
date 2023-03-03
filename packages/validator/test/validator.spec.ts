@@ -99,10 +99,10 @@ describe("Validator", () => {
     });
 
     it("Should validate empty properly", () => {
-        const validate = val[ValidationMethod.EMPTY]({})
+        const validate = val[ValidationMethod.NOT_EMPTY]({})
 
-        expect(validate("")).toBe(true);
-        expect(validate("hello")).toMatchSnapshot()
+        expect(validate("hello")).toBe(true);
+        expect(validate("")).toMatchSnapshot()
     });
 
     it("Should validate Ethereum address properly", () => {

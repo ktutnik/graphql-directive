@@ -25,7 +25,7 @@ export enum ValidationMethod {
     DECIMAL = "DECIMAL",
     DIVISIBLE_BY = "DIVISIBLE_BY",
     EMAIL = "EMAIL",
-    EMPTY = "EMPTY",
+    NOT_EMPTY = "NOT_EMPTY",
     ETHEREUM_ADDRESS = "ETHEREUM_ADDRESS",
     FLOAT = "FLOAT",
     FQDN = "FQDN",

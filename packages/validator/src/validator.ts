@@ -60,8 +60,8 @@ export default {
         (options) => (str) => val.isEmail(str, options)
             || 'Must be a valid email address',
 
-    [ValidationMethod.EMPTY]:
-        (options) => (str) => val.isEmpty(str, options)
+    [ValidationMethod.NOT_EMPTY]:
+        (options) => (str) => !val.isEmpty(str, options)
             || 'Must not be empty',
 
     [ValidationMethod.ETHEREUM_ADDRESS]:
