@@ -16,7 +16,7 @@ The benefits of "graphql-directive" are significant. The project can help develo
 Overall, "graphql-directive" is a valuable resource for any developer looking to build high-quality GraphQL APIs. Its pre-built directives can help to simplify and streamline the development process, while reducing the risk of errors and security vulnerabilities. By using "graphql-directive," developers can focus on delivering better APIs faster, enabling them to stay competitive in an ever-changing technology landscape.
 
 ## Validation Directives 
-Validation directives `@validate` are used to validate input values of GraphQL fields against specific rules defined in the directive. They are a way to ensure that the input data received by a GraphQL API meets certain criteria or constraints.
+Validation directive `@validate(method: METHOD[, OPTIONS])` is used to validate input values of GraphQL fields against specific rules defined in the directive. They are a way to ensure that the input data received by a GraphQL API meets certain criteria or constraints.
 
 ```TypeScript 
 import val from "@graphql-directive/validator"
@@ -24,12 +24,11 @@ import { makeExecutableSchema } from "@graphql-tools/schema"
 import { ApolloServer } from "@apollo/server";
 import { startStandaloneServer } from "@apollo/server/standalone"
 
-
 const typeDefs = `
     input UserInput {
-        name: String! @validate(method: LENGTH, max: 150)
-        email: String! @validate(method: EMAIL)
-        dateOfBirth: Date! @validate(method: BEFORE, date: "2000-1-1")
+        name: String!       @validate(method: LENGTH, max: 150)
+        email: String!      @validate(method: EMAIL)
+        dateOfBirth: Date!  @validate(method: BEFORE)
     }
     type Mutation { 
         addUser(user:UserInput!): Boolean!
@@ -93,7 +92,7 @@ The `@validate` directive adds input validation rules to GraphQL fields. It spec
 | NUMERIC          | Check if string contains only numbers.                                                        |
 | PORT             | Check if string is a valid port number.                                                       |
 | POSTAL_CODE      | Check if string is a valid postal code.                                                       |
-| REGEX            | Check if string is valid with regex expression                                                |
+| REGEX            | Check if string is match with specified regex expression                                      |
 | SURROGATE_PAIR   | Check if string contains any surrogate pairs chars.                                           |
 | UPPERCASE        | Check if string is uppercase.                                                                 |
 | URL              | Check if string is a valid URL.                                                               |
