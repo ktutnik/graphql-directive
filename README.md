@@ -63,7 +63,6 @@ The `@validate` directive adds input validation rules to GraphQL fields. It spec
 | DECIMAL          | Check if string is a valid decimal number.                                                    |
 | DIVISIBLE_BY     | Check if number is divisible by the specified number.                                         |
 | EMAIL            | Check if string is a valid email address.                                                     |
-| EMPTY            | Check if value is empty.                                                                      |
 | ETHEREUM_ADDRESS | Check if string is a valid Ethereum address.                                                  |
 | FLOAT            | Check if string is a valid floating point number.                                             |
 | FQDN             | Check if string is a valid fully qualified domain name (FQDN).                                |
@@ -89,6 +88,7 @@ The `@validate` directive adds input validation rules to GraphQL fields. It spec
 | MIME_TYPE        | Check if string is a valid MIME type format.                                                  |
 | MONGO_ID         | Check if string is a valid MongoDB ObjectID.                                                  |
 | MULTIBYTE        | Check if string contains one or more multibyte chars.                                         |
+| NOT_EMPTY        | Check if value is not an empty string.                                                        |
 | NUMERIC          | Check if string contains only numbers.                                                        |
 | PORT             | Check if string is a valid port number.                                                       |
 | POSTAL_CODE      | Check if string is a valid postal code.                                                       |
