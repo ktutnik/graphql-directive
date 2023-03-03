@@ -46,60 +46,60 @@ const { url } = await startStandaloneServer(server)
 console.log(`Server running at ${url}`)
 ```
 
-The "@validate" directive adds input validation rules to GraphQL fields. It specifies a validation method and parameters for the field, and performs the validation check during schema execution. If any validation rules fail, a validation error is returned. Below is list of validation method supported by the `@validate` directive
+The `@validate` directive adds input validation rules to GraphQL fields. It specifies a validation method and parameters for the field, and performs the validation check during schema execution. If any validation rules fail, a validation error is returned. Below is list of validation method supported by the `@validate` directive
 
 
-| Method           | Description                                                                                             |
-| ---------------- | ------------------------------------------------------------------------------------------------------- |
-| AFTER            | Check if the given date string is after the specified date.                                             |
-| ALPHA            | Check if the given string contains only letters (a-zA-Z).                                               |
-| ALPHANUMERIC     | Check if the given string contains only letters and numbers (a-zA-Z0-9).                                |
-| ASCII            | Check if the given string contains ASCII characters only.                                               |
-| BASE64           | Check if the given string is a valid Base64 encoded string.                                             |
-| BEFORE           | Check if the given date string is before the specified date.                                            |
-| BOOLEAN          | Check if the given value is a boolean.                                                                  |
-| CREDIT_CARD      | Check if the given string is a valid credit card number.                                                |
-| CURRENCY         | Check if the given string is a valid currency amount.                                                   |
-| DATA_URI         | Check if the given string is a valid Data URI.                                                          |
-| DECIMAL          | Check if the given string is a valid decimal number.                                                    |
-| DIVISIBLE_BY     | Check if the given number is divisible by the specified number.                                         |
-| EMAIL            | Check if the given string is a valid email address.                                                     |
-| EMPTY            | Check if the given value is empty.                                                                      |
-| ETHEREUM_ADDRESS | Check if the given string is a valid Ethereum address.                                                  |
-| FLOAT            | Check if the given string is a valid floating point number.                                             |
-| FQDN             | Check if the given string is a valid fully qualified domain name (FQDN).                                |
-| FULLWIDTH        | Check if the given string contains any full-width characters.                                           |
-| HALFWIDTH        | Check if the given string contains any half-width characters.                                           |
-| HEX_COLOR        | Check if the given string is a valid hexadecimal color.                                                 |
-| HEXADECIMAL      | Check if the given string is a valid hexadecimal number.                                                |
-| IP               | Check if the given string is a valid IP (version 4 or 6) address.                                       |
-| IP_RANGE         | Check if the given string is a valid IP range.                                                          |
-| ISBN             | Check if the given string is a valid ISBN (version 10 or 13).                                           |
-| ISIN             | Check if the given string is a valid ISIN (International Securities Identification Number).             |
-| ISO31661_ALPHA2  | Check if the given string is a valid ISO 3166-1 alpha-2 country code.                                   |
-| ISO31661_ALPHA3  | Check if the given string is a valid ISO 3166-1 alpha-3 country code.                                   |
-| ISO8601          | Check if the given string is a valid ISO 8601 date.                                                     |
-| ISRC             | Check if the given string is a valid International Standard Recording Code (ISRC).                      |
-| ISSN             | Check if the given string is a valid International Standard Serial Number (ISSN).                       |
-| JSON             | Check if the given string is a valid JSON string.                                                       |
-| JWT              | Check if the given string is a valid JSON Web Token (JWT).                                              |
-| LAT_LONG         | Check if the given string is a valid latitude-longitude coordinate in the format lat,long or lat, long. |
-| LENGTH           | Check if the given string's length (in bytes) falls in a specified range.                               |
-| LOWERCASE        | Check if the given string is lowercase.                                                                 |
-| MAC_ADDRESS      | Check if the given string is a valid MAC address.                                                       |
-| MIME_TYPE        | Check if the given string is a valid MIME type format.                                                  |
-| MONGO_ID         | Check if the given string is a valid MongoDB ObjectID.                                                  |
-| MULTIBYTE        | Check if the given string contains one or more multibyte chars.                                         |
-| NUMERIC          | Check if the given string contains only numbers.                                                        |
-| PORT             | Check if the given string is a valid port number.                                                       |
-| POSTAL_CODE      | Check if the given string is a valid postal code.                                                       |
-| REGEX            | Check if the given string is valid with regex expression                                                |
-| SURROGATE_PAIR   | Check if the given string contains any surrogate pairs chars.                                           |
-| UPPERCASE        | Check if the given string is uppercase.                                                                 |
-| URL              | Check if the given string is a valid URL.                                                               |
-| UUID             | Check if the given string is a valid UUID (version 3, 4, or 5).                                         |
-| VARIABLE_WIDTH   | Check if the given string contains a mixture of full and half-width chars.                              |
-| WHITELISTED      | Check if the given string only contains characters from a whitelist.                                    |
+| Method           | Description                                                                                   |
+| ---------------- | --------------------------------------------------------------------------------------------- |
+| AFTER            | Check if date string is after the specified date.                                             |
+| ALPHA            | Check if string contains only letters (a-zA-Z).                                               |
+| ALPHANUMERIC     | Check if string contains only letters and numbers (a-zA-Z0-9).                                |
+| ASCII            | Check if string contains ASCII characters only.                                               |
+| BASE64           | Check if string is a valid Base64 encoded string.                                             |
+| BEFORE           | Check if date string is before the specified date.                                            |
+| BOOLEAN          | Check if value is a boolean.                                                                  |
+| CREDIT_CARD      | Check if string is a valid credit card number.                                                |
+| CURRENCY         | Check if string is a valid currency amount.                                                   |
+| DATA_URI         | Check if string is a valid Data URI.                                                          |
+| DECIMAL          | Check if string is a valid decimal number.                                                    |
+| DIVISIBLE_BY     | Check if number is divisible by the specified number.                                         |
+| EMAIL            | Check if string is a valid email address.                                                     |
+| EMPTY            | Check if value is empty.                                                                      |
+| ETHEREUM_ADDRESS | Check if string is a valid Ethereum address.                                                  |
+| FLOAT            | Check if string is a valid floating point number.                                             |
+| FQDN             | Check if string is a valid fully qualified domain name (FQDN).                                |
+| FULLWIDTH        | Check if string contains any full-width characters.                                           |
+| HALFWIDTH        | Check if string contains any half-width characters.                                           |
+| HEX_COLOR        | Check if string is a valid hexadecimal color.                                                 |
+| HEXADECIMAL      | Check if string is a valid hexadecimal number.                                                |
+| IP               | Check if string is a valid IP (version 4 or 6) address.                                       |
+| IP_RANGE         | Check if string is a valid IP range.                                                          |
+| ISBN             | Check if string is a valid ISBN (version 10 or 13).                                           |
+| ISIN             | Check if string is a valid ISIN (International Securities Identification Number).             |
+| ISO31661_ALPHA2  | Check if string is a valid ISO 3166-1 alpha-2 country code.                                   |
+| ISO31661_ALPHA3  | Check if string is a valid ISO 3166-1 alpha-3 country code.                                   |
+| ISO8601          | Check if string is a valid ISO 8601 date.                                                     |
+| ISRC             | Check if string is a valid International Standard Recording Code (ISRC).                      |
+| ISSN             | Check if string is a valid International Standard Serial Number (ISSN).                       |
+| JSON             | Check if string is a valid JSON string.                                                       |
+| JWT              | Check if string is a valid JSON Web Token (JWT).                                              |
+| LAT_LONG         | Check if string is a valid latitude-longitude coordinate in the format lat,long or lat, long. |
+| LENGTH           | Check if string's length (in bytes) falls in a specified range.                               |
+| LOWERCASE        | Check if string is lowercase.                                                                 |
+| MAC_ADDRESS      | Check if string is a valid MAC address.                                                       |
+| MIME_TYPE        | Check if string is a valid MIME type format.                                                  |
+| MONGO_ID         | Check if string is a valid MongoDB ObjectID.                                                  |
+| MULTIBYTE        | Check if string contains one or more multibyte chars.                                         |
+| NUMERIC          | Check if string contains only numbers.                                                        |
+| PORT             | Check if string is a valid port number.                                                       |
+| POSTAL_CODE      | Check if string is a valid postal code.                                                       |
+| REGEX            | Check if string is valid with regex expression                                                |
+| SURROGATE_PAIR   | Check if string contains any surrogate pairs chars.                                           |
+| UPPERCASE        | Check if string is uppercase.                                                                 |
+| URL              | Check if string is a valid URL.                                                               |
+| UUID             | Check if string is a valid UUID (version 3, 4, or 5).                                         |
+| VARIABLE_WIDTH   | Check if string contains a mixture of full and half-width chars.                              |
+| WHITELISTED      | Check if string only contains characters from a whitelist.                                    |
 
 
 
