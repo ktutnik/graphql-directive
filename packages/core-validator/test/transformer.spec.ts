@@ -1,6 +1,6 @@
-import val from "../src"
 import { makeExecutableSchema } from "@graphql-tools/schema"
 import { graphql } from "graphql"
+import val from "./harness"
 
 
 describe("Mutation Validation", () => {
