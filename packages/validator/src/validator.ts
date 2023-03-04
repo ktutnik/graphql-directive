@@ -7,6 +7,17 @@ type Validators = {
 
 }
 
+const createStrongPwdMessage = (opt: val.StrongPasswordOptions) => {
+    const result = [
+        !!opt.minLength ? `at least ${opt.minLength} chars` : false,
+        !!opt.minLowercase ? `lowercase` : false,
+        !!opt.minNumbers ? `number` : false,
+        !!opt.minSymbols ? `symbol` : false,
+        !!opt.minUppercase ? `uppercase` : false
+    ].filter(x => typeof x === "string").join(",")
+    return `Must have ${result}`
+}
+
 export default {
     [ValidationMethod.AFTER]:
         (options: { date: string }) => (str) => val.isAfter(str, options.date)
@@ -59,10 +70,6 @@ export default {
     [ValidationMethod.EMAIL]:
         (options) => (str) => val.isEmail(str, options)
             || 'Must be a valid email address',
-
-    [ValidationMethod.NOT_EMPTY]:
-        (options) => (str) => !val.isEmpty(str, options)
-            || 'Must not be empty',
 
     [ValidationMethod.ETHEREUM_ADDRESS]:
         () => (str) => val.isEthereumAddress(str)
@@ -164,6 +171,10 @@ export default {
         () => (str) => val.isMultibyte(str)
             || 'Must contain one or more multibyte characters',
 
+    [ValidationMethod.NOT_EMPTY]:
+        (options) => (str) => !val.isEmpty(str, options)
+            || 'Must not be empty',
+
     [ValidationMethod.NUMBER]:
         (options) => (str) => val.isNumeric(str, options)
             || 'Must be a number',
@@ -175,6 +186,26 @@ export default {
     [ValidationMethod.POSTAL_CODE]:
         (options: { locale: val.PostalCodeLocale }) => (str) => val.isPostalCode(str, options.locale)
             || 'Must be a valid postal code',
+
+    [ValidationMethod.REGEX]:
+        (options: { pattern: string, modifier: string }) => (str) => val.matches(str, options.pattern, options.modifier)
+            || 'Must be a valid postal code',
+
+    [ValidationMethod.SLUG]:
+        () => (str) => val.isSlug(str)
+            || 'Must be a valid slug',
+
+    [ValidationMethod.STRONG_PASSWORD]:
+        (options: val.StrongPasswordOptions = { minLength: 8, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1 }) => (str) => val.isStrongPassword(str, { ...options, returnScore: false })
+            || createStrongPwdMessage(options),
+
+    [ValidationMethod.SURROGATE_PAIR]:
+        () => (str) => val.isSurrogatePair(str)
+            || 'Must contain any surrogate pairs characters',
+
+    [ValidationMethod.UPPERCASE]:
+        () => (str) => val.isUppercase(str)
+            || 'Must only contain uppercase characters',
 
     [ValidationMethod.URL]:
         (options) => (str) => val.isURL(str, options)
@@ -191,13 +222,5 @@ export default {
     [ValidationMethod.WHITELISTED]:
         (options: { chars: string | string[] }) => (str) => val.isWhitelisted(str, options.chars)
             || `Must only contain characters from the whitelist: ${options.chars}`,
-
-    [ValidationMethod.SURROGATE_PAIR]:
-        () => (str) => val.isSurrogatePair(str)
-            || 'Must contain any surrogate pairs characters',
-
-    [ValidationMethod.UPPERCASE]:
-        () => (str) => val.isUppercase(str)
-            || 'Must only contain uppercase characters',
 
 } as Validators

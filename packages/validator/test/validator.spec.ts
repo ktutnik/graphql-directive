@@ -341,6 +341,18 @@ describe("Validator", () => {
         expect(validate('')).toBe(true);
     });
 
+    it('should validate slug', () => {
+        const validate = val[ValidationMethod.SLUG]({})
+        expect(validate('hello_there')).toBe(true);
+        expect(validate('hello there')).toMatchSnapshot()
+    });
+
+    it.only('should validate password strength', () => {
+        const validate = val[ValidationMethod.STRONG_PASSWORD]({})
+        expect(validate('Hell038&')).toBe(true);
+        expect(validate('hello')).toMatchSnapshot()
+    });
+
     it('should validate surrogate pairs', () => {
         const validate = val[ValidationMethod.SURROGATE_PAIR]({})
         expect(validate('\uD83D\uDC68\uD83C\uDFFB')).toBe(true);

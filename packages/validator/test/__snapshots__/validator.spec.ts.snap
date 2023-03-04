@@ -88,6 +88,10 @@ exports[`Validator Should validate port number properly 1`] = `"Must be a valid 
 
 exports[`Validator Should validate postal code properly 1`] = `"Must be a valid postal code"`;
 
+exports[`Validator should validate password strength 1`] = `"Must have false,false,false,false,false"`;
+
+exports[`Validator should validate slug 1`] = `"Must be a valid slug"`;
+
 exports[`Validator should validate surrogate pairs 1`] = `"Must contain any surrogate pairs characters"`;
 
 exports[`Validator should validate uppercase characters 1`] = `"Must only contain uppercase characters"`;

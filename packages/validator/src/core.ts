@@ -56,6 +56,8 @@ export enum ValidationMethod {
     POSTAL_CODE = "POSTAL_CODE",
     REGEX = "REGEX",
     SURROGATE_PAIR = "SURROGATE_PAIR",
+    SLUG = "SLUG",
+    STRONG_PASSWORD = "STRONG_PASSWORD",
     UPPERCASE = "UPPERCASE",
     URL = "URL",
     UUID = "UUID",
