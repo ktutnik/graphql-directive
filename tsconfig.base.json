@@ -3,6 +3,7 @@
   "compilerOptions": {
     "sourceMap": true,
     "declaration": true,
+    "declarationMap": true,
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2017",
@@ -12,5 +13,6 @@
     "strict": true,
     "noImplicitAny": true,
     "paths": {},
-  }
+  },
+  
 }

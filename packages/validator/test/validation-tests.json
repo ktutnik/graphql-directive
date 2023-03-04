@@ -1,0 +1,290 @@
+[
+    {
+        "name": "AFTER",
+        "test": "Should validate date properly",
+        "success": "2004-1-1",
+        "failed": "2001-1-1"
+    },
+    {
+        "name": "ALPHA",
+        "test": "Should validate alphabetic string properly",
+        "success": "abc",
+        "failed": "123"
+    },
+    {
+        "name": "ALPHANUMERIC",
+        "test": "Should validate alphanumeric string properly",
+        "success": "abc123",
+        "failed": "abc!@#"
+    },
+    {
+        "name": "ASCII",
+        "test": "Should validate ASCII string properly",
+        "success": "Hello world",
+        "failed": "你好世界"
+    },
+    {
+        "name": "BASE64",
+        "test": "Should validate base64 string properly",
+        "success": "SGVsbG8gV29ybGQh",
+        "failed": "Not a base64 string!"
+    },
+    {
+        "name": "BEFORE",
+        "test": "Should validate date before properly",
+        "success": "2022-12-31",
+        "failed": "2023-01-01"
+    },
+    {
+        "name": "BOOLEAN",
+        "test": "Should validate boolean properly",
+        "success": "true",
+        "failed": "notaboolean"
+    },
+    {
+        "name": "CREDIT_CARD",
+        "test": "Should validate credit card properly",
+        "success": "4111111111111111",
+        "failed": "notacreditcardnumber"
+    },
+    {
+        "name": "CURRENCY",
+        "test": "Should validate currency properly",
+        "success": "$1.00",
+        "failed": "notacurrency"
+    },
+    {
+        "name": "DATA_URI",
+        "test": "Should validate data URI properly",
+        "success": "data:image/png;base64,iVBORw",
+        "failed": "notadataURI"
+    },
+    {
+        "name": "DECIMAL",
+        "test": "Should validate decimal properly",
+        "success": "1234.5678",
+        "failed": "1,234"
+    },
+    {
+        "name": "DIVISIBLE_BY",
+        "test": "Should validate divisible properly",
+        "success": "9",
+        "failed": "10"
+    },
+    {
+        "name": "EMAIL",
+        "test": "Should validate email properly",
+        "success": "test@example.com",
+        "failed": "notanemail"
+    },
+    {
+        "name": "NOT_EMPTY",
+        "test": "Should validate empty properly",
+        "success": "hello",
+        "failed": ""
+    },
+    {
+        "name": "ETHEREUM_ADDRESS",
+        "test": "Should validate Ethereum address properly",
+        "success": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+        "failed": "notanethereumaddress"
+    },
+    {
+        "name": "FQDN",
+        "test": "Should validate domain name properly",
+        "success": "example.com",
+        "failed": "example"
+    },
+    {
+        "name": "FLOAT",
+        "test": "Should validate float properly",
+        "success": "1.23",
+        "failed": "invalidnumber"
+    },
+    {
+        "name": "FULL_WIDTH",
+        "test": "Should validate full-width string properly",
+        "success": "ＨＥＬＬＯ",
+        "failed": "hello"
+    },
+    {
+        "name": "HALF_WIDTH",
+        "test": "Should validate half-width string properly",
+        "success": "hello",
+        "failed": "ＨＥＬＬＯ"
+    },
+    {
+        "name": "HEX_COLOR",
+        "test": "Should validate hexadecimal color code properly",
+        "success": "#ff0000",
+        "failed": "notacolorcode"
+    },
+    {
+        "name": "HEXADECIMAL",
+        "test": "Should validate hexadecimal properly",
+        "success": "deadbeef",
+        "failed": "notahexadecimal"
+    },
+    {
+        "name": "IP",
+        "test": "Should validate IP address properly",
+        "success": "192.168.1.1",
+        "failed": "notanipaddress"
+    },
+    {
+        "name": "IP_RANGE",
+        "test": "Should validate IP range properly",
+        "success": "192.168.0.1/24",
+        "failed": "notaniprange"
+    },
+    {
+        "name": "ISBN",
+        "test": "Should validate ISBN properly",
+        "success": "3-8362-2119-5",
+        "failed": "notanisbn"
+    },
+    {
+        "name": "ISIN",
+        "test": "Should validate ISIN properly",
+        "success": "US0378331005",
+        "failed": "notanisin"
+    },
+    {
+        "name": "ISO8601",
+        "test": "Should validate ISO8601 date properly",
+        "success": "2022-03-02",
+        "failed": "notaniso8601date"
+    },
+    {
+        "name": "ISO31661_ALPHA2",
+        "test": "Should validate ISO 3166-1 alpha-2 code properly",
+        "success": "US",
+        "failed": "notaniso31661alpha2code"
+    },
+    {
+        "name": "ISO31661_ALPHA3",
+        "test": "Should validate ISO 3166-1 alpha-3 code properly",
+        "success": "USA",
+        "failed": "notaniso31661alpha3code"
+    },
+    {
+        "name": "ISRC",
+        "test": "Should validate ISRC properly",
+        "success": "USRC17607839",
+        "failed": "notanisrc"
+    },
+    {
+        "name": "ISSN",
+        "test": "Should validate ISSN properly",
+        "success": "0317-8471",
+        "failed": "notanissn"
+    },
+    {
+        "name": "JSON",
+        "test": "Should validate JSON properly",
+        "success": "{\"name\":\"John\",\"age\":30}",
+        "failed": "notajsonstring"
+    },
+    {
+        "name": "JWT",
+        "test": "Should validate JWT properly",
+        "success": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
+        "failed": "notajwt"
+    },
+    {
+        "name": "LAT_LONG",
+        "test": "Should validate latitude and longitude properly",
+        "success": "55.720923,-28.652344",
+        "failed": "90.1000000, 180.000000"
+    },
+    {
+        "name": "LENGTH",
+        "test": "Should validate length properly",
+        "success": "1234",
+        "failed": "123456"
+    },
+    {
+        "name": "LOWERCASE",
+        "test": "Should validate lowercase properly",
+        "success": "hello",
+        "failed": "Hello"
+    },
+    {
+        "name": "MAC_ADDRESS",
+        "test": "Should validate MAC address properly",
+        "success": "01:23:45:67:89:ab",
+        "failed": "notamacaddress"
+    },
+    {
+        "name": "MIME_TYPE",
+        "test": "Should validate MIME type properly",
+        "success": "image/jpeg",
+        "failed": "notamimetype"
+    },
+    {
+        "name": "MONGO_ID",
+        "test": "Should validate MongoDB ObjectId properly",
+        "success": "507f1f77bcf86cd799439011",
+        "failed": "notamongodbobjectid"
+    },
+    {
+        "name": "MULTIBYTE",
+        "test": "Should validate multibyte characters properly",
+        "success": "こんにちは",
+        "failed": "hello"
+    },
+    {
+        "name": "NUMERIC",
+        "test": "Should validate numeric characters properly",
+        "success": "1234",
+        "failed": "notanumber"
+    },
+    {
+        "name": "PORT",
+        "test": "Should validate port number properly",
+        "success": "3000",
+        "failed": "notaport"
+    },
+    {
+        "name": "POSTAL_CODE",
+        "test": "Should validate postal code properly",
+        "success": "94043",
+        "failed": "notapostalcode"
+    },
+    {
+        "name": "URL",
+        "test": "Should validate URL properly",
+        "success": "https://example.com",
+        "failed": "notanurl"
+    },
+    {
+        "name": "UUID",
+        "test": "Should validate UUID properly",
+        "success": "f7eb504d-b7e3-4e3f-a87d-1d93b98df94d",
+        "failed": "notauuid"
+    },
+    {
+        "name": "VARIABLE_WIDTH",
+        "test": "should validate variable width characters",
+        "success": "ひらがなカタカナ漢字ABCDE",
+        "failed": "abcde"
+    },
+    {
+        "name": "WHITELISTED",
+        "test": "should validate whitelisted characters",
+        "success": "abcdefghijklmnopqrstuvwxyz",
+        "failed": "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    },
+    {
+        "name": "SURROGATE_PAIR",
+        "test": "should validate surrogate pairs",
+        "success": "\uD83D\uDC68\uD83C\uDFFB",
+        "failed": ""
+    },
+    {
+        "name": "UPPERCASE",
+        "test": "should validate uppercase characters",
+        "success": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+        "failed": "abcdefghijklmnopqrstuvwxyz"
+    }
+]

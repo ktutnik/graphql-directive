@@ -1,105 +1,529 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Validator Should validate ASCII string properly 1`] = `"Must only contain ASCII characters"`;
+exports[`Should validate ASCII string properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must only contain ASCII characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate Ethereum address properly 1`] = `"Must be a valid Ethereum address"`;
+exports[`Should validate Ethereum address properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid Ethereum address",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate IP address properly 1`] = `"Must be a valid 4 IP address"`;
+exports[`Should validate IP address properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid undefined IP address",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate IP range properly 1`] = `"Must be a valid IP range"`;
+exports[`Should validate IP range properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid IP range",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate ISBN properly 1`] = `"Must be a valid ISBN 10"`;
+exports[`Should validate ISBN properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid ISBN undefined",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate ISIN properly 1`] = `"Must be a valid ISIN (International Securities Identification Number)"`;
+exports[`Should validate ISIN properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid ISIN (International Securities Identification Number)",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate ISO 3166-1 alpha-2 code properly 1`] = `"Must be a valid ISO 3166-1 alpha-2 country code"`;
+exports[`Should validate ISO 3166-1 alpha-2 code properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid ISO 3166-1 alpha-2 country code",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate ISO 3166-1 alpha-3 code properly 1`] = `"Must be a valid ISO 3166-1 alpha-3 country code"`;
+exports[`Should validate ISO 3166-1 alpha-3 code properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid ISO 3166-1 alpha-3 country code",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate ISO8601 date properly 1`] = `"Must be a valid ISO8601 date string"`;
+exports[`Should validate ISO8601 date properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid ISO8601 date string",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate ISRC properly 1`] = `"Must be a valid International Standard Recording Code (ISRC)"`;
+exports[`Should validate ISRC properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid International Standard Recording Code (ISRC)",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate ISSN properly 1`] = `"Must be a valid International Standard Serial Number (ISSN)"`;
+exports[`Should validate ISSN properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid International Standard Serial Number (ISSN)",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate JSON properly 1`] = `"Must be a valid JSON string"`;
+exports[`Should validate JSON properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid JSON string",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate JWT properly 1`] = `"Must be a valid JSON Web Token (JWT)"`;
+exports[`Should validate JWT properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid JSON Web Token (JWT)",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate MAC address properly 1`] = `"Must be a valid MAC address"`;
+exports[`Should validate MAC address properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid MAC address",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate MIME type properly 1`] = `"Must be a valid MIME type"`;
+exports[`Should validate MIME type properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid MIME type",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate MongoDB ObjectId properly 1`] = `"Must be a valid MongoDB ObjectId"`;
+exports[`Should validate MongoDB ObjectId properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid MongoDB ObjectId",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate URL properly 1`] = `"Must be a valid URL"`;
+exports[`Should validate URL properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid URL",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate UUID properly 1`] = `"Must be a valid UUID"`;
+exports[`Should validate UUID properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid UUID",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate alphabetic string properly 1`] = `"Must only contain letters"`;
+exports[`Should validate alphabetic string properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must only contain letters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate alphanumeric string properly 1`] = `"Must only contain letters and numbers"`;
+exports[`Should validate alphanumeric string properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must only contain letters and numbers",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate base64 string properly 1`] = `"Must be a valid base64 encoded string"`;
+exports[`Should validate base64 string properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid base64 encoded string",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate boolean properly 1`] = `"Must be a boolean"`;
+exports[`Should validate boolean properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a boolean",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate credit card properly 1`] = `"Must be a valid credit card number"`;
+exports[`Should validate credit card properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid credit card number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate currency properly 1`] = `"Must be a valid currency amount"`;
+exports[`Should validate currency properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid currency amount",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate data URI properly 1`] = `"Must be a valid data URI"`;
+exports[`Should validate data URI properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid data URI",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate date before properly 1`] = `"Must be a date before 1/1/2023"`;
+exports[`Should validate date before properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a date before 1/1/2022",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate date properly 1`] = `"Must be a date after 1/1/2003"`;
+exports[`Should validate date properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a date after today",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate decimal properly 1`] = `"Must be a decimal number"`;
+exports[`Should validate decimal properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a decimal number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate divisible properly 1`] = `"Must be a number that's divisible by 3"`;
+exports[`Should validate divisible properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a number that's divisible by 3",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate domain name properly 1`] = `"Must be a valid fully qualified domain name"`;
+exports[`Should validate domain name properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid fully qualified domain name",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate email properly 1`] = `"Must be a valid email address"`;
+exports[`Should validate email properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid email address",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate empty properly 1`] = `"Must not be empty"`;
+exports[`Should validate empty properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must not be empty",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate float properly 1`] = `"Must be a float number"`;
+exports[`Should validate float properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a float number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate full-width string properly 1`] = `"Must contain full-width characters"`;
+exports[`Should validate full-width string properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must contain full-width characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate half-width string properly 1`] = `"Must contain half-width characters"`;
+exports[`Should validate half-width string properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must contain half-width characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate hexadecimal color code properly 1`] = `"Must be a valid hex color code"`;
+exports[`Should validate hexadecimal color code properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid hex color code",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate hexadecimal properly 1`] = `"Must be a valid hexadecimal number"`;
+exports[`Should validate hexadecimal properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid hexadecimal number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate latitude and longitude properly 1`] = `"Must be a valid latitude coordinate"`;
+exports[`Should validate latitude and longitude properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid latitude coordinate",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate length properly 1`] = `"Must have a length within the specified range"`;
+exports[`Should validate length properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must have a length within the specified range",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate lowercase properly 1`] = `"Must be all lowercase"`;
+exports[`Should validate lowercase properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be all lowercase",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate multibyte characters properly 1`] = `"Must contain one or more multibyte characters"`;
+exports[`Should validate multibyte characters properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must contain one or more multibyte characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate numeric characters properly 1`] = `"Must be a number"`;
+exports[`Should validate numeric characters properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate port number properly 1`] = `"Must be a valid port number"`;
+exports[`Should validate port number properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid port number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator Should validate postal code properly 1`] = `"Must be a valid postal code"`;
+exports[`Should validate postal code properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid postal code",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator should validate surrogate pairs 1`] = `"Must contain any surrogate pairs characters"`;
+exports[`should validate surrogate pairs 1`] = `
+{
+  "error": [
+    {
+      "message": "Must contain any surrogate pairs characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator should validate uppercase characters 1`] = `"Must only contain uppercase characters"`;
+exports[`should validate uppercase characters 1`] = `
+{
+  "error": [
+    {
+      "message": "Must only contain uppercase characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator should validate uppercase characters 2`] = `"Must only contain uppercase characters"`;
+exports[`should validate variable width characters 1`] = `
+{
+  "error": [
+    {
+      "message": "Must contain a mixture of full and half-width characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
 
-exports[`Validator should validate variable width characters 1`] = `"Must contain a mixture of full and half-width characters"`;
-
-exports[`Validator should validate variable width characters 2`] = `"Must contain a mixture of full and half-width characters"`;
-
-exports[`Validator should validate whitelisted characters 1`] = `"Must only contain characters from the whitelist: abcdefghijklmnopqrstuvwxyz"`;
-
-exports[`Validator should validate whitelisted characters 2`] = `"Must only contain characters from the whitelist: abcdefghijklmnopqrstuvwxyz"`;
-
-exports[`Validator should validate whitelisted characters 3`] = `"Must only contain characters from the whitelist: abcdefghijklmnopqrstuvwxyz"`;
+exports[`should validate whitelisted characters 1`] = `
+{
+  "error": [
+    {
+      "message": "Must only contain characters from the whitelist: abcdefghijklmnopqrstuvwxyz",
+      "path": "test.val",
+    },
+  ],
+}
+`;
