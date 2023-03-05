@@ -34,8 +34,8 @@ const typeDefs = `
     }
     directive @validate(
         method: ValidationMethod!, 
-        min:Number,
-        max:Number
+        min:Int,
+        max:Int
     ) repeatable on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 `
 
@@ -62,8 +62,8 @@ enum ValidationMethod {
 directive @validate(
     method: ValidationMethod!, 
     # list of all plugin parameters
-    min:Number,
-    max:Number
+    min:Int,
+    max:Int
 ) repeatable on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 ```
 

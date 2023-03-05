@@ -8,8 +8,8 @@ const typeDefs = /* GraphQL */ `
     }
     directive @validate(
         method: ValidationMethod!, 
-        min:Number,
-        max:Number
+        min:Int,
+        max:Int
     ) repeatable on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 `
 
