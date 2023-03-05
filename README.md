@@ -4,8 +4,15 @@
 
 Offers a collection of GraphQL directives for easy validation, authorization, and sanitation, simplifying the implementation of complex functionality in GraphQL APIs. It ensures secure and efficient GraphQL APIs with pre-built solutions.
 
-## Validation Directives
-Validation directives simplify the use of popular JavaScript validator libraries inside your GraphQL API. The main goal is to ensure that validation results are consistent across client-side and server-side applications. Validation directives bundled into several libraries that wraps some popular JavaScript validators such as Yup, Validator.js, and Joi. This makes it easy to use them within GraphQL schemas and ensures that the same validation rules are applied on both the client-side and server-side.
+## Validation Directive
+Validation directives simplify the use of popular JavaScript validator libraries inside your GraphQL API. The main goal is to ensure that validation results are consistent across client-side and server-side applications. 
+
+### Motivation
+Ensuring consistency between the validation on the server side and the client side is a critical requirement when building any application. It helps to prevent errors and ensure that the application functions correctly.
+
+For example, if there is a discrepancy in validation logic between the client and server, it can result in significant issues for the user experience of an application. Data that is accepted on the client side may be rejected on the server side and vice versa, leading to confusion and frustration for the user.
+
+That is the primary motivation behind this validation directive. It provides a directive that wrap many popular validation libraries commonly used by the front-end, leading to a consistent validation process between server side and client side. And making it easy to use validation in a GraphQL schema.
 
 ### Usage
 Validation methods are wrapped into a single directive `@validate(method: METHOD[, PARAMETERS])`. The available methods and parameters vary depending on the chosen validator plugin.
