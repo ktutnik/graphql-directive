@@ -11,11 +11,33 @@ exports[`Should validate ASCII string properly 1`] = `
 }
 `;
 
+exports[`Should validate ASCII string properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate Ethereum address properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid Ethereum address",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate Ethereum address properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -33,11 +55,33 @@ exports[`Should validate IP address properly 1`] = `
 }
 `;
 
+exports[`Should validate IP address properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate IP range properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid IP range",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate IP range properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -55,11 +99,33 @@ exports[`Should validate ISBN properly 1`] = `
 }
 `;
 
+exports[`Should validate ISBN properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate ISIN properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid ISIN (International Securities Identification Number)",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate ISIN properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -77,6 +143,17 @@ exports[`Should validate ISO 3166-1 alpha-2 code properly 1`] = `
 }
 `;
 
+exports[`Should validate ISO 3166-1 alpha-2 code properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate ISO 3166-1 alpha-3 code properly 1`] = `
 {
   "error": [
@@ -88,7 +165,29 @@ exports[`Should validate ISO 3166-1 alpha-3 code properly 1`] = `
 }
 `;
 
+exports[`Should validate ISO 3166-1 alpha-3 code properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate ISO8601 date properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid ISO8601 date string",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate ISO8601 date properly 2`] = `
 {
   "error": [
     {
@@ -110,11 +209,33 @@ exports[`Should validate ISRC properly 1`] = `
 }
 `;
 
+exports[`Should validate ISRC properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate ISSN properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid International Standard Serial Number (ISSN)",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate ISSN properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -132,11 +253,33 @@ exports[`Should validate JSON properly 1`] = `
 }
 `;
 
+exports[`Should validate JSON properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate JWT properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid JSON Web Token (JWT)",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate JWT properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -154,11 +297,33 @@ exports[`Should validate MAC address properly 1`] = `
 }
 `;
 
+exports[`Should validate MAC address properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate MIME type properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid MIME type",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate MIME type properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -176,11 +341,33 @@ exports[`Should validate MongoDB ObjectId properly 1`] = `
 }
 `;
 
+exports[`Should validate MongoDB ObjectId properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate URL properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid URL",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate URL properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -198,11 +385,33 @@ exports[`Should validate UUID properly 1`] = `
 }
 `;
 
+exports[`Should validate UUID properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate alphabetic string properly 1`] = `
 {
   "error": [
     {
       "message": "Must only contain letters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate alphabetic string properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -220,11 +429,33 @@ exports[`Should validate alphanumeric string properly 1`] = `
 }
 `;
 
+exports[`Should validate alphanumeric string properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate base64 string properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid base64 encoded string",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate base64 string properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -242,11 +473,33 @@ exports[`Should validate boolean properly 1`] = `
 }
 `;
 
+exports[`Should validate boolean properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate credit card properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid credit card number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate credit card properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -264,6 +517,17 @@ exports[`Should validate currency properly 1`] = `
 }
 `;
 
+exports[`Should validate currency properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate data URI properly 1`] = `
 {
   "error": [
@@ -275,7 +539,29 @@ exports[`Should validate data URI properly 1`] = `
 }
 `;
 
+exports[`Should validate data URI properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate date before properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a date before 1/1/2022",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate date before properly 2`] = `
 {
   "error": [
     {
@@ -297,11 +583,33 @@ exports[`Should validate date properly 1`] = `
 }
 `;
 
+exports[`Should validate date properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate decimal properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a decimal number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate decimal properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -319,11 +627,33 @@ exports[`Should validate divisible properly 1`] = `
 }
 `;
 
+exports[`Should validate divisible properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate domain name properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid fully qualified domain name",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate domain name properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -341,11 +671,33 @@ exports[`Should validate email properly 1`] = `
 }
 `;
 
+exports[`Should validate email properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate empty properly 1`] = `
 {
   "error": [
     {
       "message": "Must not be empty",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate empty properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -363,11 +715,33 @@ exports[`Should validate float properly 1`] = `
 }
 `;
 
+exports[`Should validate float properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate full-width string properly 1`] = `
 {
   "error": [
     {
       "message": "Must contain full-width characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate full-width string properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -385,11 +759,33 @@ exports[`Should validate half-width string properly 1`] = `
 }
 `;
 
+exports[`Should validate half-width string properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate hexadecimal color code properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid hex color code",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate hexadecimal color code properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -407,11 +803,33 @@ exports[`Should validate hexadecimal properly 1`] = `
 }
 `;
 
+exports[`Should validate hexadecimal properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate latitude and longitude properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid latitude coordinate",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate latitude and longitude properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -429,11 +847,33 @@ exports[`Should validate length properly 1`] = `
 }
 `;
 
+exports[`Should validate length properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate lowercase properly 1`] = `
 {
   "error": [
     {
       "message": "Must be all lowercase",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate lowercase properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -451,11 +891,33 @@ exports[`Should validate multibyte characters properly 1`] = `
 }
 `;
 
+exports[`Should validate multibyte characters properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate numeric characters properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a number",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate numeric characters properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -473,11 +935,33 @@ exports[`Should validate port number properly 1`] = `
 }
 `;
 
+exports[`Should validate port number properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate postal code properly 1`] = `
 {
   "error": [
     {
       "message": "Must be a valid postal code",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate postal code properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -495,11 +979,33 @@ exports[`should validate surrogate pairs 1`] = `
 }
 `;
 
+exports[`should validate surrogate pairs 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`should validate uppercase characters 1`] = `
 {
   "error": [
     {
       "message": "Must only contain uppercase characters",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`should validate uppercase characters 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],
@@ -517,11 +1023,33 @@ exports[`should validate variable width characters 1`] = `
 }
 `;
 
+exports[`should validate variable width characters 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`should validate whitelisted characters 1`] = `
 {
   "error": [
     {
       "message": "Must only contain characters from the whitelist: abcdefghijklmnopqrstuvwxyz",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`should validate whitelisted characters 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
       "path": "test.val",
     },
   ],

@@ -30,6 +30,10 @@ it("Should validate date properly", async () => {
     const failed = await run(`@validate(method: AFTER)`, "2001-1-1")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: AFTER, message: "Custom message")`, "2001-1-1")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate alphabetic string properly", async () => {
@@ -38,6 +42,10 @@ it("Should validate alphabetic string properly", async () => {
     const failed = await run(`@validate(method: ALPHA)`, "123")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ALPHA, message: "Custom message")`, "123")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate alphanumeric string properly", async () => {
@@ -46,6 +54,10 @@ it("Should validate alphanumeric string properly", async () => {
     const failed = await run(`@validate(method: ALPHANUMERIC)`, "abc!@#")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ALPHANUMERIC, message: "Custom message")`, "abc!@#")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate ASCII string properly", async () => {
@@ -54,6 +66,10 @@ it("Should validate ASCII string properly", async () => {
     const failed = await run(`@validate(method: ASCII)`, "你好世界")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ASCII, message: "Custom message")`, "你好世界")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate base64 string properly", async () => {
@@ -62,6 +78,10 @@ it("Should validate base64 string properly", async () => {
     const failed = await run(`@validate(method: BASE64)`, "Not a base64 string!")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: BASE64, message: "Custom message")`, "Not a base64 string!")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate date before properly", async () => {
@@ -70,6 +90,10 @@ it("Should validate date before properly", async () => {
     const failed = await run(`@validate(method: BEFORE, date: "2022-1-1")`, "2023-01-01")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: BEFORE, date: "2022-1-1", message: "Custom message")`, "2023-01-01")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate boolean properly", async () => {
@@ -78,6 +102,10 @@ it("Should validate boolean properly", async () => {
     const failed = await run(`@validate(method: BOOLEAN)`, "notaboolean")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: BOOLEAN, message: "Custom message")`, "notaboolean")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate credit card properly", async () => {
@@ -86,6 +114,10 @@ it("Should validate credit card properly", async () => {
     const failed = await run(`@validate(method: CREDIT_CARD)`, "notacreditcardnumber")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: CREDIT_CARD, message: "Custom message")`, "notacreditcardnumber")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate currency properly", async () => {
@@ -94,6 +126,10 @@ it("Should validate currency properly", async () => {
     const failed = await run(`@validate(method: CURRENCY)`, "notacurrency")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: CURRENCY, message: "Custom message")`, "notacurrency")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate data URI properly", async () => {
@@ -102,6 +138,10 @@ it("Should validate data URI properly", async () => {
     const failed = await run(`@validate(method: DATA_URI)`, "notadataURI")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: DATA_URI, message: "Custom message")`, "notadataURI")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate decimal properly", async () => {
@@ -110,6 +150,10 @@ it("Should validate decimal properly", async () => {
     const failed = await run(`@validate(method: DECIMAL)`, "1,234")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: DECIMAL, message: "Custom message")`, "1,234")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate divisible properly", async () => {
@@ -118,6 +162,10 @@ it("Should validate divisible properly", async () => {
     const failed = await run(`@validate(method: DIVISIBLE_BY, number: 3)`, "10")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: DIVISIBLE_BY, number: 3, message: "Custom message")`, "10")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate email properly", async () => {
@@ -126,6 +174,10 @@ it("Should validate email properly", async () => {
     const failed = await run(`@validate(method: EMAIL)`, "notanemail")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: EMAIL, message: "Custom message")`, "notanemail")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate empty properly", async () => {
@@ -134,6 +186,10 @@ it("Should validate empty properly", async () => {
     const failed = await run(`@validate(method: NOT_EMPTY)`, "")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: NOT_EMPTY, message: "Custom message")`, "")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate Ethereum address properly", async () => {
@@ -142,6 +198,10 @@ it("Should validate Ethereum address properly", async () => {
     const failed = await run(`@validate(method: ETHEREUM_ADDRESS)`, "notanethereumaddress")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ETHEREUM_ADDRESS, message: "Custom message")`, "notanethereumaddress")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate domain name properly", async () => {
@@ -150,6 +210,10 @@ it("Should validate domain name properly", async () => {
     const failed = await run(`@validate(method: FQDN)`, "example")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: FQDN, message: "Custom message")`, "example")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate float properly", async () => {
@@ -158,6 +222,10 @@ it("Should validate float properly", async () => {
     const failed = await run(`@validate(method: FLOAT)`, "invalidnumber")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: FLOAT, message: "Custom message")`, "invalidnumber")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate full-width string properly", async () => {
@@ -166,6 +234,10 @@ it("Should validate full-width string properly", async () => {
     const failed = await run(`@validate(method: FULL_WIDTH)`, "hello")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: FULL_WIDTH, message: "Custom message")`, "hello")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate half-width string properly", async () => {
@@ -174,6 +246,10 @@ it("Should validate half-width string properly", async () => {
     const failed = await run(`@validate(method: HALF_WIDTH)`, "ＨＥＬＬＯ")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: HALF_WIDTH, message: "Custom message")`, "ＨＥＬＬＯ")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate hexadecimal color code properly", async () => {
@@ -182,6 +258,10 @@ it("Should validate hexadecimal color code properly", async () => {
     const failed = await run(`@validate(method: HEX_COLOR)`, "notacolorcode")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: HEX_COLOR, message: "Custom message")`, "notacolorcode")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate hexadecimal properly", async () => {
@@ -190,6 +270,10 @@ it("Should validate hexadecimal properly", async () => {
     const failed = await run(`@validate(method: HEXADECIMAL)`, "notahexadecimal")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: HEXADECIMAL, message: "Custom message")`, "notahexadecimal")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate IP address properly", async () => {
@@ -198,6 +282,10 @@ it("Should validate IP address properly", async () => {
     const failed = await run(`@validate(method: IP)`, "notanipaddress")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: IP, message: "Custom message")`, "notanipaddress")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate IP range properly", async () => {
@@ -206,6 +294,10 @@ it("Should validate IP range properly", async () => {
     const failed = await run(`@validate(method: IP_RANGE)`, "notaniprange")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: IP_RANGE, message: "Custom message")`, "notaniprange")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate ISBN properly", async () => {
@@ -214,6 +306,10 @@ it("Should validate ISBN properly", async () => {
     const failed = await run(`@validate(method: ISBN)`, "notanisbn")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ISBN, message: "Custom message")`, "notanisbn")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate ISIN properly", async () => {
@@ -222,6 +318,10 @@ it("Should validate ISIN properly", async () => {
     const failed = await run(`@validate(method: ISIN)`, "notanisin")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ISIN, message: "Custom message")`, "notanisin")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate ISO8601 date properly", async () => {
@@ -230,6 +330,10 @@ it("Should validate ISO8601 date properly", async () => {
     const failed = await run(`@validate(method: ISO8601)`, "notaniso8601date")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ISO8601, message: "Custom message")`, "notaniso8601date")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate ISO 3166-1 alpha-2 code properly", async () => {
@@ -238,6 +342,10 @@ it("Should validate ISO 3166-1 alpha-2 code properly", async () => {
     const failed = await run(`@validate(method: ISO31661_ALPHA2)`, "notaniso31661alpha2code")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ISO31661_ALPHA2, message: "Custom message")`, "notaniso31661alpha2code")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate ISO 3166-1 alpha-3 code properly", async () => {
@@ -246,6 +354,10 @@ it("Should validate ISO 3166-1 alpha-3 code properly", async () => {
     const failed = await run(`@validate(method: ISO31661_ALPHA3)`, "notaniso31661alpha3code")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ISO31661_ALPHA3, message: "Custom message")`, "notaniso31661alpha3code")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate ISRC properly", async () => {
@@ -254,6 +366,10 @@ it("Should validate ISRC properly", async () => {
     const failed = await run(`@validate(method: ISRC)`, "notanisrc")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ISRC, message: "Custom message")`, "notanisrc")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate ISSN properly", async () => {
@@ -262,6 +378,10 @@ it("Should validate ISSN properly", async () => {
     const failed = await run(`@validate(method: ISSN)`, "notanissn")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: ISSN, message: "Custom message")`, "notanissn")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate JSON properly", async () => {
@@ -270,6 +390,10 @@ it("Should validate JSON properly", async () => {
     const failed = await run(`@validate(method: JSON)`, "notajsonstring")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: JSON, message: "Custom message")`, "notajsonstring")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate JWT properly", async () => {
@@ -278,6 +402,10 @@ it("Should validate JWT properly", async () => {
     const failed = await run(`@validate(method: JWT)`, "notajwt")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: JWT, message: "Custom message")`, "notajwt")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate latitude and longitude properly", async () => {
@@ -286,6 +414,10 @@ it("Should validate latitude and longitude properly", async () => {
     const failed = await run(`@validate(method: LAT_LONG)`, "90.1000000, 180.000000")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: LAT_LONG, message: "Custom message")`, "90.1000000, 180.000000")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate length properly", async () => {
@@ -294,6 +426,10 @@ it("Should validate length properly", async () => {
     const failed = await run(`@validate(method: LENGTH, max: 5)`, "123456")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: LENGTH, max: 5, message: "Custom message")`, "123456")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate lowercase properly", async () => {
@@ -302,6 +438,10 @@ it("Should validate lowercase properly", async () => {
     const failed = await run(`@validate(method: LOWERCASE)`, "Hello")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: LOWERCASE, message: "Custom message")`, "Hello")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate MAC address properly", async () => {
@@ -310,6 +450,10 @@ it("Should validate MAC address properly", async () => {
     const failed = await run(`@validate(method: MAC_ADDRESS)`, "notamacaddress")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: MAC_ADDRESS, message: "Custom message")`, "notamacaddress")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate MIME type properly", async () => {
@@ -318,6 +462,10 @@ it("Should validate MIME type properly", async () => {
     const failed = await run(`@validate(method: MIME_TYPE)`, "notamimetype")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: MIME_TYPE, message: "Custom message")`, "notamimetype")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate MongoDB ObjectId properly", async () => {
@@ -326,6 +474,10 @@ it("Should validate MongoDB ObjectId properly", async () => {
     const failed = await run(`@validate(method: MONGO_ID)`, "notamongodbobjectid")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: MONGO_ID, message: "Custom message")`, "notamongodbobjectid")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate multibyte characters properly", async () => {
@@ -334,6 +486,10 @@ it("Should validate multibyte characters properly", async () => {
     const failed = await run(`@validate(method: MULTIBYTE)`, "hello")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: MULTIBYTE, message: "Custom message")`, "hello")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate numeric characters properly", async () => {
@@ -342,6 +498,10 @@ it("Should validate numeric characters properly", async () => {
     const failed = await run(`@validate(method: NUMERIC)`, "notanumber")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: NUMERIC, message: "Custom message")`, "notanumber")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate port number properly", async () => {
@@ -350,6 +510,10 @@ it("Should validate port number properly", async () => {
     const failed = await run(`@validate(method: PORT)`, "notaport")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: PORT, message: "Custom message")`, "notaport")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate postal code properly", async () => {
@@ -358,6 +522,10 @@ it("Should validate postal code properly", async () => {
     const failed = await run(`@validate(method: POSTAL_CODE, locale: "any")`, "notapostalcode")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: POSTAL_CODE, locale: "any", message: "Custom message")`, "notapostalcode")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate URL properly", async () => {
@@ -366,6 +534,10 @@ it("Should validate URL properly", async () => {
     const failed = await run(`@validate(method: URL)`, "notanurl")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: URL, message: "Custom message")`, "notanurl")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("Should validate UUID properly", async () => {
@@ -374,6 +546,10 @@ it("Should validate UUID properly", async () => {
     const failed = await run(`@validate(method: UUID)`, "notauuid")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: UUID, message: "Custom message")`, "notauuid")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("should validate variable width characters", async () => {
@@ -382,6 +558,10 @@ it("should validate variable width characters", async () => {
     const failed = await run(`@validate(method: VARIABLE_WIDTH)`, "abcde")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: VARIABLE_WIDTH, message: "Custom message")`, "abcde")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("should validate whitelisted characters", async () => {
@@ -390,6 +570,10 @@ it("should validate whitelisted characters", async () => {
     const failed = await run(`@validate(method: WHITELISTED, chars: "abcdefghijklmnopqrstuvwxyz")`, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: WHITELISTED, chars: "abcdefghijklmnopqrstuvwxyz", message: "Custom message")`, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("should validate surrogate pairs", async () => {
@@ -398,6 +582,10 @@ it("should validate surrogate pairs", async () => {
     const failed = await run(`@validate(method: SURROGATE_PAIR)`, "")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: SURROGATE_PAIR, message: "Custom message")`, "")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
 it("should validate uppercase characters", async () => {
@@ -406,5 +594,9 @@ it("should validate uppercase characters", async () => {
     const failed = await run(`@validate(method: UPPERCASE)`, "abcdefghijklmnopqrstuvwxyz")
     expect(failed.data).toBe(null)
     expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: UPPERCASE, message: "Custom message")`, "abcdefghijklmnopqrstuvwxyz")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+    
 })
 
