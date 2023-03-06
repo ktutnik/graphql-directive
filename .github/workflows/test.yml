@@ -29,13 +29,11 @@ jobs:
     - name: Coverage core-validator
       uses: coverallsapp/github-action@v1
       with: 
-        base-path: "packages/core-validator"
+        base-path: "./packages/core-validator"
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ".packages/core-validator/coverage/lcov.info"
     - name: Coverage validator
       uses: coverallsapp/github-action@v1
       with: 
-        base-path: "packages/validator"
+        base-path: "./packages/validator"
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        path-to-lcov: ".packages/validator/coverage/lcov.info"
 
