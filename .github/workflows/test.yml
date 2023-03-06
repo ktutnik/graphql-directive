@@ -32,6 +32,8 @@ jobs:
         base-path: "./packages/core-validator"
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: "./packages/core-validator/coverage/lcov.info"
+        flag-name: core-validator
+        parallel: true
 
     - name: Coverage validator
       uses: coverallsapp/github-action@v1
@@ -39,5 +41,13 @@ jobs:
         base-path: "./packages/validator"
         github-token: ${{ secrets.GITHUB_TOKEN }}
         path-to-lcov: "./packages/validator/coverage/lcov.info"
+        flag-name: validator
+        parallel: true
+
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@v1
+      with:
+        parallel-finished: true
+        carryforward: "core-validator,validator"
     
 
