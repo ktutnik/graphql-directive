@@ -58,6 +58,8 @@ const typeDefs = /* GraphQL */ `
     }
     directive @validate(
         method: ValidationMethod!, 
+        # custom message
+        message: String,
         # FLOAT, LENGTH
         min:Int, 
         max:Int,
@@ -148,209 +150,257 @@ const formatDate = (date: string | undefined) => {
 
 const plugins: Plugins = {
     ["AFTER"]:
-        (options: { date: string }) => (str) => val.isAfter(str, options.date)
+        (options: { message?: string, date?: string }) => (str) => val.isAfter(str, options.date)
+            || options?.message
             || `Must be a date after ${formatDate(options.date)}`,
 
     ["ALPHA"]:
-        (options: { locale: val.AlphaLocale }) => (str) => val.isAlpha(str, options.locale)
+        (options: { message?: string, locale: val.AlphaLocale }) => (str) => val.isAlpha(str, options.locale)
+            || options?.message
             || 'Must only contain letters',
 
     ["ALPHANUMERIC"]:
-        (options: { locale: val.AlphanumericLocale }) => (str) => val.isAlphanumeric(str, options.locale)
+        (options: { message?: string, locale: val.AlphanumericLocale }) => (str) => val.isAlphanumeric(str, options.locale)
+            || options?.message
             || 'Must only contain letters and numbers',
 
     ["ASCII"]:
-        () => (str) => val.isAscii(str)
+        (options: { message?: string }) => (str) => val.isAscii(str)
+            || options?.message
             || 'Must only contain ASCII characters',
 
     ["BASE64"]:
-        () => (str) => val.isBase64(str)
+        (options: { message?: string }) => (str) => val.isBase64(str)
+            || options?.message
             || 'Must be a valid base64 encoded string',
 
     ["BEFORE"]:
-        (options: { date: string }) => (str) => val.isBefore(str, options.date)
+        (options: { message?: string, date: string }) => (str) => val.isBefore(str, options.date)
             || `Must be a date before ${formatDate(options.date)}`,
 
     ["BOOLEAN"]:
-        () => (str) => val.isBoolean(str)
+        (options: { message?: string }) => (str) => val.isBoolean(str)
+            || options?.message
             || 'Must be a boolean',
 
     ["CREDIT_CARD"]:
-        () => (str) => val.isCreditCard(str)
+        (options: { message?: string }) => (str) => val.isCreditCard(str)
+            || options?.message
             || 'Must be a valid credit card number',
 
     ["CURRENCY"]:
-        (options) => (str) => val.isCurrency(str, options)
+        (options: val.IsCurrencyOptions & { message?: string }) => (str) => val.isCurrency(str, options)
+            || options?.message
             || 'Must be a valid currency amount',
 
     ["DATA_URI"]:
-        () => (str) => val.isDataURI(str)
+        (options: { message?: string }) => (str) => val.isDataURI(str)
+            || options?.message
             || 'Must be a valid data URI',
 
     ["DECIMAL"]:
-        (options: val.IsDecimalOptions) => (str) => val.isDecimal(str, options)
+        (options: val.IsDecimalOptions & { message?: string }) => (str) => val.isDecimal(str, options)
+            || options?.message
             || 'Must be a decimal number',
 
     ["DIVISIBLE_BY"]:
-        (options: { number: number }) => (str) => val.isDivisibleBy(str, options.number)
+        (options: { message?: string, number: number }) => (str) => val.isDivisibleBy(str, options.number)
+            || options?.message
             || `Must be a number that's divisible by ${options.number}`,
 
     ["EMAIL"]:
-        (options:val.IsEmailOptions) => (str) => val.isEmail(str, options)
+        (options: val.IsEmailOptions & { message?: string }) => (str) => val.isEmail(str, options)
+            || options?.message
             || 'Must be a valid email address',
 
     ["ETHEREUM_ADDRESS"]:
-        () => (str) => val.isEthereumAddress(str)
+        (options: { message?: string }) => (str) => val.isEthereumAddress(str)
+            || options?.message
             || 'Must be a valid Ethereum address',
 
     ["FQDN"]:
-        (options) => (str) => val.isFQDN(str, options)
+        (options: val.IsFQDNOptions & { message?: string }) => (str) => val.isFQDN(str, options)
+            || options?.message
             || 'Must be a valid fully qualified domain name',
 
     ["FLOAT"]:
-        (options) => (str) => val.isFloat(str, options)
+        (options: val.IsFloatOptions & { message?: string }) => (str) => val.isFloat(str, options)
+            || options?.message
             || 'Must be a float number',
 
     ["FULL_WIDTH"]:
-        () => (str) => val.isFullWidth(str)
+        (options: { message?: string }) => (str) => val.isFullWidth(str)
+            || options?.message
             || 'Must contain full-width characters',
 
     ["HALF_WIDTH"]:
-        () => (str) => val.isHalfWidth(str)
+        (options: { message?: string }) => (str) => val.isHalfWidth(str)
+            || options?.message
             || 'Must contain half-width characters',
 
     ["HEX_COLOR"]:
-        () => (str) => val.isHexColor(str)
+        (options: { message?: string }) => (str) => val.isHexColor(str)
+            || options?.message
             || 'Must be a valid hex color code',
 
     ["HEXADECIMAL"]:
-        () => (str) => val.isHexadecimal(str)
+        (options: { message?: string }) => (str) => val.isHexadecimal(str)
+            || options?.message
             || 'Must be a valid hexadecimal number',
 
     ["IP"]:
-        (options: { version: val.IPVersion }) => (str) => val.isIP(str, options.version)
+        (options: { message?: string, version: val.IPVersion }) => (str) => val.isIP(str, options.version)
+            || options?.message
             || `Must be a valid ${options.version} IP address`,
 
     ["IP_RANGE"]:
-        (options: { version: val.IPVersion }) => (str) => val.isIPRange(str, options.version)
+        (options: { message?: string, version: val.IPVersion }) => (str) => val.isIPRange(str, options.version)
+            || options?.message
             || 'Must be a valid IP range',
 
     ["ISBN"]:
-        (options: { version: val.ISBNVersion }) => (str) => val.isISBN(str, options.version)
+        (options: { message?: string, version: val.ISBNVersion }) => (str) => val.isISBN(str, options.version)
+            || options?.message
             || `Must be a valid ISBN ${options.version}`,
 
     ["ISIN"]:
-        () => (str) => val.isISIN(str)
+        (options: { message?: string }) => (str) => val.isISIN(str)
+            || options?.message
             || 'Must be a valid ISIN (International Securities Identification Number)',
 
     ["ISO8601"]:
-        (options) => (str) => val.isISO8601(str, options)
+        (options: val.IsISO8601Options & { message?: string }) => (str) => val.isISO8601(str, options)
             || 'Must be a valid ISO8601 date string',
 
     ["ISO31661_ALPHA2"]:
-        () => (str) => val.isISO31661Alpha2(str)
+        (options: { message?: string }) => (str) => val.isISO31661Alpha2(str)
+            || options?.message
             || 'Must be a valid ISO 3166-1 alpha-2 country code',
 
     ["ISO31661_ALPHA3"]:
-        () => (str) => val.isISO31661Alpha3(str)
+        (options: { message?: string }) => (str) => val.isISO31661Alpha3(str)
+            || options?.message
             || 'Must be a valid ISO 3166-1 alpha-3 country code',
 
     ["ISRC"]:
-        () => (str) => val.isISRC(str)
+        (options: { message?: string }) => (str) => val.isISRC(str)
+            || options?.message
             || 'Must be a valid International Standard Recording Code (ISRC)',
 
     ["ISSN"]:
-        (options) => (str) => val.isISSN(str, options)
+        (options: val.IsISSNOptions & { message?: string }) => (str) => val.isISSN(str, options)
+            || options?.message
             || 'Must be a valid International Standard Serial Number (ISSN)',
 
     ["JSON"]:
-        () => (str) => val.isJSON(str)
+        (options: { message?: string }) => (str) => val.isJSON(str)
+            || options?.message
             || 'Must be a valid JSON string',
 
     ["JWT"]:
-        () => (str) => val.isJWT(str)
+        (options: { message?: string }) => (str) => val.isJWT(str)
+            || options?.message
             || 'Must be a valid JSON Web Token (JWT)',
 
     ["LAT_LONG"]:
-        () => (str) => val.isLatLong(str)
+        (options: { message?: string }) => (str) => val.isLatLong(str)
+            || options?.message
             || 'Must be a valid latitude coordinate',
 
     ["LENGTH"]:
-        (options) => (str) => val.isLength(str, options)
+        (options: val.IsLengthOptions & { message?: string }) => (str) => val.isLength(str, options)
+            || options?.message
             || 'Must have a length within the specified range',
 
     ["LOWERCASE"]:
-        () => (str) => val.isLowercase(str)
+        (options: { message?: string }) => (str) => val.isLowercase(str)
+            || options?.message
             || 'Must be all lowercase',
 
     ["MAC_ADDRESS"]:
-        () => (str) => val.isMACAddress(str)
+        (options: { message?: string }) => (str) => val.isMACAddress(str)
+            || options?.message
             || 'Must be a valid MAC address',
 
     ["MIME_TYPE"]:
-        () => (str) => val.isMimeType(str)
+        (options: { message?: string }) => (str) => val.isMimeType(str)
+            || options?.message
             || 'Must be a valid MIME type',
 
     ["MONGO_ID"]:
-        () => (str) => val.isMongoId(str)
+        (options: { message?: string }) => (str) => val.isMongoId(str)
+            || options?.message
             || 'Must be a valid MongoDB ObjectId',
 
     ["MULTIBYTE"]:
-        () => (str) => val.isMultibyte(str)
+        (options: { message?: string }) => (str) => val.isMultibyte(str)
+            || options?.message
             || 'Must contain one or more multibyte characters',
 
     ["NOT_EMPTY"]:
-        (options) => (str) => !val.isEmpty(str, options)
+        (options: val.IsEmptyOptions & { message?: string }) => (str) => !val.isEmpty(str, options)
+            || options?.message
             || 'Must not be empty',
 
     ["NUMERIC"]:
-        (options) => (str) => val.isNumeric(str, options)
+        (options: val.IsNumericOptions & { message?: string }) => (str) => val.isNumeric(str, options)
+            || options?.message
             || 'Must be a number',
 
     ["PORT"]:
-        () => (str) => val.isPort(str)
+        (options: { message?: string }) => (str) => val.isPort(str)
+            || options?.message
             || 'Must be a valid port number',
 
     ["POSTAL_CODE"]:
-        (options: { locale: val.PostalCodeLocale }) => (str) => val.isPostalCode(str, options.locale)
+        (options: { message?: string, locale: val.PostalCodeLocale }) => (str) => val.isPostalCode(str, options.locale)
+            || options?.message
             || 'Must be a valid postal code',
 
     ["REGEX"]:
-        (options: { pattern: string, modifier: string }) => (str) => val.matches(str, options.pattern, options.modifier)
+        (options: { message?: string, pattern: string, modifier: string }) => (str) => val.matches(str, options.pattern, options.modifier)
+            || options?.message
             || 'Must be a valid postal code',
 
     ["SLUG"]:
-        () => (str) => val.isSlug(str)
+        (options: { message?: string }) => (str) => val.isSlug(str)
+            || options?.message
             || 'Must be a valid slug',
 
     ["STRONG_PASSWORD"]:
-        (options: val.StrongPasswordOptions) => (str) => val.isStrongPassword(str, { ...options, returnScore: false })
+        (options: val.StrongPasswordOptions & { message?: string }) => (str) => val.isStrongPassword(str, { ...options, returnScore: false })
+            || options?.message
             || createStrongPwdMessage(options),
 
     ["SURROGATE_PAIR"]:
-        () => (str) => val.isSurrogatePair(str)
+        (options: { message?: string }) => (str) => val.isSurrogatePair(str)
+            || options?.message
             || 'Must contain any surrogate pairs characters',
 
     ["UPPERCASE"]:
-        () => (str) => val.isUppercase(str)
+        (options: { message?: string }) => (str) => val.isUppercase(str)
+            || options?.message
             || 'Must only contain uppercase characters',
 
     ["URL"]:
-        (options) => (str) => val.isURL(str, options)
+        (options: val.IsURLOptions & { message?: string }) => (str) => val.isURL(str, options)
+            || options?.message
             || 'Must be a valid URL',
 
     ["UUID"]:
-        (options: { version: val.UUIDVersion }) => (str) => val.isUUID(str, options.version)
+        (options: { message?: string, version: val.UUIDVersion }) => (str) => val.isUUID(str, options.version)
+            || options?.message
             || 'Must be a valid UUID',
 
     ["VARIABLE_WIDTH"]:
-        () => (str) => val.isVariableWidth(str)
+        (options: { message?: string }) => (str) => val.isVariableWidth(str)
+            || options?.message
             || 'Must contain a mixture of full and half-width characters',
 
     ["WHITELISTED"]:
-        (options: { chars: string | string[] }) => (str) => val.isWhitelisted(str, options.chars)
+        (options: { message?: string, chars: string | string[] }) => (str) => val.isWhitelisted(str, options.chars)
+            || options?.message
             || `Must only contain characters from the whitelist: ${options.chars}`,
-
 }
 
 export default {
