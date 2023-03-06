@@ -25,3 +25,14 @@ jobs:
     - run: yarn install
     - run: yarn build
     - run: yarn test
+
+    - name: Coverage core-validator
+      uses: coverallsapp/github-action@v1
+      with: 
+        - base-path: "packages/core-validator"
+        - github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Coverage validator
+      uses: coverallsapp/github-action@v1
+      with: 
+        - base-path: "packages/validator"
+        - github-token: ${{ secrets.GITHUB_TOKEN }}
