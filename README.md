@@ -1,6 +1,5 @@
 # Comprehensive List Of GraphQL Directives
 [![Node.js CI](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml/badge.svg)](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml)
-[![Coverage Status](https://coveralls.io/repos/github/ktutnik/graphql-directive/badge.svg)](https://coveralls.io/github/ktutnik/graphql-directive)
 
 Offers a collection of GraphQL directives for easy validation, authorization, and sanitation, simplifying the implementation of complex functionality in GraphQL APIs. It ensures secure and efficient GraphQL APIs with pre-built solutions.
 
@@ -58,11 +57,10 @@ console.log(`Server running at ${url}`)
 You can use the validation directive with other directives by following the same process as described above.
 
 ### Available Plugins
-The `@validate` directive provides a range of ready-to-use plugins, each of which is implemented using popular JavaScript validation libraries such as Yup, Validator.js, and Joi. These plugins enable you to easily apply various types of validation to your GraphQL schema.
+The `@validate` directive provides a range of ready-to-use plugins, each of which is implemented using popular JavaScript validation libraries such as Yup, Validator.js. These plugins enable you to easily apply various types of validation to your GraphQL schema.
 
 - [x] Validator.js Plugin 
 - [ ] Yup Plugin
-- [ ] Join Plugin
 
 ### Custom Plugin 
 The `@validate` directive is highly extensible, allowing you to create your own validation plugins using your preferred validation library. This flexibility enables you to add custom validation rules to your GraphQL schema, ensuring that your application data is properly validated.
