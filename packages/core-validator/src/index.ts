@@ -1,10 +1,14 @@
 import { getDirective, MapperKind, mapSchema } from "@graphql-tools/utils"
-import { defaultFieldResolver, GraphQLError, GraphQLFieldConfig, GraphQLInputFieldConfig, GraphQLSchema } from "graphql"
+import { defaultFieldResolver, GraphQLError, GraphQLFieldConfig, GraphQLInputFieldConfig, GraphQLResolveInfo, GraphQLSchema } from "graphql"
 import { Path } from "graphql/jsutils/Path"
 
 // ====================================================== //
 // ======================== TYPES ======================= //
 // ====================================================== //
+
+export type FieldValidator = (val: any, ctx: ValidatorContext) => Promise<ErrorMessage[] | true>
+
+export type Validator = (val: any, ctx: ValidatorContext) => (string | true) | Promise<(string | true)>
 
 export interface TypeValidationConfig {
     kind: "Type"
@@ -15,32 +19,79 @@ export interface TypeValidationConfig {
 export interface FieldValidationConfig {
     kind: "Field",
     name: string
-    validator: Validator
+    validator: FieldValidator
 }
 
 export interface DirectiveArgs {
     method: string,
+    message: string,
     min: number,
     max: number
 }
 
 export interface ErrorMessage {
     path: string,
-    message: string
+    message: string,
 }
 
 export interface Plugins {
-    [key: string]: (config: any) => NativeValidator
+    [key: string]: Validator
 }
 
-export interface TransformerOptions { 
-    plugins: Plugins, 
-    directive: string 
+export interface TransformerOptions {
+    /**
+     * List of plugins
+     */
+    plugins: Plugins,
+
+    /**
+     * Name of the directive
+     */
+    directive: string
+
+    /**
+     * List of custom validators
+     */
+    customValidators?: Plugins
 }
 
-export type NativeValidator = (val: any) => string | true
+export interface ValidatorContext {
+    /**
+     * Contains options values of transformer
+     */
+    options: TransformerOptions,
 
-export type Validator = (val: any) => ErrorMessage[] | true
+    /**
+     * The location of where validator applied from the root path through the GraphQL fields
+     */
+    path: string
+
+    /**
+     * An object shared across all resolvers that are executing for a particular operation. Use this to share per-operation state, including authentication information, dataloader instances, and anything else to track across resolvers.
+     */
+    contextValue: any
+
+    /**
+     * The return value of the resolver for this field's parent (i.e., the previous resolver in the resolver chain). 
+     */
+    parent: any
+
+    /**
+     * An object that contains all GraphQL arguments provided for this field.
+     */
+    args: any
+
+    /**
+     * Contains information about the operation's execution state, including the field name, the path to the field from the root, and more.
+     */
+    info: GraphQLResolveInfo
+
+    /**
+     * Contains argument passed by the @validate directive. For example `@validate(method: LENGTH, min: 1, max: 150)`, the `args` parameter will contains `{ method: LENGTH, min: 1, max: 150 }`.
+     */
+    directiveArgs: any
+}
+
 
 export { GraphQLSchema }
 
@@ -64,57 +115,42 @@ const transform = (schema: GraphQLSchema, options: TransformerOptions): GraphQLS
         return { name, isArray, dataType }
     }
 
-    const fixErrorMessagePath = (messages: ErrorMessage[], root?: string) =>
-        messages.map<ErrorMessage>((e) => ({ path: [root, e.path].filter(x => x !== "").join("."), message: e.message }))
+    const joinContext = (ctx: ValidatorContext, ...paths: string[]): ValidatorContext => ({ ...ctx, path: [ctx.path, ...paths].filter(x => x !== "").join(".") })
 
-    const composeValidationResult = (results: (true | ErrorMessage[])[], path: string = "") => {
-        const messages: ErrorMessage[] = []
-        for (const result of results) {
-            if (result !== true) {
-                messages.push(...result)
-            }
-        }
-        return messages.length > 0 ? fixErrorMessagePath(messages, path) : true
+    const composeValidationResult = (results: (true | ErrorMessage[])[]) => {
+        const messages = results.filter((x): x is ErrorMessage[] => x !== true).flat()
+        return messages.length > 0 ? messages : true
     }
 
-    const createValidatorByDirectives = (path: string, directives: DirectiveArgs[]): Validator => {
-        const validators: NativeValidator[] = directives.map(({ method, ...config }) => options.plugins[method](config))
-        return (value: any) => {
-            const messages: ErrorMessage[] = []
-            for (const validator of validators) {
-                const message = validator(value[path])
-                if (message !== true) messages.push({ message, path: "" })
-            }
-            return composeValidationResult([messages], path)
+    const createValidatorByDirectives = (path: string, directives: DirectiveArgs[]): FieldValidator => {
+        const fieldVal = (validator: Validator, args:any): FieldValidator => async (val, ctx) => {
+            const message = await validator(val, {...ctx, directiveArgs: args})
+            return message !== true ? [{ message, path: ctx.path }] : true
+        }
+        const validators = directives.map((args) =>
+            fieldVal(options.plugins[args.method], args))
+        return async (val: any, ctx: ValidatorContext) => {
+            const results = await Promise.all(validators.map(v => v(val[path], joinContext(ctx, path))))
+            return composeValidationResult(results)
         }
     }
 
-    const createValidatorByField = (info: FieldInfo, fieldConfigs: FieldValidationConfig[]) => {
+    const createValidatorByField = (info: FieldInfo, fieldConfigs: FieldValidationConfig[]): FieldValidator => {
         const validator = composeValidator(...fieldConfigs.map(x => x.validator))
-        return (val: any) => {
+        return async (val: any, ctx: ValidatorContext) => {
             const value = val[info.name]
             if (info.isArray && Array.isArray(value)) {
-                const result: ErrorMessage[] = []
-                for (const [i, val] of value.entries()) {
-                    const msg = validator(val)
-                    if (msg !== true)
-                        result.push(...fixErrorMessagePath(msg, i.toString()))
-                }
-                return composeValidationResult([result], info.name)
+                const values = await Promise.all(value.map((val, i) => validator(val, joinContext(ctx, info.name, i.toString()))))
+                return composeValidationResult(values)
             }
-            else return composeValidationResult([validator(value)], info.name)
+            else return validator(value, joinContext(ctx, info.name))
         }
     }
 
-
-    const composeValidator = (...validators: Validator[]): Validator => {
-        return (val: any) => {
-            const messages: ErrorMessage[] = []
-            for (const validator of validators) {
-                const result = validator(val)
-                if (result !== true) messages.push(...result)
-            }
-            return composeValidationResult([messages])
+    const composeValidator = (...validators: FieldValidator[]): FieldValidator => {
+        return async (val: any, ctx: ValidatorContext) => {
+            const results = await Promise.all(validators.map(v => v(val, ctx)))
+            return composeValidationResult(results)
         }
     }
 
@@ -156,13 +192,17 @@ const transform = (schema: GraphQLSchema, options: TransformerOptions): GraphQLS
                 const { resolve = defaultFieldResolver } = config
                 return {
                     ...config,
-                    resolve: (source, args, context, info) => {
-                        const valid = validator(args)
-                        if (valid !== true) {
-                            const path = getPath(info.path).substring(1)
-                            throw new GraphQLError("USER_INPUT_ERROR", { extensions: { error: fixErrorMessagePath(valid, path) } })
+                    resolve: async (parent, args, context, info) => {
+                        const path = getPath(info.path).substring(1)
+                        const error = await validator(args, {
+                            path, options, args, info, parent,
+                            contextValue: context,
+                            directiveArgs: {}
+                        })
+                        if (error !== true) {
+                            throw new GraphQLError("USER_INPUT_ERROR", { extensions: { error } })
                         }
-                        return resolve(source, args, context, info)
+                        return resolve(parent, args, context, info)
                     }
                 }
             }
@@ -170,4 +210,11 @@ const transform = (schema: GraphQLSchema, options: TransformerOptions): GraphQLS
     })
 }
 
-export const createTransformer = (option: TransformerOptions) => (schema: GraphQLSchema): GraphQLSchema => transform(schema, option)
+export const createTransformer = (option: TransformerOptions) =>
+    (schema: GraphQLSchema, opt: { customValidators?: Plugins } = {}): GraphQLSchema => {
+        const customValidatorsPlugin: Plugins = {
+            CUSTOM: (val, ctx) => opt.customValidators![ctx.directiveArgs.validator](val, ctx)
+        }
+        const plugins: Plugins = { ...option.plugins, ...customValidatorsPlugin }
+        return transform(schema, { ...option, ...opt, plugins })
+    }

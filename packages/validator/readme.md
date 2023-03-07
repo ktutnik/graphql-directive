@@ -94,3 +94,26 @@ The validation directive supports all of the validation functions in Validator.j
 | `WHITELISTED`      | Checks if a string contains only whitelisted characters.                             | `chars` (required): A string containing all allowed characters.  <br/><br/> Example: `@validate(method: WHITELISTED, chars: "abcdefghijklkmopqrstuvwxyz")`                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 
 
+
+## Custom Valdiation
+You can define your own custom validation logic by registering it on the transform function. First create your own custom validation logic with plugin
+
+```ts
+const customValidators: Plugins = {
+    phone: (val) => /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/.test(val) || "Invalid phone number"
+}
+```
+
+Keep in mind that the name (`phone`) will be used to identify the plugin. Next step, register the plugin into the transformer.
+
+```ts
+const schema = val.transform(/* executable schema*/, { customValidators })
+```
+
+The final process, apply it on the `@validate` directive like below
+
+```gql
+input UserInput {
+    phone: String!  @validate(method: CUSTOM, validator: "phone")
+}
+```

@@ -19,6 +19,70 @@ exports[`Custom Type Validation Should validate argument with primitive type on 
 }
 `;
 
+exports[`Custom Validator Should able to access context from custom validator 1`] = `
+{
+  "error": [
+    {
+      "message": "Always error",
+      "path": "checkEmail.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Validator Should able to access context from custom validator 2`] = `
+[
+  [
+    "mail",
+    {
+      "args": {
+        "email": "mail",
+      },
+      "contextValue": undefined,
+      "directiveArgs": {
+        "method": "CUSTOM",
+        "validator": "email",
+      },
+      "options": {
+        "customValidators": {
+          "email": [Function],
+        },
+        "directive": "validate",
+        "plugins": {
+          "CUSTOM": [Function],
+          "EMAIL": [Function],
+          "LENGTH": [Function],
+        },
+      },
+      "parent": undefined,
+      "path": "checkEmail.email",
+    },
+  ],
+]
+`;
+
+exports[`Custom Validator Should able to create your own validator 1`] = `
+{
+  "error": [
+    {
+      "message": "Always error",
+      "path": "checkEmail.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Validator Should able to create your own validator 2`] = `
+{
+  "error": [
+    {
+      "message": "Always error",
+      "path": "checkEmail.email",
+    },
+  ],
+}
+`;
+
 exports[`Mutation Validation Should validate argument inside array of custom type property 1`] = `
 {
   "error": [

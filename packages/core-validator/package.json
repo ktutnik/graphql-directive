@@ -1,7 +1,7 @@
 {
   "name": "@graphql-directive/core-validator",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "The core validator is a critical part of the validator directive in GraphQL that validates user-supplied values. It is highly extensible and enables effective validation of complex data structures. It also provides detailed error messages that aid in debugging.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
