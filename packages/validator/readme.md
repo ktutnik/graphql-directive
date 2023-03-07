@@ -29,7 +29,14 @@ const { url } = await startStandaloneServer(server)
 console.log(`Server running at ${url}`)
 ```
 
-## Validation Method
+## Custom Error Message
+Currently its possible to create your own error message by providing the message on `message` parameter like example below.
+
+```
+@validate(method: EMAIL, message: "Please provide a valid email address")
+```
+
+## Validation Methods
 The validation directive supports all of the validation functions in Validator.js. Below is a list of the supported methods and their respective parameters.
 
 | Method             | Description                                                                          | Parameters / Example Usage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
