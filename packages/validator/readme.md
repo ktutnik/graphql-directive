@@ -1,4 +1,5 @@
 ## Validator.js Directives 
+A validator.js wrapper for GraphQL validation directive
 
 Validation directive Example: `@validate(method: METHOD[, OPTIONS])` is used to validate input values of GraphQL fields against specific rules defined in the directive. They are a way to ensure that the input data received by a GraphQL API meets certain criteria or constraints.
 

@@ -28,5 +28,14 @@
     "trash-cli": "^5.0.0",
     "graphql": "^16.6.0",
     "@graphql-tools/schema": "^9.0.16"
+  },
+  "bugs": {
+    "url": "https://github.com/ktutnik/graphql-directive/issues"
+  },
+  "repository": {
+    "url": "https://github.com/ktutnik/graphql-directive"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
