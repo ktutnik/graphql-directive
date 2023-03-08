@@ -4,22 +4,23 @@ import { createTransformer, Plugins } from "../src"
 
 const typeDefs = /* GraphQL */ `
     enum ValidationMethod {
-        EMAIL, LENGTH
+        EMAIL, LENGTH, CUSTOM
     }
     directive @validate(
         method: ValidationMethod!, 
+        validator:String,
         min:Int,
         max:Int
     ) repeatable on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 `
 
-const plugins:Plugins = {
-    ["EMAIL"]: () => (str) => val.isEmail(str)
+const plugins: Plugins = {
+    EMAIL: (str, ctx) => val.isEmail(str)
         || `Must be a valid email address`,
 
-    ["LENGTH"]: (options: { min?: number, max?: number }) => (str) => val.isLength(str, options)
-        || `Must be a string or array between ${options?.min ?? 0} and ${options?.max}`,
-} 
+    LENGTH: (str, ctx) => val.isLength(str, ctx.directiveArgs)
+        || `Must be a string or array between ${ctx.directiveArgs?.min ?? 0} and ${ctx.directiveArgs?.max}`,
 
+}
 
 export default { typeDefs, transform: createTransformer({ plugins, directive: "validate" }) }

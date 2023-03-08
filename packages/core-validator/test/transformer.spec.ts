@@ -1,5 +1,6 @@
 import { makeExecutableSchema } from "@graphql-tools/schema"
 import { graphql } from "graphql"
+import { Plugins } from "../src"
 import val from "./harness"
 
 
@@ -47,7 +48,7 @@ describe("Mutation Validation", () => {
                 }
             }
         }))
-        const source = (email:string) => `
+        const source = (email: string) => `
         mutation { 
             addUser(user: { 
                 name: "John", email: "${email}" 
@@ -82,7 +83,7 @@ describe("Mutation Validation", () => {
                 }
             }
         }))
-        const source = (mail:string) => `
+        const source = (mail: string) => `
         mutation { 
             addUser(user: { 
                 name: "John", 
@@ -93,7 +94,7 @@ describe("Mutation Validation", () => {
                 } 
             }) 
         }`
-        const err = await graphql({ schema, source: source("mail")  })
+        const err = await graphql({ schema, source: source("mail") })
         expect(err.errors![0].extensions).toMatchSnapshot()
 
         const success = await graphql({ schema, source: source("mail@mail.com") })
@@ -120,7 +121,7 @@ describe("Mutation Validation", () => {
                 }
             }
         }))
-        const source = (email:string) => `
+        const source = (email: string) => `
         mutation { 
             addUser(user: [{
                 name: "Jane", email: "jane@mail.com"
@@ -165,4 +166,61 @@ describe("Custom Type Validation", () => {
     })
 })
 
+describe("Custom Validator", () => {
+    it("Should able to create your own validator", async () => {
+        const typeDefs = /* GraphQL */ `
+            type Query { name:String! }
+            
+            type Mutation { 
+                checkEmail(email:String! @validate(method: CUSTOM, validator: "email")):Boolean!
+            }
+        `
+        const execSchema = makeExecutableSchema({
+            typeDefs: [val.typeDefs, typeDefs],
+            resolvers: {
+                Mutation: {
+                    checkEmail: () => true
+                }
+            }
+        })
+        const customValidators: Plugins = {
+            email: (val) => "Always error"
+        }
+        const schema = val.transform(execSchema, { customValidators })
+        const err = await graphql({ schema, source: `mutation { checkEmail(email: "mail") }` })
+        expect(err.errors![0].extensions).toMatchSnapshot()
 
+        const success = await graphql({ schema, source: `mutation { checkEmail(email: "mail@mail.com") }` })
+        expect(err.errors![0].extensions).toMatchSnapshot()
+    })
+
+    it("Should able to access context from custom validator", async () => {
+        const typeDefs = /* GraphQL */ `
+            type Query { name:String! }
+            
+            type Mutation { 
+                checkEmail(email:String! @validate(method: CUSTOM, validator: "email")):Boolean!
+            }
+        `
+        const execSchema = makeExecutableSchema({
+            typeDefs: [val.typeDefs, typeDefs],
+            resolvers: {
+                Mutation: {
+                    checkEmail: () => true
+                }
+            }
+        })
+        const fn = jest.fn()
+        const schema = val.transform(execSchema, {
+            customValidators: {
+                email: (val, { info, ...ctx }) => {
+                    fn(val, ctx)
+                    return "Always error"
+                }
+            }
+        })
+        const err = await graphql({ schema, source: `mutation { checkEmail(email: "mail") }` })
+        expect(err.errors![0].extensions).toMatchSnapshot()
+        expect(fn.mock.calls).toMatchSnapshot()
+    })
+})

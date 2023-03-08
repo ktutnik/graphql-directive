@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Validator Should able to access context from custom validator 1`] = `
+{
+  "error": [
+    {
+      "message": "Always error",
+      "path": "checkEmail.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Validator Should able to access context from custom validator 2`] = `
+[
+  [
+    "mail",
+    {
+      "args": {
+        "email": "mail",
+      },
+      "contextValue": undefined,
+      "directiveArgs": {
+        "method": "CUSTOM",
+        "validator": "email",
+      },
+      "options": {
+        "customValidators": {
+          "email": [Function],
+        },
+        "directive": "validate",
+        "plugins": {
+          "AFTER": [Function],
+          "ALPHA": [Function],
+          "ALPHANUMERIC": [Function],
+          "ASCII": [Function],
+          "BASE64": [Function],
+          "BEFORE": [Function],
+          "BOOLEAN": [Function],
+          "CREDIT_CARD": [Function],
+          "CURRENCY": [Function],
+          "CUSTOM": [Function],
+          "DATA_URI": [Function],
+          "DECIMAL": [Function],
+          "DIVISIBLE_BY": [Function],
+          "EMAIL": [Function],
+          "ETHEREUM_ADDRESS": [Function],
+          "FLOAT": [Function],
+          "FQDN": [Function],
+          "FULL_WIDTH": [Function],
+          "HALF_WIDTH": [Function],
+          "HEXADECIMAL": [Function],
+          "HEX_COLOR": [Function],
+          "IP": [Function],
+          "IP_RANGE": [Function],
+          "ISBN": [Function],
+          "ISIN": [Function],
+          "ISO31661_ALPHA2": [Function],
+          "ISO31661_ALPHA3": [Function],
+          "ISO8601": [Function],
+          "ISRC": [Function],
+          "ISSN": [Function],
+          "JSON": [Function],
+          "JWT": [Function],
+          "LAT_LONG": [Function],
+          "LENGTH": [Function],
+          "LOWERCASE": [Function],
+          "MAC_ADDRESS": [Function],
+          "MIME_TYPE": [Function],
+          "MONGO_ID": [Function],
+          "MULTIBYTE": [Function],
+          "NOT_EMPTY": [Function],
+          "NUMERIC": [Function],
+          "PORT": [Function],
+          "POSTAL_CODE": [Function],
+          "REGEX": [Function],
+          "SLUG": [Function],
+          "STRONG_PASSWORD": [Function],
+          "SURROGATE_PAIR": [Function],
+          "UPPERCASE": [Function],
+          "URL": [Function],
+          "UUID": [Function],
+          "VARIABLE_WIDTH": [Function],
+          "WHITELISTED": [Function],
+        },
+      },
+      "parent": undefined,
+      "path": "checkEmail.email",
+    },
+  ],
+]
+`;
+
+exports[`Custom Validator Should able to create your own validator 1`] = `
+{
+  "error": [
+    {
+      "message": "Always error",
+      "path": "checkEmail.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Validator Should able to create your own validator 2`] = `
+{
+  "error": [
+    {
+      "message": "Always error",
+      "path": "checkEmail.email",
+    },
+  ],
+}
+`;

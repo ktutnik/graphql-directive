@@ -20,11 +20,13 @@ import { createTransformer, Plugins } from "@graphql-directive/core-validator"
 
 // plugins, the logic to validate field
 const plugins:Plugins = {
-    EMAIL: () => (str) => val.isEmail(str)
+    EMAIL: (str, { directiveArgs: args }) => val.isEmail(str)
+        || args.message
         || `Must be a valid email address`,
 
-    LENGTH: (options: { min?: number, max?: number }) => (str) => val.isLength(str, options)
-        || `Must be a string or array between ${options?.min ?? 0} and ${options?.max}`,
+    LENGTH: (str, { directiveArgs: args }) => val.isLength(str, ctx.directiveArgs)
+        || args.message
+        || `Must be a string or array between ${args?.min ?? 0} and ${args?.max}`,
 } 
 
 // the validation directive schema
@@ -34,6 +36,8 @@ const typeDefs = `
     }
     directive @validate(
         method: ValidationMethod!, 
+        message: String,
+        validator: String,
         min:Int,
         max:Int
     ) repeatable on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
@@ -47,20 +51,47 @@ The plugins are a key-value object consisting of plugin method names and their v
 
 ```typescript
 {
-    METHOD: (options) => (value) => { /* logic */ }
+    METHOD: (value, ctx) => isValid(value) 
+        || ctx.directiveArgs.message 
+        || "The error message"
 }
 ```
 
-The validation logic should return `true` or an error message. 
+
+`args` : Is the argument passed from the `@validate` directive, for example `@validate(method: LENGTH, min: 1, max: 150)`, the `args` parameter will contains `{ min: 1, max: 150 }`. 
+
+`option`: Is the transformer options, contains some useful information such as list of plugins, directive name (for custom directive name), and list of custom functions. 
+
+Validator is a function with signature like above with below parameters:
+
+* `value`: Is the value that will be validate
+
+* `ctx`: Is the validation context, it contains more detail information required for custom validation.
+    * `options` : Contains options values of transformer
+    * `path` : The location of where validator applied from the root path through the GraphQL fields
+    * `contextValue` : An object shared across all resolvers that are executing for a particular operation. Use this to share per-operation state, including authentication information, dataloader instances, and anything else to track across resolvers.
+    * `parent` : The return value of the resolver for this field's parent (i.e., the previous resolver in the resolver chain). 
+    * `args` : An object that contains all GraphQL arguments provided for this field.
+    * `info` : Contains information about the operation's execution state, including the field name, the path to the field from the root, and more.
+    * `directiveArgs` : Contains argument passed by the @validate directive. For example `@validate(method: LENGTH, min: 1, max: 150)`, the `args` parameter will contains `{ min: 1, max: 150 }`.  
+
+
+The return value is `true | string`
+
 
 The directive schema should reflect the plugin functionalities such as the method name and its parameters. Like example above we providing the enum for the method and list of supported parameters. 
 
 ```graphql
 enum ValidationMethod {
-    EMAIL, LENGTH
+    CUSTOM, EMAIL, LENGTH
 }
 directive @validate(
+    # the method name
     method: ValidationMethod!, 
+    # the custom validator
+    validator: String,
+    # for custom message
+    message: String,
     # list of all plugin parameters
     min:Int,
     max:Int
@@ -68,3 +99,8 @@ directive @validate(
 ```
 
 The last step is creating the transform function by calling the `createTransformer`. The first parameter is the plugins and the last parameter is the name of the directive in this case is `validate`.  
+
+> IMPORTANT
+>
+> * `CUSTOM` on `ValidationMethod` is required
+> * Top 3 parameters (`method`, `validator`, `message`) are required to add.
