@@ -1,5 +1,6 @@
 test
 src
+coverage
 .npmignore
 tsconfig.json
 jest.config.debug.ts 
