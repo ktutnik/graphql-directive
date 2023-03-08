@@ -184,7 +184,7 @@ describe("Custom Validator", () => {
             }
         })
         const customValidators: Plugins = {
-            phone: (val) => /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/.test(val) || "Invalid phone number"
+            email: (val) => "Always error"
         }
         const schema = val.transform(execSchema, { customValidators })
         const err = await graphql({ schema, source: `mutation { checkEmail(email: "mail") }` })
