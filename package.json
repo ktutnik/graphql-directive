@@ -5,7 +5,8 @@
   "scripts": {
     "test": "yarn workspaces run test",
     "build": "yarn workspaces run build",
-    "clean": "yarn workspaces run clean"
+    "clean": "yarn workspaces run clean",
+    "publish:canary": "yarn build && npx lerna publish --canary"
   },
   "private": true,
   "devDependencies": {
