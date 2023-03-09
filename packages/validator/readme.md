@@ -1,7 +1,9 @@
 ## Validator.js Directives 
 A validator.js wrapper for GraphQL validation directive
 
-Validation directive Example: `@validate(method: METHOD[, OPTIONS])` is used to validate input values of GraphQL fields against specific rules defined in the directive. They are a way to ensure that the input data received by a GraphQL API meets certain criteria or constraints.
+[![Node.js CI](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml/badge.svg)](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml)
+
+Validation directive Example: `@validate(method: METHOD[, OPTIONS])` is used to validate input values of GraphQL fields against specific rules defined in the directive. 
 
 ```TypeScript 
 import val from "@graphql-directive/validator"
@@ -28,6 +30,37 @@ const schema = val.transform(makeExecutableSchema({
 const server = new ApolloServer({ schema })
 const { url } = await startStandaloneServer(server)
 console.log(`Server running at ${url}`)
+```
+
+## Validation Result 
+For each failed validation, server will throw `GraphQLError` with message `USER_INPUT_ERROR`. The detail error message can be seen in `extension.error` property like below. 
+
+```json
+{
+  "data": {},
+  "errors": [
+    {
+      "message": "USER_INPUT_ERROR",
+
+      /*  ....  */
+
+      "extensions": {
+        "error": [
+          {
+            "message": "Must have a length within the specified range",
+            "path": "addUser.user.name"
+          },
+          {
+            "message": "Must be a valid email address",
+            "path": "addUser.user.email"
+          }
+        ],
+        "code": "INTERNAL_SERVER_ERROR",
+        "stacktrace": [ ]
+      }
+    }
+  ]
+}
 ```
 
 ## Custom Error Message
