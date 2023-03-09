@@ -528,6 +528,42 @@ it("Should validate postal code properly", async () => {
     
 })
 
+it("Should validate regex properly", async () => {
+    const success = await run(`@validate(method: REGEX, pattern: "^[^\s@]+@[^\s@]+\.[^\s@]+$")`, "email@mail.com")
+    expect(success.data!.test).toBe(true)
+    const failed = await run(`@validate(method: REGEX, pattern: "^[^\s@]+@[^\s@]+\.[^\s@]+$")`, "notemail")
+    expect(failed.data).toBe(null)
+    expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: REGEX, pattern: "^[^\s@]+@[^\s@]+\.[^\s@]+$", message: "Custom message")`, "notemail")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+})
+
+it("Should validate slug properly", async () => {
+    const success = await run(`@validate(method: SLUG)`, "example-slug")
+    expect(success.data!.test).toBe(true)
+    const failed = await run(`@validate(method: SLUG)`, "not a slug")
+    expect(failed.data).toBe(null)
+    expect(failed.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: SLUG, message: "Custom message")`, "not a slug")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+})
+
+it("Should validate password properly", async () => {
+    const success = await run(`@validate(method: STRONG_PASSWORD)`, "AbCdef35*")
+    expect(success.data!.test).toBe(true)
+    const failed = await run(`@validate(method: STRONG_PASSWORD)`, "AbcD3")
+    expect(failed.data).toBe(null)
+    expect(failed.errors![0].extensions).toMatchSnapshot()
+    const failed2 = await run(`@validate(method: STRONG_PASSWORD, minLowercase: 0, minUppercase: 0, minNumbers: 0, minSymbols: 1)`, "abcdef")
+    expect(failed2.data).toBe(null)
+    expect(failed2.errors![0].extensions).toMatchSnapshot()
+    const message = await run(`@validate(method: STRONG_PASSWORD, message: "Custom message")`, "AbcD3")
+    expect(message.data).toBe(null)
+    expect(message.errors![0].extensions).toMatchSnapshot()
+})
+
 it("Should validate URL properly", async () => {
     const success = await run(`@validate(method: URL)`, "https://example.com")
     expect(success.data!.test).toBe(true)
@@ -537,7 +573,6 @@ it("Should validate URL properly", async () => {
     const message = await run(`@validate(method: URL, message: "Custom message")`, "notanurl")
     expect(message.data).toBe(null)
     expect(message.errors![0].extensions).toMatchSnapshot()
-    
 })
 
 it("Should validate UUID properly", async () => {
@@ -549,7 +584,6 @@ it("Should validate UUID properly", async () => {
     const message = await run(`@validate(method: UUID, message: "Custom message")`, "notauuid")
     expect(message.data).toBe(null)
     expect(message.errors![0].extensions).toMatchSnapshot()
-    
 })
 
 it("should validate variable width characters", async () => {
@@ -561,7 +595,6 @@ it("should validate variable width characters", async () => {
     const message = await run(`@validate(method: VARIABLE_WIDTH, message: "Custom message")`, "abcde")
     expect(message.data).toBe(null)
     expect(message.errors![0].extensions).toMatchSnapshot()
-    
 })
 
 it("should validate whitelisted characters", async () => {
@@ -573,7 +606,6 @@ it("should validate whitelisted characters", async () => {
     const message = await run(`@validate(method: WHITELISTED, chars: "abcdefghijklmnopqrstuvwxyz", message: "Custom message")`, "ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     expect(message.data).toBe(null)
     expect(message.errors![0].extensions).toMatchSnapshot()
-    
 })
 
 it("should validate surrogate pairs", async () => {
@@ -585,7 +617,6 @@ it("should validate surrogate pairs", async () => {
     const message = await run(`@validate(method: SURROGATE_PAIR, message: "Custom message")`, "")
     expect(message.data).toBe(null)
     expect(message.errors![0].extensions).toMatchSnapshot()
-    
 })
 
 it("should validate uppercase characters", async () => {
@@ -597,6 +628,5 @@ it("should validate uppercase characters", async () => {
     const message = await run(`@validate(method: UPPERCASE, message: "Custom message")`, "abcdefghijklmnopqrstuvwxyz")
     expect(message.data).toBe(null)
     expect(message.errors![0].extensions).toMatchSnapshot()
-    
 })
 

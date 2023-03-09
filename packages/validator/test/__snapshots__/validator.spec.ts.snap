@@ -924,6 +924,39 @@ exports[`Should validate numeric characters properly 2`] = `
 }
 `;
 
+exports[`Should validate password properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must have at least 8 chars and combination of lowercase number symbol uppercase",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate password properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Must have at least 8 chars and combination of symbol",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate password properly 3`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
 exports[`Should validate port number properly 1`] = `
 {
   "error": [
@@ -958,6 +991,50 @@ exports[`Should validate postal code properly 1`] = `
 `;
 
 exports[`Should validate postal code properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate regex properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid postal code",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate regex properly 2`] = `
+{
+  "error": [
+    {
+      "message": "Custom message",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate slug properly 1`] = `
+{
+  "error": [
+    {
+      "message": "Must be a valid slug",
+      "path": "test.val",
+    },
+  ],
+}
+`;
+
+exports[`Should validate slug properly 2`] = `
 {
   "error": [
     {
