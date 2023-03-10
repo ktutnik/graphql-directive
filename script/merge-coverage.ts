@@ -15,6 +15,9 @@ if (os.platform() === 'win32') {
   args.push(`$(find packages -name 'coverage*.json')`);
 }
 
+args.push("--report html")
+args.push("--report lcov")
+
 // Execute the command as a child process
 const childProcess = spawn(command, args);
 
