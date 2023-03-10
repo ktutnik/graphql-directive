@@ -9,7 +9,14 @@
     "build": "tsc",
     "clean": "trash lib coverage"
   },
-  "keywords": [],
+  "keywords": [
+    "graphql",
+    "validate",
+    "validation",
+    "validator",
+    "directive",
+    "graphql-directive"
+  ],
   "author": "I Ketut Sandiarsa",
   "license": "MIT",
   "peerDependencies": {
