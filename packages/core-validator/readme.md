@@ -1,5 +1,8 @@
 # Core Validator
 
+[![Node.js CI](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml/badge.svg)](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml)
+[![Coverage Status](https://coveralls.io/repos/github/ktutnik/graphql-directive/badge.svg?branch=master)](https://coveralls.io/github/ktutnik/graphql-directive?branch=master)
+
 The core validator is a critical part of the validator directive in GraphQL that validates user-supplied values. It is highly extensible and enables effective validation of complex data structures. It also provides detailed error messages that aid in debugging.
 
 ## Extending Validation Logic
