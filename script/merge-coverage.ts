@@ -1,37 +1,24 @@
-import { spawn } from 'child_process';
-import os from 'os';
+import { createCoverageMap } from 'istanbul-lib-coverage';
+import { readFileSync, writeFileSync } from 'fs';
+import {globSync} from 'glob';
+import path from 'path'
+import mkdirp from 'mkdirp'
 
-// Define the command and arguments
-const command = 'istanbul-merge';
-let args = [
-  '--out',
-  'coverage/coverage-final.json',
-];
+const coverageFilesPattern = 'packages/**/coverage-final.json';
+const outputFile = 'coverage/coverage-final.json'
 
-// Check the operating system and set the arguments accordingly
-if (os.platform() === 'win32') {
-  args.push('$(for /r packages %i in (coverage*.json) do @echo %i)');
-} else {
-  args.push(`$(find packages -name 'coverage*.json')`);
-}
+const coverageFiles = globSync(coverageFilesPattern);
 
-args.push("--report html")
-args.push("--report lcov")
+const mergedCoverageMap = createCoverageMap({})
 
-// Execute the command as a child process
-const childProcess = spawn(command, args);
-
-// Log the output of the command to the console
-childProcess.stdout.on('data', data => {
-  console.log(data.toString());
+coverageFiles.forEach(file => {
+  const coverage = JSON.parse(readFileSync(file, 'utf8'));
+  mergedCoverageMap.merge(coverage)
 });
 
-// Log any errors that occur during execution
-childProcess.stderr.on('data', data => {
-  console.error(data.toString());
-});
+const output = path.resolve(outputFile);
+mkdirp.sync(path.dirname(output));
 
-// Log a message when the command has finished executing
-childProcess.on('close', code => {
-  console.log(`Command exited with code ${code}`);
-});
+writeFileSync(output, JSON.stringify(mergedCoverageMap));
+
+console.log('Coverage files merged successfully');
