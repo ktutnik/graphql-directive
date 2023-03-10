@@ -1,6 +1,6 @@
 {
   "name": "@graphql-directive/validator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A validator.js wrapper for GraphQL validation directive",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -16,19 +16,21 @@
     "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    "@graphql-directive/core-validator": "^0.0.0",
+    "@graphql-directive/core-validator": "^1.0.0",
     "@types/validator": "^13.7.12",
     "validator": "^13.9.0"
   },
-  "funding":["https://github.com/sponsors/ktutnik"],
+  "funding": [
+    "https://github.com/sponsors/ktutnik"
+  ],
   "devDependencies": {
+    "@graphql-tools/schema": "^9.0.16",
     "@types/jest": "^29.4.0",
-    "jest": "^29.4.3",
-    "ts-jest": "^29.0.5",
-    "ts-node": "^10.9.1",
-    "trash-cli": "^5.0.0",
     "graphql": "^16.6.0",
-    "@graphql-tools/schema": "^9.0.16"
+    "jest": "^29.4.3",
+    "trash-cli": "^5.0.0",
+    "ts-jest": "^29.0.5",
+    "ts-node": "^10.9.1"
   },
   "bugs": {
     "url": "https://github.com/ktutnik/graphql-directive/issues"

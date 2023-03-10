@@ -1,6 +1,6 @@
 {
   "name": "@graphql-directive/core-validator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "The core validator is a critical part of the validator directive in GraphQL that validates user-supplied values. It is highly extensible and enables effective validation of complex data structures. It also provides detailed error messages that aid in debugging.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -19,17 +19,19 @@
     "@graphql-tools/utils": "^9.2.1"
   },
   "devDependencies": {
-    "@types/validator": "^13.7.12",
-    "validator": "^13.9.0",
+    "@graphql-tools/schema": "^9.0.16",
     "@types/jest": "^29.4.0",
+    "@types/validator": "^13.7.12",
+    "graphql": "^16.6.0",
     "jest": "^29.4.3",
+    "trash-cli": "^5.0.0",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
-    "trash-cli": "^5.0.0",
-    "graphql": "^16.6.0",
-    "@graphql-tools/schema": "^9.0.16"
+    "validator": "^13.9.0"
   },
-  "funding":["https://github.com/sponsors/ktutnik"],
+  "funding": [
+    "https://github.com/sponsors/ktutnik"
+  ],
   "bugs": {
     "url": "https://github.com/ktutnik/graphql-directive/issues"
   },
