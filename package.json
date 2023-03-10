@@ -7,7 +7,7 @@
     "build": "yarn workspaces run build",
     "clean": "yarn workspaces run clean",
     "publish:canary": "yarn build && npx lerna publish --canary",
-    "precoverage": "istanbul-merge --out coverage/coverage-final.json $(find packages -name 'coverage*.json')",
+    "precoverage": "ts-node script/merge-coverage.ts",
     "coverage": "npx istanbul report --include coverage/coverage-final.json --dir coverage --report html --report lcov",
     "posttest": "yarn coverage"
   },
@@ -20,7 +20,8 @@
     "prettier": "^2.6.2",
     "typescript": "^4.9.5",
     "istanbul": "^0.4.5",
-    "istanbul-merge": "^1.1.1"
+    "istanbul-merge": "^1.1.1",
+    "ts-node": "^10.9.1"
   },
   "workspaces": {
     "packages": [
