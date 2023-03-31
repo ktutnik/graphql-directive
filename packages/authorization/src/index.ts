@@ -6,11 +6,6 @@ import { getDirectiveValues, GraphQLInputObjectType, GraphQLInputObjectTypeConfi
 // ====================================================== //
 
 
-interface InvocationContext {
-    path: string
-    parentValue: any
-    resolverArgs: [any, any, any, GraphQLResolveInfo]
-}
 
 type Invocable = (value: any, ctx: InvocationContext) => Promise<any>
 
@@ -44,15 +39,28 @@ export { GraphQLSchema }
 // ====================== FUNCTIONS ===================== //
 // ====================================================== //
 
-type MapperHook<T> = (config: GraphQLInputFieldConfig | GraphQLArgumentConfig, name: string, type: string, sch:GraphQLSchema) => T
+interface InvocationContext {
+    path: string
+    parentValue: any
+    mapperArgs: {
+        config: GraphQLInputFieldConfig | GraphQLArgumentConfig, 
+        name: string, 
+        type: string, 
+        schema: GraphQLSchema
+    }
+    resolverArgs: [any, any, any, GraphQLResolveInfo]
+}
+
+type MapperHook<T> = (value:any, ctx: InvocationContext) => T
 type Invoker<T> = (args:GraphQLFieldConfigArgumentMap) => T
 
-function createFieldArgumentInvoker<T>(hook:MapperHook<T>): [SchemaMapper, Invoker<T>] {
+function createDirectiveInvoker<T>(hook:MapperHook<T>): [SchemaMapper, Invoker<T>] {
+
     return [{}, ()]
 }
 
 const transform = (schema: GraphQLSchema): GraphQLSchema => {
-    const [mapper, invoke] = createFieldArgumentInvoker((config) => {
+    const [mapper, invoke] = createDirectiveInvoker((value, ctx) => {
 
     })
 
