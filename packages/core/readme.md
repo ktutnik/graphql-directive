@@ -3,7 +3,7 @@
 [![Node.js CI](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml/badge.svg)](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/ktutnik/graphql-directive/badge.svg?branch=master)](https://coveralls.io/github/ktutnik/graphql-directive?branch=master)
 
-The core validator is a critical part of the validator directive in GraphQL that validates user-supplied values. It is highly extensible and enables effective validation of complex data structures. It also provides detailed error messages that aid in debugging.
+Provides reusable functions for adding directive functionality to a GraphQL schema using schema transformation. It contains basic building blocks that can be used by other packages to easily incorporate directive functionality into their own GraphQL schemas. With this library, developers can easily define custom directives with specific functionality, such as authorization or caching, and seamlessly integrate them into their GraphQL schema. This library is designed to streamline the process of working with GraphQL directives, making it easier for developers to add powerful functionality to their GraphQL APIs.
 
 ## Extending Validation Logic
 To create a custom validation directive, you need to provide two things: The plugin that is your own validation implementations to extend the validation core, and the directive schema. 
