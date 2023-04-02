@@ -1,4 +1,4 @@
-# Core Validator
+# GraphQL Directive Core Functions
 
 [![Node.js CI](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml/badge.svg)](https://github.com/ktutnik/graphql-directive/actions/workflows/test.yml)
 [![Coverage Status](https://coveralls.io/repos/github/ktutnik/graphql-directive/badge.svg?branch=master)](https://coveralls.io/github/ktutnik/graphql-directive?branch=master)
@@ -19,7 +19,7 @@ The EMAIL method will validate that a given field value is a valid email address
 
 ```typescript
 import val from "validator"
-import { createTransformer, Plugins } from "@graphql-directive/core-validator"
+import { createValidatorTransformer, Plugins } from "@graphql-directive/core"
 
 // plugins, the logic to validate field
 const plugins:Plugins = {
@@ -47,7 +47,7 @@ const typeDefs = `
 `
 
 // transformer function that will glue the directive with the validation logic
-const transform = createTransformer({ plugins, directive: "validate" })
+const transform = createValidatorTransformer({ plugins, directive: "validate" })
 ```
 
 The plugins are a key-value object consisting of plugin method names and their validation logic
@@ -101,7 +101,7 @@ directive @validate(
 ) repeatable on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
 ```
 
-The last step is creating the transform function by calling the `createTransformer`. The first parameter is the plugins and the last parameter is the name of the directive in this case is `validate`.  
+The last step is creating the transform function by calling the `createValidatorTransformer`. The first parameter is the plugins and the last parameter is the name of the directive in this case is `validate`.  
 
 > IMPORTANT
 >

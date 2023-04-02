@@ -23,7 +23,7 @@
     "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    "@graphql-directive/core-validator": "^1.0.0",
+    "@graphql-directive/core": "^0.0.0",
     "@types/validator": "^13.7.12",
     "validator": "^13.9.0"
   },
