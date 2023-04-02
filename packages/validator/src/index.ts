@@ -1,4 +1,4 @@
-import { createTransformer, Plugins } from "@graphql-directive/core-validator"
+import { createValidatorTransformer, Plugins } from "@graphql-directive/core"
 import "graphql"
 import val from "validator"
 
@@ -361,5 +361,5 @@ const plugins: Plugins = {
 
 export default {
     typeDefs,
-    transform: createTransformer({ plugins, directive: "validate" })
+    transform: createValidatorTransformer({ plugins, directive: "validate" })
 };

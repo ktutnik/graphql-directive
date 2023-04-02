@@ -7,6 +7,23 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "jest /core",
+            "cwd": "${workspaceFolder}/packages/core",
+            "program": "node_modules/.bin/jest",
+            "args": [
+                "${fileBasenameNoExtension}",
+                "--runInBand",
+                "--config",
+                "jest.config.debug.ts",
+                "--testTimeout",
+                "1000000"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "jest /validator",
             "cwd": "${workspaceFolder}/packages/validator",
             "program": "node_modules/.bin/jest",

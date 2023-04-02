@@ -1,7 +1,31 @@
+import validator from "validator"
+import { createValidatorTransformer, Plugins } from "../src"
 import { makeExecutableSchema } from "@graphql-tools/schema"
 import { graphql } from "graphql"
-import { Plugins } from "../src"
-import val from "./harness"
+
+const typeDefs = /* GraphQL */ `
+    enum ValidationMethod {
+        EMAIL, LENGTH, CUSTOM
+    }
+    directive @validate(
+        method: ValidationMethod!, 
+        validator:String,
+        min:Int,
+        max:Int
+    ) repeatable on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION
+`
+
+const plugins: Plugins = {
+    EMAIL: (str, ctx) => validator.isEmail(str)
+        || `Must be a valid email address`,
+
+    LENGTH: (str, ctx) => validator.isLength(str, ctx.directiveArgs)
+        || `Must be a string or array between ${ctx.directiveArgs?.min ?? 0} and ${ctx.directiveArgs?.max}`,
+
+}
+
+const val = { typeDefs, transform: createValidatorTransformer({ plugins, directive: "validate" }) }
+
 
 
 describe("Mutation Validation", () => {
@@ -191,7 +215,7 @@ describe("Custom Validator", () => {
         expect(err.errors![0].extensions).toMatchSnapshot()
 
         const success = await graphql({ schema, source: `mutation { checkEmail(email: "mail@mail.com") }` })
-        expect(err.errors![0].extensions).toMatchSnapshot()
+        expect(success.errors![0].extensions).toMatchSnapshot()
     })
 
     it("Should able to access context from custom validator", async () => {

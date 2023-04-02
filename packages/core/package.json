@@ -1,13 +1,19 @@
 {
-  "name": "@graphql-directive/authorization",
-  "version": "1.0.0",
-  "description": "An authorization directive for GraphQL",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "name": "@graphql-directive/core",
+  "version": "0.0.0",
+  "description": "GraphQL directive core functions",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "jest",
     "build": "tsc",
     "clean": "trash lib coverage"
+  },
+  "exports": {
+    "./validator": {
+      "main": "./lib/validator.js",
+      "types": "./lib/validator.d.ts"
+    }
   },
   "keywords": [
     "graphql",
@@ -24,7 +30,7 @@
     "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    
+    "@graphql-tools/utils": "^9.2.1"
   },
   "funding": [
     "https://github.com/sponsors/ktutnik"
@@ -36,7 +42,9 @@
     "jest": "^29.4.3",
     "trash-cli": "^5.0.0",
     "ts-jest": "^29.0.5",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.1",
+    "@types/validator": "^13.7.12",
+    "validator": "^13.9.0"
   },
   "bugs": {
     "url": "https://github.com/ktutnik/graphql-directive/issues"

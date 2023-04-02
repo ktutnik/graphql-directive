@@ -4,6 +4,7 @@
   "license": "MIT",
   "scripts": {
     "test": "yarn workspaces run test",
+    "prebuild": "yarn clean",
     "build": "yarn workspaces run build",
     "clean": "yarn workspaces run clean",
     "publish:canary": "yarn build && npx lerna publish --canary",

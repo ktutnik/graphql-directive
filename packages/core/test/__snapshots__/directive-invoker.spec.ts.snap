@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Type Should call directive with array of custom type properly 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.0.email",
+    },
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.1.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Type Should call directive with custom type properly 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Type Should call directive with multiple directive 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+        {
+          "min": 20,
+        },
+      ],
+      "path": "user.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Type Should call directive with with nested array properties 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.email",
+    },
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.partners.0.email",
+    },
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.partners.1.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Type Should call directive with with nested properties 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.email",
+    },
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.partner.email",
+    },
+  ],
+}
+`;
+
+exports[`Custom Type Should not calling directive if provided null on nested properties 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "user.email",
+    },
+  ],
+}
+`;
+
+exports[`Primitive Type Should able to set multiple directives 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+        {
+          "min": 20,
+        },
+      ],
+      "path": "email",
+    },
+  ],
+}
+`;
+
+exports[`Primitive Type Should call directive with array of primitive type properly 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "email.0",
+    },
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "email.1",
+    },
+  ],
+}
+`;
+
+exports[`Primitive Type Should call directive with non nullable array of non nullable primitive type properly 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "email.0",
+    },
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "email.1",
+    },
+  ],
+}
+`;
+
+exports[`Primitive Type Should call directive with non nullable array of primitive type properly 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "email.0",
+    },
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "email.1",
+    },
+  ],
+}
+`;
+
+exports[`Primitive Type Should call directive with primitive type properly 1`] = `
+{
+  "error": [
+    {
+      "directives": [
+        {
+          "max": 200,
+          "min": 1,
+        },
+      ],
+      "path": "email",
+    },
+  ],
+}
+`;
+
+exports[`Primitive Type Should should not calling directive when value is empty 1`] = `
+{
+  "error": [],
+}
+`;
