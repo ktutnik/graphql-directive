@@ -5,7 +5,7 @@
   "scripts": {
     "test": "yarn workspaces run test",
     "prebuild": "yarn clean",
-    "build": "yarn workspaces run build",
+    "build": "nx run-many --target=build",
     "clean": "yarn workspaces run clean",
     "publish:canary": "yarn build && npx lerna publish --canary",
     "publish:stable": "yarn build && yarn test && npx lerna publish --conventional-commits --create-release github",

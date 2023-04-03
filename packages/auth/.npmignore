@@ -1,0 +1,10 @@
+test
+src
+coverage
+.npmignore
+tsconfig.json
+jest.config.debug.ts 
+jest.config.ts 
+package-lock.json
+yarn-error.log
+yarn.lock

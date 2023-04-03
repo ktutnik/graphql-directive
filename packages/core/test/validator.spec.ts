@@ -26,8 +26,6 @@ const plugins: Plugins = {
 
 const val = { typeDefs, transform: createValidatorTransformer({ plugins, directive: "validate" }) }
 
-
-
 describe("Mutation Validation", () => {
     it("Should validate argument with primitive type properly", async () => {
         const typeDefs = /* GraphQL */ `
