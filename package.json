@@ -7,7 +7,7 @@
     "prebuild": "yarn clean",
     "build": "nx run-many --target=build",
     "clean": "yarn workspaces run clean",
-    "publish:canary": "yarn build && npx lerna publish --canary",
+    "publish:canary": "yarn build && npx lerna publish --canary --force-publish",
     "publish:stable": "yarn build && yarn test && npx lerna publish --conventional-commits --create-release github",
     "precoverage": "ts-node script/merge-coverage.ts",
     "coverage": "npx istanbul report --include coverage/coverage-final.json --dir coverage --report html --report lcov",
