@@ -1,0 +1,416 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Mutation authorization On field argument Should able to apply multiple directives 1`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Mutation authorization On field argument Should authorize with proper role 1`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Mutation authorization On field argument Should throw error when specify invalid policy name 1`] = `[GraphQLError: Unknown policy "superadmin" on test.role]`;
+
+exports[`Mutation authorization On field argument Should work on array type 1`] = `
+{
+  "paths": [
+    "test.role.0",
+    "test.role.1",
+  ],
+}
+`;
+
+exports[`Mutation authorization On input type field Should able to apply in array type 1`] = `
+{
+  "paths": [
+    "test.user.0.role",
+    "test.user.1.role",
+  ],
+}
+`;
+
+exports[`Mutation authorization On input type field Should able to apply in array type 2`] = `
+{
+  "paths": [
+    "test.user.0.role",
+  ],
+}
+`;
+
+exports[`Mutation authorization On input type field Should able to apply multiple directives 1`] = `
+{
+  "paths": [
+    "test.user.role",
+  ],
+}
+`;
+
+exports[`Mutation authorization On input type field Should authorize with proper role 1`] = `
+{
+  "paths": [
+    "test.user.role",
+  ],
+}
+`;
+
+exports[`Mutation authorization On input type field Should throw error when specify invalid policy name 1`] = `[GraphQLError: Unknown policy "superadmin" on test.user.role]`;
+
+exports[`Mutation authorization On mutation field Should able to apply multiple directives 1`] = `
+{
+  "paths": [
+    "test",
+  ],
+}
+`;
+
+exports[`Mutation authorization On mutation field Should authorize with proper role 1`] = `
+{
+  "paths": [
+    "test",
+  ],
+}
+`;
+
+exports[`Mutation authorization On mutation field Should throw error when specify invalid policy name 1`] = `[GraphQLError: Unknown policy "superadmin" on test]`;
+
+exports[`Query authorization Applied on query field argument Should able to apply multiple directives 1`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Query authorization Applied on query field argument Should authorize with proper role 1`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Query authorization Applied on query field argument Should throw error when specify invalid policy name 1`] = `[GraphQLError: Unknown policy "superadmin" on test.role]`;
+
+exports[`Query authorization Filter mode Applied on array of complex type property Should authorize with multiple directives 1`] = `
+[
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+]
+`;
+
+exports[`Query authorization Filter mode Applied on array of complex type property Should authorize with multiple directives 2`] = `
+[
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+]
+`;
+
+exports[`Query authorization Filter mode Applied on array of complex type property Should authorize with multiple directives 3`] = `
+[
+  {
+    "name": "Wayan Koster",
+    "role": null,
+  },
+  {
+    "name": "Wayan Koster",
+    "role": null,
+  },
+]
+`;
+
+exports[`Query authorization Filter mode Applied on array of complex type property Should authorize with proper role 1`] = `
+[
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+]
+`;
+
+exports[`Query authorization Filter mode Applied on array of complex type property Should authorize with proper role 2`] = `
+[
+  {
+    "name": "Wayan Koster",
+    "role": null,
+  },
+  {
+    "name": "Wayan Koster",
+    "role": null,
+  },
+]
+`;
+
+exports[`Query authorization Filter mode Applied on array of complex type property Should throw error when applied on non nullable type 1`] = `"Nullable data type is required on User.role when Filter resolution enable"`;
+
+exports[`Query authorization Filter mode Applied on complex type property Should authorize with multiple directives 1`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization Filter mode Applied on complex type property Should authorize with multiple directives 2`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization Filter mode Applied on complex type property Should authorize with multiple directives 3`] = `
+{
+  "name": "Wayan Koster",
+  "role": null,
+}
+`;
+
+exports[`Query authorization Filter mode Applied on complex type property Should authorize with proper role 1`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization Filter mode Applied on complex type property Should authorize with proper role 2`] = `
+{
+  "name": "Wayan Koster",
+  "role": null,
+}
+`;
+
+exports[`Query authorization Filter mode Applied on complex type property Should throw error when applied on non nullable type 1`] = `"Nullable data type is required on User.role when Filter resolution enable"`;
+
+exports[`Query authorization Filter mode Applied on nested complex type property Should authorize with multiple directives 1`] = `
+{
+  "name": "Wayan Koster",
+  "partner": {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization Filter mode Applied on nested complex type property Should authorize with multiple directives 2`] = `
+{
+  "name": "Wayan Koster",
+  "partner": {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization Filter mode Applied on nested complex type property Should authorize with multiple directives 3`] = `
+{
+  "name": "Wayan Koster",
+  "partner": {
+    "name": "Wayan Koster",
+    "role": null,
+  },
+  "role": null,
+}
+`;
+
+exports[`Query authorization Filter mode Applied on nested complex type property Should authorize with proper role 1`] = `
+{
+  "name": "Wayan Koster",
+  "partner": {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization Filter mode Applied on nested complex type property Should authorize with proper role 2`] = `
+{
+  "name": "Wayan Koster",
+  "partner": {
+    "name": "Wayan Koster",
+    "role": null,
+  },
+  "role": null,
+}
+`;
+
+exports[`Query authorization Filter mode Applied on nested complex type property Should throw error when applied on non nullable type 1`] = `"Nullable data type is required on User.role when Filter resolution enable"`;
+
+exports[`Query authorization Filter mode Applied on query field with primitive type Should throw error when provided non null type 1`] = `"Nullable data type is required on Query.test when Filter resolution enable"`;
+
+exports[`Query authorization ThrowError mode Applied on array of complex type property Should authorize with multiple directives 1`] = `
+[
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+]
+`;
+
+exports[`Query authorization ThrowError mode Applied on array of complex type property Should authorize with multiple directives 2`] = `
+[
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+]
+`;
+
+exports[`Query authorization ThrowError mode Applied on array of complex type property Should authorize with multiple directives 3`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on array of complex type property Should authorize with proper role 1`] = `
+[
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+  {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+]
+`;
+
+exports[`Query authorization ThrowError mode Applied on array of complex type property Should authorize with proper role 2`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on complex type property Should authorize with multiple directives 1`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on complex type property Should authorize with multiple directives 2`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on complex type property Should authorize with multiple directives 3`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on complex type property Should authorize with proper role 1`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on complex type property Should authorize with proper role 2`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on nested complex type property Should authorize with multiple directives 1`] = `
+{
+  "name": "Wayan Koster",
+  "partner": {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on nested complex type property Should authorize with multiple directives 2`] = `
+{
+  "name": "Wayan Koster",
+  "partner": {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on nested complex type property Should authorize with multiple directives 3`] = `
+{
+  "paths": [
+    "test.partner.role",
+  ],
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on nested complex type property Should authorize with proper role 1`] = `
+{
+  "name": "Wayan Koster",
+  "partner": {
+    "name": "Wayan Koster",
+    "role": "admin",
+  },
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on nested complex type property Should authorize with proper role 2`] = `
+{
+  "paths": [
+    "test.partner.role",
+  ],
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on query field with primitive type Should authorize with multiple directives 1`] = `
+{
+  "paths": [
+    "test",
+  ],
+}
+`;
+
+exports[`Query authorization ThrowError mode Applied on query field with primitive type Should authorize with proper role 1`] = `
+{
+  "paths": [
+    "test",
+  ],
+}
+`;

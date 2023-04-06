@@ -41,8 +41,8 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "jest /core-validator",
-            "cwd": "${workspaceFolder}/packages/core-validator",
+            "name": "jest /auth",
+            "cwd": "${workspaceFolder}/packages/auth",
             "program": "node_modules/.bin/jest",
             "args": [
                 "${fileBasenameNoExtension}",

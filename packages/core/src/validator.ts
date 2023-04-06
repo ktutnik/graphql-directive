@@ -1,7 +1,7 @@
 import { MapperKind, mapSchema } from "@graphql-tools/utils"
 import { GraphQLError, GraphQLSchema, defaultFieldResolver } from "graphql"
 import { Path } from "graphql/jsutils/Path"
-import { InvocationContext, createDirectiveInvoker } from "./directive-invoker"
+import { InvocationContext, createDirectiveInvokerPipeline } from "./directive-invoker"
 
 // ====================================================== //
 // ======================== TYPES ======================= //
@@ -49,9 +49,6 @@ export type ValidatorContext = Omit<InvocationContext, "directives"> & {
 }
 
 
-export { GraphQLSchema }
-
-
 // ====================================================== //
 // ====================== FUNCTIONS ===================== //
 // ====================================================== //
@@ -59,7 +56,7 @@ export { GraphQLSchema }
 const transform = (schema: GraphQLSchema, options: TransformerOptions): GraphQLSchema => {
     const getPath = (path: Path | undefined): string => !!path ? [getPath(path.prev), path.key].filter(Boolean).join(".") : ""
     
-    const invoker = createDirectiveInvoker("validate", async (value, { directives, ...ctx}) => {
+    const invoker = createDirectiveInvokerPipeline("validate", async (value, { directives, ...ctx}) => {
         const result = await Promise.all(directives.map(directive => {
             return options.plugins[directive.method](value, { ...ctx, directiveArgs: directive, options })
         }))

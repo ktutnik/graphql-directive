@@ -1,7 +1,7 @@
 import { makeExecutableSchema } from "@graphql-tools/schema"
 import { MapperKind, mapSchema } from "@graphql-tools/utils"
-import { GraphQLError, graphql } from "graphql"
-import { GraphQLSchema, createDirectiveInvoker } from "../src"
+import { GraphQLError, GraphQLSchema, graphql } from "graphql"
+import { createDirectiveInvokerPipeline } from "../src"
 
 const typeDefs = /* GraphQL */ `
     enum ValidationMethod {
@@ -14,7 +14,7 @@ const typeDefs = /* GraphQL */ `
 `
 
 const transform = (schema: GraphQLSchema): GraphQLSchema => {
-    const invoker = createDirectiveInvoker("test", async (value, ctx) => {
+    const invoker = createDirectiveInvokerPipeline("test", async (value, ctx) => {
         return [{ path: ctx.path, directives: ctx.directives }]
     })
 
