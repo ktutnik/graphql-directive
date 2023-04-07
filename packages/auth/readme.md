@@ -37,14 +37,14 @@ const typeDefs = `
 
 const transform = auth.createTransformer({
     policies: {
-        admin: ({ contextValue }) => contextValue.user.role === "admin"
+        admin: ({ contextValue }) => contextValue.user.role === "admin",
         isLogin: ({ contextValue }) => !!contextValue.user
     }
 })
 
 const schema = transform(makeExecutableSchema({
     typeDefs: [auth.typeDefs, typeDefs],
-    resolver: {
+    resolvers: {
         Query: { getUsers: () => ([]) },
         Mutation: {
             addUser: () => true,
