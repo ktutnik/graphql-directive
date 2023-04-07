@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/ktutnik/graphql-directive/compare/@graphql-directive/validator@1.0.0...@graphql-directive/validator@2.0.0) (2023-04-07)
+
+### Features
+
+- **validator:** Create core logic that is reusable for validator and authorizer ([#31](https://github.com/ktutnik/graphql-directive/issues/31)) ([48cd65f](https://github.com/ktutnik/graphql-directive/commit/48cd65f681aacf4f3d42acb98864af828e8f52d9))
+
 # 1.0.0 (2023-03-10)
 
 ### Bug Fixes
