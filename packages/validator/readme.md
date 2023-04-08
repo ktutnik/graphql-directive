@@ -42,9 +42,6 @@ For each failed validation, server will throw `GraphQLError` with message `USER_
   "errors": [
     {
       "message": "USER_INPUT_ERROR",
-
-      /*  ....  */
-
       "extensions": {
         "error": [
           {
