@@ -1,6 +1,6 @@
 {
   "name": "@graphql-directive/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "GraphQL directive core functions",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
