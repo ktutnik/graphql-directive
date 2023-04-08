@@ -11,22 +11,24 @@
     "publish:stable": "yarn build && yarn test && npx lerna publish --conventional-commits --create-release github",
     "precoverage": "ts-node script/merge-coverage.ts",
     "coverage": "npx istanbul report --include coverage/coverage-final.json --dir coverage --report html --report lcov",
-    "posttest": "yarn coverage"
+    "posttest": "yarn coverage",
+    "upgrade": "ncu -u --deep"
   },
   "private": true,
   "devDependencies": {
     "@nrwl/nx-cloud": "latest",
-    "@types/jest": "^29.4.0",
-    "lerna": "^6.5.1",
+    "@types/jest": "^29.5.0",
+    "lerna": "^6.6.1",
     "nx": "15.7.2",
-    "prettier": "^2.6.2",
-    "typescript": "^4.9.5",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.4",
     "istanbul": "^0.4.5",
     "istanbul-lib-coverage": "^3.2.0",
     "@types/istanbul-lib-coverage": "^2.0.4",
-    "glob": "^9.2.1",
+    "glob": "^9.3.4",
     "ts-node": "^10.9.1",
-    "mkdirp": "^2.1.5"
+    "mkdirp": "^2.1.6",
+    "npm-check-updates": "^16.10.7"
   },
   "workspaces": {
     "packages": [
