@@ -9,11 +9,11 @@ const typeDefs = /* GraphQL */ `
     ) on INPUT_FIELD_DEFINITION | ARGUMENT_DEFINITION | FIELD_DEFINITION
 `
 
-type AuthorizeContext = Omit<InvocationContext, "directives"> & { directiveArgs: any }
+export type AuthorizeContext = Omit<InvocationContext, "directives"> & { directiveArgs: any }
 
-type PolicyFunction = (ctx: AuthorizeContext) => boolean | Promise<boolean>
+export type PolicyFunction = (ctx: AuthorizeContext) => boolean | Promise<boolean>
 
-type AuthorizeOptions = {
+export type AuthorizeOptions = {
     policies: Record<string, PolicyFunction>
     queryResolution: "ThrowError" | "Filter"
 }
@@ -76,5 +76,5 @@ const createTransformer = (options: Partial<AuthorizeOptions>) => {
 }
 
 export default {
-    typeDefs, createTransformer
+    typeDefs, createTransformer, 
 }
