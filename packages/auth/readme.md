@@ -107,7 +107,42 @@ const { url } = await startStandaloneServer(server, {
 console.log(`Server running at ${url}`)
 ```
 
-## Query Resolution
+## API Documentation
+
+### createTransformer
+The `createTransformer` function is a higher-order function that returns a function to transform a `GraphQLSchema`. The returned function takes a `GraphQLSchema` and returns a new transformed schema.
+
+#### Arguments
+* `options` (optional): An object that can contain the following properties:
+    * `policies`: A record of policy functions. Each policy function takes an AuthorizeContext object as an argument and returns a boolean or a promise that resolves to a boolean. Default is an empty object.
+    * `queryResolution`: A string that specifies how the result will be resolved when unauthorized user access a field. Possible values are `"ThrowError"` and `"Filter"`. Default is `"Filter"`. `ThrowError` 
+#### Return value
+The `createTransformer` function returns a transformer function that takes a `GraphQLSchema` and returns a new transformed schema.
+
+### Policies
+`policies` property is a key-value object consist of authorization policy logic. It takes an `AuthorizeContext` object as input and returns a `boolean` or a `Promise<boolean>` that resolves to a boolean indicating whether the user is authorized to perform the requested operation.
+
+```typescript
+type PolicyFunction = (ctx: AuthorizationContext) => boolean | Promise<boolean>
+```
+
+The `AuthorizeContext` object has the following properties:
+
+
+* `path`: The location of where validator applied from the root path through the GraphQL fields
+
+* `contextValue`: An object shared across all resolvers that are executing for a particular operation. Use this to share per-operation state, including authentication information, dataloader instances, and anything else to track across resolvers.
+
+* `parent`: The return value of the resolver for this field's parent (i.e., the previous resolver in the resolver chain). 
+
+* `args`: An object that contains all GraphQL arguments provided for this field.
+
+* `info`: Contains information about the operation's execution state, including the field name, the path to the field from the root, and more.
+
+* `directiveArgs`: Object that is passed into the directive, for example if the directive is `@authorize(policy: "Admin, User")`, the value is `{ policy: "Admin, User" }`
+
+
+### Query Resolution
 Query resolution is how the query resolved based on user authorization. There are two resolution logic provided: `ThrowError` and `Filter`.
 
 By default the query resolution used is `Filter`, its mean that if a user doesn't have access to protected field, server will filter the value by returning `null`. Based on example above, below query will behave differently based on user role.
@@ -141,39 +176,3 @@ For `Admin`, above query will return a complete result including the `role`. But
   ]
 }
 ```
-
-## API Documentation
-
-### createTransformer
-The `createTransformer` function is a higher-order function that returns a function to transform a `GraphQLSchema`. The returned function takes a `GraphQLSchema` and returns a new transformed schema.
-
-
-
-#### Arguments
-* `options` (optional): An object that can contain the following properties:
-    * `policies`: A record of policy functions. Each policy function takes an AuthorizeContext object as an argument and returns a boolean or a promise that resolves to a boolean. Default is an empty object.
-    * `queryResolution`: A string that specifies how the result will be resolved when unauthorized user access a field. Possible values are `"ThrowError"` and `"Filter"`. Default is `"Filter"`. `ThrowError` 
-#### Return value
-The `createTransformer` function returns a transformer function that takes a `GraphQLSchema` and returns a new transformed schema.
-
-### Policies
-`policies` property is a key-value object consist of authorization policy logic. It takes an `AuthorizeContext` object as input and returns a `boolean` or a `Promise<boolean>` that resolves to a boolean indicating whether the user is authorized to perform the requested operation.
-
-```typescript
-type PolicyFunction = (ctx: AuthorizationContext) => boolean | Promise<boolean>
-```
-
-The `AuthorizeContext` object has the following properties:
-
-
-* `path`: The location of where validator applied from the root path through the GraphQL fields
-
-* `contextValue`: An object shared across all resolvers that are executing for a particular operation. Use this to share per-operation state, including authentication information, dataloader instances, and anything else to track across resolvers.
-
-* `parent`: The return value of the resolver for this field's parent (i.e., the previous resolver in the resolver chain). 
-
-* `args`: An object that contains all GraphQL arguments provided for this field.
-
-* `info`: Contains information about the operation's execution state, including the field name, the path to the field from the root, and more.
-
-* `directiveArgs`: Object that is passed into the directive, for example if the directive is `@authorize(policy: "Admin, User")`, the value is `{ policy: "Admin, User" }`

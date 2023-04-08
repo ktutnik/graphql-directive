@@ -5,7 +5,7 @@
   "command": {
     "publish": {
       "conventionalCommits": true,
-      "message": "chore: Release %s"
+      "message": "chore: Create production release"
     }
   }
 }
