@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/ktutnik/graphql-directive/compare/@graphql-directive/validator@2.0.1...@graphql-directive/validator@2.0.2) (2023-04-09)
+
+### Bug Fixes
+
+- Fix thrown GraphQLError error message ([#39](https://github.com/ktutnik/graphql-directive/issues/39)) ([9d52b52](https://github.com/ktutnik/graphql-directive/commit/9d52b521fb9e759f6824b8e0f5ceee5d43e20f31))
+
 ## [2.0.1](https://github.com/ktutnik/graphql-directive/compare/@graphql-directive/validator@2.0.0...@graphql-directive/validator@2.0.1) (2023-04-08)
 
 ### Bug Fixes

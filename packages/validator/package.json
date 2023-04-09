@@ -1,6 +1,6 @@
 {
   "name": "@graphql-directive/validator",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A validator.js wrapper for GraphQL validation directive",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -23,7 +23,7 @@
     "graphql": "^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0"
   },
   "dependencies": {
-    "@graphql-directive/core": "^1.0.1",
+    "@graphql-directive/core": "^1.0.2",
     "@types/validator": "^13.7.14",
     "validator": "^13.9.0"
   },
