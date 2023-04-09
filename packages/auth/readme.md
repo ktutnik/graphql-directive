@@ -21,7 +21,7 @@ const typeDefs = `
         role: String   @authorize(policy: "Admin")
     }
 
-    input User {
+    type User {
         id: String!
         name: String!   
         # email only visible by authenticated user
