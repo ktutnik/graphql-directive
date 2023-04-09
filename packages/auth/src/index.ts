@@ -46,7 +46,6 @@ const transform = (schema: GraphQLSchema, options: AuthorizeOptions): GraphQLSch
             return {
                 ...config,
                 resolve: async (parent, args, context, info) => {
-                    const operation = info.operation.operation
                     const path = getPath(info.path)
                     const [inputError, fieldError] = await Promise.all([
                         pipeline.invoke(args, path, config.args!, [parent, args, context, info]),
@@ -57,9 +56,6 @@ const transform = (schema: GraphQLSchema, options: AuthorizeOptions): GraphQLSch
                     }
                     if (fieldError.length === 0) {
                         return resolve(parent, args, context, info)
-                    }
-                    if (operation === OperationTypeNode.MUTATION) {
-                        throw new GraphQLError("AUTHORIZATION_ERROR", { extensions: { paths: fieldError } })
                     }
                     if (options.queryResolution === "ThrowError") {
                         throw new GraphQLError("AUTHORIZATION_ERROR", { extensions: { paths: fieldError } })

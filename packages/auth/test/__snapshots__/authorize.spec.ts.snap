@@ -1,5 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Mutation authorization On complex return type (Filter mode) Should authorize return type with proper role 1`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Mutation authorization On complex return type (Filter mode) Should authorize return type with proper role 2`] = `
+{
+  "name": "Wayan Koster",
+  "role": null,
+}
+`;
+
+exports[`Mutation authorization On complex return type (ThrowError mode) Should authorize return type with proper role 1`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Mutation authorization On complex return type (ThrowError mode) Should authorize return type with proper role 2`] = `
+{
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
 exports[`Mutation authorization On field argument Should able to apply multiple directives 1`] = `
 {
   "paths": [
