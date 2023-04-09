@@ -187,6 +187,64 @@ describe("Mutation authorization", () => {
             expect((await test(schema, "admin")).errors![0]).toMatchSnapshot()
         })
     })
+
+    describe("On complex return type (ThrowError mode)", () => {
+        const resolver = {
+            Mutation: {
+                test: () => ({ name: "Wayan Koster", role: "admin" })
+            }
+        }
+        const test = (schema: GraphQLSchema, role: string) => {
+            return graphql({
+                schema, source: `mutation { test(data: "test") { name, role } }`,
+                contextValue: { user: { role } }
+            })
+        }
+
+        it("Should authorize return type with proper role", async () => {
+            const schema = createSchema(`
+                type User {
+                    name:String!
+                    role:String! @authorize(policy: "admin")
+                }
+                type Mutation { 
+                    test(data:String!): User!
+                }`, resolver)
+            expect((await test(schema, "admin")).data!.test).toMatchSnapshot()
+            const result = await test(schema, "user")
+            expect(result.data).toBeNull()
+            expect(result.errors![0].extensions).toMatchSnapshot()
+        })
+    })
+
+    describe("On complex return type (Filter mode)", () => {
+        const resolver = {
+            Mutation: {
+                test: () => ({ name: "Wayan Koster", role: "admin" })
+            }
+        }
+        const test = (schema: GraphQLSchema, role: string) => {
+            return graphql({
+                schema, source: `mutation { test(data: "test") { name, role } }`,
+                contextValue: { user: { role } }
+            })
+        }
+
+        it("Should authorize return type with proper role", async () => {
+            const schema = createSchema(`
+                type User {
+                    name:String!
+                    role:String @authorize(policy: "admin")
+                }
+                type Mutation { 
+                    test(data:String!): User!
+                }`, resolver, "Filter")
+            expect((await test(schema, "admin")).data!.test).toMatchSnapshot()
+            const result = await test(schema, "user")
+            expect(result.data!.test).toMatchSnapshot()
+            expect(result.errors).toBeUndefined()
+        })
+    })
 })
 
 describe("Query authorization", () => {
