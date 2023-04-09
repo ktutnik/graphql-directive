@@ -58,7 +58,7 @@ const typeDefs = `
         role: String   @authorize(policy: "Admin")
     }
 
-    input User {
+    type User {
         id: String!
         name: String!   
         email: String! @authorize(policy: "Authenticated")

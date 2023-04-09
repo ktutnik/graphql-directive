@@ -14,6 +14,31 @@ exports[`Mutation authorization On complex return type (Filter mode) Should auth
 }
 `;
 
+exports[`Mutation authorization On complex return type (Filter mode) Should authorize return type with proper role 3`] = `
+{
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
+  "paths": [
+    "test.role",
+  ],
+}
+`;
+
+exports[`Mutation authorization On complex return type (Filter mode) Should throw error when authorize applied on mutation field 1`] = `
+{
+  "name": "Wayan Koster",
+  "role": "admin",
+}
+`;
+
+exports[`Mutation authorization On complex return type (Filter mode) Should throw error when authorize applied on mutation field 2`] = `
+{
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
+  "paths": [
+    "test",
+  ],
+}
+`;
+
 exports[`Mutation authorization On complex return type (ThrowError mode) Should authorize return type with proper role 1`] = `
 {
   "name": "Wayan Koster",
@@ -109,6 +134,15 @@ exports[`Mutation authorization On mutation field Should able to apply multiple 
 `;
 
 exports[`Mutation authorization On mutation field Should authorize with proper role 1`] = `
+{
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
+  "paths": [
+    "test",
+  ],
+}
+`;
+
+exports[`Mutation authorization On mutation field Should keep throwing error on Filter mode 1`] = `
 {
   "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [

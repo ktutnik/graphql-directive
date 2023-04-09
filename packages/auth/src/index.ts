@@ -1,6 +1,6 @@
 import { InvocationContext, InvokerHook, createDirectiveInvoker, createDirectiveInvokerPipeline } from "@graphql-directive/core"
 import { MapperKind, getDirective, mapSchema } from "@graphql-tools/utils"
-import { GraphQLError, GraphQLSchema, defaultFieldResolver, isNonNullType } from "graphql"
+import { GraphQLError, GraphQLSchema, OperationTypeNode, defaultFieldResolver, isNonNullType } from "graphql"
 import { Path } from "graphql/jsutils/Path"
 
 const errorCode = "GRAPHQL_AUTHORIZATION_FAILED"
@@ -48,6 +48,7 @@ const transform = (schema: GraphQLSchema, options: AuthorizeOptions): GraphQLSch
             return {
                 ...config,
                 resolve: async (parent, args, context, info) => {
+                    const operation = info.operation.operation
                     const path = getPath(info.path)
                     const [inputError, fieldError] = await Promise.all([
                         pipeline.invoke(args, path, config.args!, [parent, args, context, info]),
@@ -59,6 +60,9 @@ const transform = (schema: GraphQLSchema, options: AuthorizeOptions): GraphQLSch
                     }
                     if (fieldError.length === 0) {
                         return resolve(parent, args, context, info)
+                    }
+                    if (operation === OperationTypeNode.MUTATION) {
+                        throw getError(fieldError)
                     }
                     if (options.queryResolution === "ThrowError") {
                         throw getError(fieldError)

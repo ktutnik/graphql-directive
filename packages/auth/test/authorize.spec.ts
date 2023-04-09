@@ -92,6 +92,15 @@ describe("Mutation authorization", () => {
             expect((await test(schema, "user")).errors![0].extensions).toMatchSnapshot()
         })
 
+        it("Should keep throwing error on Filter mode", async () => {
+            const schema = createSchema(`
+                type Mutation { 
+                    test(name:String!, role: String): Boolean! @authorize(policy: "admin")
+                }`, { Mutation: { test: () => true } }, "Filter")
+            expect((await test(schema, "admin")).data!.test).toBe(true)
+            expect((await test(schema, "user")).errors![0].extensions).toMatchSnapshot()
+        })
+
         it("Should able to apply multiple directives", async () => {
             const schema = createSchema(`
                 type Mutation { 
@@ -237,12 +246,27 @@ describe("Mutation authorization", () => {
                     role:String @authorize(policy: "admin")
                 }
                 type Mutation { 
-                    test(data:String!): User!
+                    test(data:String!): User! 
                 }`, resolver, "Filter")
             expect((await test(schema, "admin")).data!.test).toMatchSnapshot()
             const result = await test(schema, "user")
             expect(result.data!.test).toMatchSnapshot()
-            expect(result.errors).toBeUndefined()
+            expect(result.errors![0].extensions).toMatchSnapshot()
+        })
+
+        it("Should throw error when authorize applied on mutation field", async () => {
+            const schema = createSchema(`
+                type User {
+                    name:String!
+                    role:String @authorize(policy: "admin")
+                }
+                type Mutation { 
+                    test(data:String!): User! @authorize(policy: "admin")
+                }`, resolver, "Filter")
+            expect((await test(schema, "admin")).data!.test).toMatchSnapshot()
+            const result = await test(schema, "user")
+            expect(result.data).toBeNull()
+            expect(result.errors![0].extensions).toMatchSnapshot()
         })
     })
 })
