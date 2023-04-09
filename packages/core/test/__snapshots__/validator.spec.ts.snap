@@ -2,6 +2,7 @@
 
 exports[`Custom Type Validation Should validate argument with primitive type on Custom Type 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid email address",
@@ -21,6 +22,7 @@ exports[`Custom Type Validation Should validate argument with primitive type on 
 
 exports[`Custom Validator Should able to access context from custom validator 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Always error",
@@ -63,6 +65,7 @@ exports[`Custom Validator Should able to access context from custom validator 2`
 
 exports[`Custom Validator Should able to create your own validator 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Always error",
@@ -74,6 +77,7 @@ exports[`Custom Validator Should able to create your own validator 1`] = `
 
 exports[`Custom Validator Should able to create your own validator 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Always error",
@@ -85,6 +89,7 @@ exports[`Custom Validator Should able to create your own validator 2`] = `
 
 exports[`Mutation Validation Should validate argument inside array of custom type property 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid email address",
@@ -102,6 +107,7 @@ exports[`Mutation Validation Should validate argument inside array of custom typ
 
 exports[`Mutation Validation Should validate argument inside custom type property 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid email address",
@@ -119,6 +125,7 @@ exports[`Mutation Validation Should validate argument inside custom type propert
 
 exports[`Mutation Validation Should validate argument inside nested custom type property 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid email address",
@@ -136,6 +143,7 @@ exports[`Mutation Validation Should validate argument inside nested custom type 
 
 exports[`Mutation Validation Should validate argument with primitive type properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid email address",

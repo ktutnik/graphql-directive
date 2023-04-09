@@ -1,7 +1,9 @@
-import { InvocationContext, InvokerHook, createDirectiveInvokerPipeline, createDirectiveInvoker } from "@graphql-directive/core"
-import { MapperKind, mapSchema, getDirective } from "@graphql-tools/utils"
-import { GraphQLError, GraphQLSchema, OperationTypeNode, defaultFieldResolver, isNonNullType } from "graphql"
+import { InvocationContext, InvokerHook, createDirectiveInvoker, createDirectiveInvokerPipeline } from "@graphql-directive/core"
+import { MapperKind, getDirective, mapSchema } from "@graphql-tools/utils"
+import { GraphQLError, GraphQLSchema, defaultFieldResolver, isNonNullType } from "graphql"
 import { Path } from "graphql/jsutils/Path"
+
+const errorCode = "GRAPHQL_AUTHORIZATION_FAILED"
 
 const typeDefs = /* GraphQL */ `
     directive @authorize(
@@ -51,14 +53,15 @@ const transform = (schema: GraphQLSchema, options: AuthorizeOptions): GraphQLSch
                         pipeline.invoke(args, path, config.args!, [parent, args, context, info]),
                         invoker.invoke(args, path, [parent, args, context, info])
                     ]);
+                    const getError = (paths: string[]) => new GraphQLError(`Unauthorized to access ${path}`, { extensions: { code: errorCode, paths } })
                     if (inputError.length > 0) {
-                        throw new GraphQLError("AUTHORIZATION_ERROR", { extensions: { paths: inputError } })
+                        throw getError(inputError)
                     }
                     if (fieldError.length === 0) {
                         return resolve(parent, args, context, info)
                     }
                     if (options.queryResolution === "ThrowError") {
-                        throw new GraphQLError("AUTHORIZATION_ERROR", { extensions: { paths: fieldError } })
+                        throw getError(fieldError)
                     }
                     return undefined
                 }
@@ -72,5 +75,5 @@ const createTransformer = (options: Partial<AuthorizeOptions>) => {
 }
 
 export default {
-    typeDefs, createTransformer, 
+    typeDefs, createTransformer,
 }

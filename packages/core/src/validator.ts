@@ -7,6 +7,8 @@ import { InvocationContext, createDirectiveInvokerPipeline } from "./directive-i
 // ======================== TYPES ======================= //
 // ====================================================== //
 
+const errorCode = "GRAPHQL_VALIDATION_FAILED"
+
 export type Validator = (val: any, ctx: ValidatorContext) => (string | true) | Promise<(string | true)>
 
 export interface ErrorMessage {
@@ -74,7 +76,7 @@ const transform = (schema: GraphQLSchema, options: TransformerOptions): GraphQLS
                     const path = getPath(info.path)
                     const error = await invoker.invoke(args, path, config.args!, [parent, args, context, info])
                     if (error.length > 0) {
-                        throw new GraphQLError("USER_INPUT_ERROR", { extensions: { error } })
+                        throw new GraphQLError(`Invalid value provided at ${path}`, { extensions: { code: errorCode, error } })
                     }
                     return resolve(parent, args, context, info)
                 }

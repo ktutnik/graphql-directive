@@ -23,6 +23,7 @@ exports[`Mutation authorization On complex return type (ThrowError mode) Should 
 
 exports[`Mutation authorization On complex return type (ThrowError mode) Should authorize return type with proper role 2`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -31,6 +32,7 @@ exports[`Mutation authorization On complex return type (ThrowError mode) Should 
 
 exports[`Mutation authorization On field argument Should able to apply multiple directives 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -39,6 +41,7 @@ exports[`Mutation authorization On field argument Should able to apply multiple 
 
 exports[`Mutation authorization On field argument Should authorize with proper role 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -49,6 +52,7 @@ exports[`Mutation authorization On field argument Should throw error when specif
 
 exports[`Mutation authorization On field argument Should work on array type 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role.0",
     "test.role.1",
@@ -58,6 +62,7 @@ exports[`Mutation authorization On field argument Should work on array type 1`] 
 
 exports[`Mutation authorization On input type field Should able to apply in array type 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.user.0.role",
     "test.user.1.role",
@@ -67,6 +72,7 @@ exports[`Mutation authorization On input type field Should able to apply in arra
 
 exports[`Mutation authorization On input type field Should able to apply in array type 2`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.user.0.role",
   ],
@@ -75,6 +81,7 @@ exports[`Mutation authorization On input type field Should able to apply in arra
 
 exports[`Mutation authorization On input type field Should able to apply multiple directives 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.user.role",
   ],
@@ -83,6 +90,7 @@ exports[`Mutation authorization On input type field Should able to apply multipl
 
 exports[`Mutation authorization On input type field Should authorize with proper role 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.user.role",
   ],
@@ -93,6 +101,7 @@ exports[`Mutation authorization On input type field Should throw error when spec
 
 exports[`Mutation authorization On mutation field Should able to apply multiple directives 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test",
   ],
@@ -101,6 +110,7 @@ exports[`Mutation authorization On mutation field Should able to apply multiple 
 
 exports[`Mutation authorization On mutation field Should authorize with proper role 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test",
   ],
@@ -111,6 +121,7 @@ exports[`Mutation authorization On mutation field Should throw error when specif
 
 exports[`Query authorization Applied on query field argument Should able to apply multiple directives 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -119,6 +130,7 @@ exports[`Query authorization Applied on query field argument Should able to appl
 
 exports[`Query authorization Applied on query field argument Should authorize with proper role 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -318,6 +330,7 @@ exports[`Query authorization ThrowError mode Applied on array of complex type pr
 
 exports[`Query authorization ThrowError mode Applied on array of complex type property Should authorize with multiple directives 3`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -339,6 +352,7 @@ exports[`Query authorization ThrowError mode Applied on array of complex type pr
 
 exports[`Query authorization ThrowError mode Applied on array of complex type property Should authorize with proper role 2`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -361,6 +375,7 @@ exports[`Query authorization ThrowError mode Applied on complex type property Sh
 
 exports[`Query authorization ThrowError mode Applied on complex type property Should authorize with multiple directives 3`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -376,6 +391,7 @@ exports[`Query authorization ThrowError mode Applied on complex type property Sh
 
 exports[`Query authorization ThrowError mode Applied on complex type property Should authorize with proper role 2`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.role",
   ],
@@ -404,6 +420,7 @@ exports[`Query authorization ThrowError mode Applied on nested complex type prop
 
 exports[`Query authorization ThrowError mode Applied on nested complex type property Should authorize with multiple directives 3`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.partner.role",
   ],
@@ -422,6 +439,7 @@ exports[`Query authorization ThrowError mode Applied on nested complex type prop
 
 exports[`Query authorization ThrowError mode Applied on nested complex type property Should authorize with proper role 2`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test.partner.role",
   ],
@@ -430,6 +448,7 @@ exports[`Query authorization ThrowError mode Applied on nested complex type prop
 
 exports[`Query authorization ThrowError mode Applied on query field with primitive type Should authorize with multiple directives 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test",
   ],
@@ -438,6 +457,7 @@ exports[`Query authorization ThrowError mode Applied on query field with primiti
 
 exports[`Query authorization ThrowError mode Applied on query field with primitive type Should authorize with proper role 1`] = `
 {
+  "code": "GRAPHQL_AUTHORIZATION_FAILED",
   "paths": [
     "test",
   ],

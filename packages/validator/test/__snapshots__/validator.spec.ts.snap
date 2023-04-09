@@ -2,6 +2,7 @@
 
 exports[`Should validate ASCII string properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must only contain ASCII characters",
@@ -13,6 +14,7 @@ exports[`Should validate ASCII string properly 1`] = `
 
 exports[`Should validate ASCII string properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -24,6 +26,7 @@ exports[`Should validate ASCII string properly 2`] = `
 
 exports[`Should validate Ethereum address properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid Ethereum address",
@@ -35,6 +38,7 @@ exports[`Should validate Ethereum address properly 1`] = `
 
 exports[`Should validate Ethereum address properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -46,6 +50,7 @@ exports[`Should validate Ethereum address properly 2`] = `
 
 exports[`Should validate IP address properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid undefined IP address",
@@ -57,6 +62,7 @@ exports[`Should validate IP address properly 1`] = `
 
 exports[`Should validate IP address properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -68,6 +74,7 @@ exports[`Should validate IP address properly 2`] = `
 
 exports[`Should validate IP range properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid IP range",
@@ -79,6 +86,7 @@ exports[`Should validate IP range properly 1`] = `
 
 exports[`Should validate IP range properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -90,6 +98,7 @@ exports[`Should validate IP range properly 2`] = `
 
 exports[`Should validate ISBN properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid ISBN undefined",
@@ -101,6 +110,7 @@ exports[`Should validate ISBN properly 1`] = `
 
 exports[`Should validate ISBN properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -112,6 +122,7 @@ exports[`Should validate ISBN properly 2`] = `
 
 exports[`Should validate ISIN properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid ISIN (International Securities Identification Number)",
@@ -123,6 +134,7 @@ exports[`Should validate ISIN properly 1`] = `
 
 exports[`Should validate ISIN properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -134,6 +146,7 @@ exports[`Should validate ISIN properly 2`] = `
 
 exports[`Should validate ISO 3166-1 alpha-2 code properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid ISO 3166-1 alpha-2 country code",
@@ -145,6 +158,7 @@ exports[`Should validate ISO 3166-1 alpha-2 code properly 1`] = `
 
 exports[`Should validate ISO 3166-1 alpha-2 code properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -156,6 +170,7 @@ exports[`Should validate ISO 3166-1 alpha-2 code properly 2`] = `
 
 exports[`Should validate ISO 3166-1 alpha-3 code properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid ISO 3166-1 alpha-3 country code",
@@ -167,6 +182,7 @@ exports[`Should validate ISO 3166-1 alpha-3 code properly 1`] = `
 
 exports[`Should validate ISO 3166-1 alpha-3 code properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -178,6 +194,7 @@ exports[`Should validate ISO 3166-1 alpha-3 code properly 2`] = `
 
 exports[`Should validate ISO8601 date properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid ISO8601 date string",
@@ -189,6 +206,7 @@ exports[`Should validate ISO8601 date properly 1`] = `
 
 exports[`Should validate ISO8601 date properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid ISO8601 date string",
@@ -200,6 +218,7 @@ exports[`Should validate ISO8601 date properly 2`] = `
 
 exports[`Should validate ISRC properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid International Standard Recording Code (ISRC)",
@@ -211,6 +230,7 @@ exports[`Should validate ISRC properly 1`] = `
 
 exports[`Should validate ISRC properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -222,6 +242,7 @@ exports[`Should validate ISRC properly 2`] = `
 
 exports[`Should validate ISSN properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid International Standard Serial Number (ISSN)",
@@ -233,6 +254,7 @@ exports[`Should validate ISSN properly 1`] = `
 
 exports[`Should validate ISSN properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -244,6 +266,7 @@ exports[`Should validate ISSN properly 2`] = `
 
 exports[`Should validate JSON properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid JSON string",
@@ -255,6 +278,7 @@ exports[`Should validate JSON properly 1`] = `
 
 exports[`Should validate JSON properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -266,6 +290,7 @@ exports[`Should validate JSON properly 2`] = `
 
 exports[`Should validate JWT properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid JSON Web Token (JWT)",
@@ -277,6 +302,7 @@ exports[`Should validate JWT properly 1`] = `
 
 exports[`Should validate JWT properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -288,6 +314,7 @@ exports[`Should validate JWT properly 2`] = `
 
 exports[`Should validate MAC address properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid MAC address",
@@ -299,6 +326,7 @@ exports[`Should validate MAC address properly 1`] = `
 
 exports[`Should validate MAC address properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -310,6 +338,7 @@ exports[`Should validate MAC address properly 2`] = `
 
 exports[`Should validate MIME type properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid MIME type",
@@ -321,6 +350,7 @@ exports[`Should validate MIME type properly 1`] = `
 
 exports[`Should validate MIME type properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -332,6 +362,7 @@ exports[`Should validate MIME type properly 2`] = `
 
 exports[`Should validate MongoDB ObjectId properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid MongoDB ObjectId",
@@ -343,6 +374,7 @@ exports[`Should validate MongoDB ObjectId properly 1`] = `
 
 exports[`Should validate MongoDB ObjectId properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -354,6 +386,7 @@ exports[`Should validate MongoDB ObjectId properly 2`] = `
 
 exports[`Should validate URL properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid URL",
@@ -365,6 +398,7 @@ exports[`Should validate URL properly 1`] = `
 
 exports[`Should validate URL properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -376,6 +410,7 @@ exports[`Should validate URL properly 2`] = `
 
 exports[`Should validate UUID properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid UUID",
@@ -387,6 +422,7 @@ exports[`Should validate UUID properly 1`] = `
 
 exports[`Should validate UUID properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -398,6 +434,7 @@ exports[`Should validate UUID properly 2`] = `
 
 exports[`Should validate alphabetic string properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must only contain letters",
@@ -409,6 +446,7 @@ exports[`Should validate alphabetic string properly 1`] = `
 
 exports[`Should validate alphabetic string properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -420,6 +458,7 @@ exports[`Should validate alphabetic string properly 2`] = `
 
 exports[`Should validate alphanumeric string properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must only contain letters and numbers",
@@ -431,6 +470,7 @@ exports[`Should validate alphanumeric string properly 1`] = `
 
 exports[`Should validate alphanumeric string properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -442,6 +482,7 @@ exports[`Should validate alphanumeric string properly 2`] = `
 
 exports[`Should validate base64 string properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid base64 encoded string",
@@ -453,6 +494,7 @@ exports[`Should validate base64 string properly 1`] = `
 
 exports[`Should validate base64 string properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -464,6 +506,7 @@ exports[`Should validate base64 string properly 2`] = `
 
 exports[`Should validate boolean properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a boolean",
@@ -475,6 +518,7 @@ exports[`Should validate boolean properly 1`] = `
 
 exports[`Should validate boolean properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -486,6 +530,7 @@ exports[`Should validate boolean properly 2`] = `
 
 exports[`Should validate credit card properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid credit card number",
@@ -497,6 +542,7 @@ exports[`Should validate credit card properly 1`] = `
 
 exports[`Should validate credit card properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -508,6 +554,7 @@ exports[`Should validate credit card properly 2`] = `
 
 exports[`Should validate currency properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid currency amount",
@@ -519,6 +566,7 @@ exports[`Should validate currency properly 1`] = `
 
 exports[`Should validate currency properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -530,6 +578,7 @@ exports[`Should validate currency properly 2`] = `
 
 exports[`Should validate data URI properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid data URI",
@@ -541,6 +590,7 @@ exports[`Should validate data URI properly 1`] = `
 
 exports[`Should validate data URI properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -552,6 +602,7 @@ exports[`Should validate data URI properly 2`] = `
 
 exports[`Should validate date before properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a date before 1/1/2022",
@@ -563,6 +614,7 @@ exports[`Should validate date before properly 1`] = `
 
 exports[`Should validate date before properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a date before 1/1/2022",
@@ -574,6 +626,7 @@ exports[`Should validate date before properly 2`] = `
 
 exports[`Should validate date properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a date after today",
@@ -585,6 +638,7 @@ exports[`Should validate date properly 1`] = `
 
 exports[`Should validate date properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -596,6 +650,7 @@ exports[`Should validate date properly 2`] = `
 
 exports[`Should validate decimal properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a decimal number",
@@ -607,6 +662,7 @@ exports[`Should validate decimal properly 1`] = `
 
 exports[`Should validate decimal properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -618,6 +674,7 @@ exports[`Should validate decimal properly 2`] = `
 
 exports[`Should validate divisible properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a number that's divisible by 3",
@@ -629,6 +686,7 @@ exports[`Should validate divisible properly 1`] = `
 
 exports[`Should validate divisible properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -640,6 +698,7 @@ exports[`Should validate divisible properly 2`] = `
 
 exports[`Should validate domain name properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid fully qualified domain name",
@@ -651,6 +710,7 @@ exports[`Should validate domain name properly 1`] = `
 
 exports[`Should validate domain name properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -662,6 +722,7 @@ exports[`Should validate domain name properly 2`] = `
 
 exports[`Should validate email properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid email address",
@@ -673,6 +734,7 @@ exports[`Should validate email properly 1`] = `
 
 exports[`Should validate email properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -684,6 +746,7 @@ exports[`Should validate email properly 2`] = `
 
 exports[`Should validate empty properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must not be empty",
@@ -695,6 +758,7 @@ exports[`Should validate empty properly 1`] = `
 
 exports[`Should validate empty properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -706,6 +770,7 @@ exports[`Should validate empty properly 2`] = `
 
 exports[`Should validate float properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a float number",
@@ -717,6 +782,7 @@ exports[`Should validate float properly 1`] = `
 
 exports[`Should validate float properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -728,6 +794,7 @@ exports[`Should validate float properly 2`] = `
 
 exports[`Should validate full-width string properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must contain full-width characters",
@@ -739,6 +806,7 @@ exports[`Should validate full-width string properly 1`] = `
 
 exports[`Should validate full-width string properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -750,6 +818,7 @@ exports[`Should validate full-width string properly 2`] = `
 
 exports[`Should validate half-width string properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must contain half-width characters",
@@ -761,6 +830,7 @@ exports[`Should validate half-width string properly 1`] = `
 
 exports[`Should validate half-width string properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -772,6 +842,7 @@ exports[`Should validate half-width string properly 2`] = `
 
 exports[`Should validate hexadecimal color code properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid hex color code",
@@ -783,6 +854,7 @@ exports[`Should validate hexadecimal color code properly 1`] = `
 
 exports[`Should validate hexadecimal color code properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -794,6 +866,7 @@ exports[`Should validate hexadecimal color code properly 2`] = `
 
 exports[`Should validate hexadecimal properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid hexadecimal number",
@@ -805,6 +878,7 @@ exports[`Should validate hexadecimal properly 1`] = `
 
 exports[`Should validate hexadecimal properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -816,6 +890,7 @@ exports[`Should validate hexadecimal properly 2`] = `
 
 exports[`Should validate latitude and longitude properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid latitude coordinate",
@@ -827,6 +902,7 @@ exports[`Should validate latitude and longitude properly 1`] = `
 
 exports[`Should validate latitude and longitude properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -838,6 +914,7 @@ exports[`Should validate latitude and longitude properly 2`] = `
 
 exports[`Should validate length properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must have a length within the specified range",
@@ -849,6 +926,7 @@ exports[`Should validate length properly 1`] = `
 
 exports[`Should validate length properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -860,6 +938,7 @@ exports[`Should validate length properly 2`] = `
 
 exports[`Should validate lowercase properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be all lowercase",
@@ -871,6 +950,7 @@ exports[`Should validate lowercase properly 1`] = `
 
 exports[`Should validate lowercase properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -882,6 +962,7 @@ exports[`Should validate lowercase properly 2`] = `
 
 exports[`Should validate multibyte characters properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must contain one or more multibyte characters",
@@ -893,6 +974,7 @@ exports[`Should validate multibyte characters properly 1`] = `
 
 exports[`Should validate multibyte characters properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -904,6 +986,7 @@ exports[`Should validate multibyte characters properly 2`] = `
 
 exports[`Should validate numeric characters properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a number",
@@ -915,6 +998,7 @@ exports[`Should validate numeric characters properly 1`] = `
 
 exports[`Should validate numeric characters properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -926,6 +1010,7 @@ exports[`Should validate numeric characters properly 2`] = `
 
 exports[`Should validate password properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must have at least 8 chars and combination of lowercase number symbol uppercase",
@@ -937,6 +1022,7 @@ exports[`Should validate password properly 1`] = `
 
 exports[`Should validate password properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must have at least 8 chars and combination of symbol",
@@ -948,6 +1034,7 @@ exports[`Should validate password properly 2`] = `
 
 exports[`Should validate password properly 3`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -959,6 +1046,7 @@ exports[`Should validate password properly 3`] = `
 
 exports[`Should validate port number properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid port number",
@@ -970,6 +1058,7 @@ exports[`Should validate port number properly 1`] = `
 
 exports[`Should validate port number properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -981,6 +1070,7 @@ exports[`Should validate port number properly 2`] = `
 
 exports[`Should validate postal code properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid postal code",
@@ -992,6 +1082,7 @@ exports[`Should validate postal code properly 1`] = `
 
 exports[`Should validate postal code properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -1003,6 +1094,7 @@ exports[`Should validate postal code properly 2`] = `
 
 exports[`Should validate regex properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid postal code",
@@ -1014,6 +1106,7 @@ exports[`Should validate regex properly 1`] = `
 
 exports[`Should validate regex properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -1025,6 +1118,7 @@ exports[`Should validate regex properly 2`] = `
 
 exports[`Should validate slug properly 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must be a valid slug",
@@ -1036,6 +1130,7 @@ exports[`Should validate slug properly 1`] = `
 
 exports[`Should validate slug properly 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -1047,6 +1142,7 @@ exports[`Should validate slug properly 2`] = `
 
 exports[`should validate surrogate pairs 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must contain any surrogate pairs characters",
@@ -1058,6 +1154,7 @@ exports[`should validate surrogate pairs 1`] = `
 
 exports[`should validate surrogate pairs 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -1069,6 +1166,7 @@ exports[`should validate surrogate pairs 2`] = `
 
 exports[`should validate uppercase characters 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must only contain uppercase characters",
@@ -1080,6 +1178,7 @@ exports[`should validate uppercase characters 1`] = `
 
 exports[`should validate uppercase characters 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -1091,6 +1190,7 @@ exports[`should validate uppercase characters 2`] = `
 
 exports[`should validate variable width characters 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must contain a mixture of full and half-width characters",
@@ -1102,6 +1202,7 @@ exports[`should validate variable width characters 1`] = `
 
 exports[`should validate variable width characters 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
@@ -1113,6 +1214,7 @@ exports[`should validate variable width characters 2`] = `
 
 exports[`should validate whitelisted characters 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Must only contain characters from the whitelist: abcdefghijklmnopqrstuvwxyz",
@@ -1124,6 +1226,7 @@ exports[`should validate whitelisted characters 1`] = `
 
 exports[`should validate whitelisted characters 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Custom message",
