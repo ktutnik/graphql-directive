@@ -2,6 +2,7 @@
 
 exports[`Custom Validator Should able to access context from custom validator 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Always error",
@@ -93,6 +94,7 @@ exports[`Custom Validator Should able to access context from custom validator 2`
 
 exports[`Custom Validator Should able to create your own validator 1`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Always error",
@@ -104,6 +106,7 @@ exports[`Custom Validator Should able to create your own validator 1`] = `
 
 exports[`Custom Validator Should able to create your own validator 2`] = `
 {
+  "code": "GRAPHQL_VALIDATION_FAILED",
   "error": [
     {
       "message": "Always error",
